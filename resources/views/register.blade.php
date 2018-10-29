@@ -84,10 +84,15 @@
 
        <div class="content">
            <form class="" action="{{URL::to('/registrovat')}}" method="post">
-               Meno: <input type="text" name="name" value=""> <br /><br />
-               Email: <input type="email" name="email" value=""> <br /><br />
-               Heslo: <input type="password" name="password" value=""> <br /><br />
+               <label>Meno: </label><input type="text" name="name" value=""> <br /><br />
+               <label>Priezvisko: </label><input type="text" name="surname" value=""> <br /><br />
+               <label>Mesto: </label><input type="text" name="town" value=""> <br /><br />
+               <label>Adresa: </label><input type="text" name="address" value=""> <br /><br />
+               <label>Email: </label><input type="email" name="email" value=""> <br /><br />
+               <label>Telefónne číslo: </label><input type="number" name="tel_num" value=""> <br /><br />
+               <label>Heslo: </label> <input type="password" name="password" value=""> <br /><br />
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+               <input type="hidden" name="permission" value="0">;
                <button type="submit" name="register">Registrovať</button>
            </form>
        </div>

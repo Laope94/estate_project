@@ -84,7 +84,7 @@
 
         <div class="content">
             <form class="" action="{{URL::to('/prihlaseny')}}" method="post">
-                Meno: <input type="text" name="name" value=""> <br /><br />
+                Email: <input type="email" name="email" value=""> <br /><br />
                 Heslo: <input type="password" name="password" value=""> <br /><br />
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" name="login">Prihlásiť</button>
