@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::view('/register', "register");
 Route::post('/registrovat', 'autentification_controller@registrovat');
 
+//registracia kancelarie
+Route::view('/register-kancelarie', "register_kancelarie");
+Route::post('/registraciaKancelarie', 'autentification_controller@registraciaKancelarie');
+
 //login
 Route::view('/prihlasenie', "login");
 Route::post('/prihlaseny', 'autentification_controller@login');

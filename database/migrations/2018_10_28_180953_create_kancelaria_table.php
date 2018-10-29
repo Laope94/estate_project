@@ -19,7 +19,7 @@ class CreateKancelariaTable extends Migration
             $table->string('konatel');
             $table->string('adresa');
             $table->string('telefon');
-            $table->string('telefon2');
+            $table->string('telefon2')->nullable();
             $table->string('mail');
             $table->string('IBAN');
             $table->string('ICO');

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 
 class autentification_controller extends Controller
 {
+    //registracia pouzivatela
     public function registrovat(Request $request){
         $meno = $request->input('name');
         $priezvisko = $request->input('surname');
@@ -42,6 +43,31 @@ class autentification_controller extends Controller
         }
     }
 
+    //registracia kancelarie
+    public function registraciaKancelarie(Request $request){
+        $nazov = $request->input('nazov');
+        $konatel = $request->input('konatel');
+        $adresa = $request->input('adresa');
+        $tel_cislo = $request->input('tel_cislo');
+        $mail = $request->input('email');
+        $iban = $request->input('iban');
+        $ico = $request->input('ico');
+        $dic = $request->input('dic');
+        $timestamp = Carbon::now()->toDateTimeString();
+        $token = $request->input('_token');
+
+        if($nazov == null || $konatel == null || $adresa == null || $tel_cislo == null || $mail == null ||
+           $iban == null || $ico == null || $dic == null){
+            echo "Nevyplnili ste všetky údaje!";
+        } else{
+            DB::insert('INSERT INTO kancelaria(nazov, konatel, adresa, telefon, mail, IBAN, ICO, DIC,
+                remember_token, created_at, updated_at) 
+                VALUES(?,?,?,?,?,?,?,?,?,?,?)',
+                [$nazov, $konatel, $adresa, $tel_cislo, $mail, $iban, $ico, $dic, $token, $timestamp, $timestamp]);
+            echo "Vaša kancelária bola úspešne zaregistrovaná.";
+        }
+    }
+
     public function login(Request $request){
         $mail = $request->input('email');
         $heslo = md5($request->input('password'));
@@ -53,8 +79,9 @@ class autentification_controller extends Controller
             echo "Nezadali ste správne prihlasovacie údaje.";
         }
     }
-
+/*
     public function logout(){
         Auth::logout();
     }
+*/
 }
