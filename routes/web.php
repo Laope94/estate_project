@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//registracia
+Route::view('/register', "register");
+Route::post('/registrovat', 'autentification_controller@registrovat');
+
+//login
+Route::view('/prihlasenie', "login");
+Route::post('/prihlaseny', 'autentification_controller@login');
