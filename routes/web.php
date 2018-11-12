@@ -14,4 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('pozdrav',['as'=> 'pozdrav','uses' => 'NovyController@pozdrav']);
+
+
+Route::post('pridajAdmina',['uses' => 'AdminController@pridajAdmina']);
+Route::get('adminform',['as'=> 'Insert','uses' => 'AdminController@adminForm']);
+Route::get('zobrazadminov',['as'=> 'Update','uses' => 'AdminController@zobrazAdminov']);
+Route::get('zobrazadmina/{id}',['as'=> 'Update','uses' => 'AdminController@zobrazAdmina']);
+Route::post('editujadmina/{id}',['as'=> 'Update','uses' => 'AdminController@upravAdmina']);
+Route::get('vymazadmina/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazAdmina']);
