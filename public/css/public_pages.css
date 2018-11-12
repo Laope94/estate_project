@@ -1,0 +1,138 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0%;
+
+}
+
+nav {
+    margin: 20px 5% 0 0;
+    float:right;
+    display:inline;
+}
+
+.nav-container {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+}
+
+.nav-link{
+    color: #4A1F1F;
+    text-decoration: none;
+    font-size: 125%;
+    display:inline-block;
+    margin: 0px 15px 0px 15px;
+ }
+
+.nav-link:hover{
+    text-decoration: #4A1F1F underline;
+}
+
+.intro-page-container {
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
+    background-image: url("../images/house.jpg");
+    background-size: cover;
+}
+
+.intro-title-wrapper{
+    padding-top: 12.5%;
+    line-height: 150px;
+}
+
+.intro-title{
+    text-align: center;
+    font-size: 100px;
+    color: #4A1F1F;
+    font-weight: 300;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.search-bar-title {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 20px;
+    color: #D7D6D6;
+    font-weight: lighter;
+}
+
+.quick-search-container {
+    height: 40%;
+    background: #631D1D;
+}
+
+.quick-search-bar {
+    width: 80%;
+    margin: 2% 10% 0 10%;
+    padding: 0 25px 0 25px;
+    font-size: 35px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+   outline: none;
+}
+
+.upper-footer {
+    min-height: 20%;
+    background: #D7D6D6;
+    color: #631D1D ;
+}
+
+.upper-footer-container {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.lower-footer {
+    min-height: 80px;
+    background: #1A0000;
+    color: #836C6C;
+}
+
+.footer-social-container {
+    padding: 5px 25% 5px 25%;
+    text-align: center;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.round-button-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.round-button {
+    background: #1A0000;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 0 15px 0 15px;
+}
+
+.awesome-social {
+    color: #D7D6D6;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.footer-unicorn {
+    line-height: 80px;
+    text-align: center;
+}
+
+.unicorn-created{
+    color: #FF6161;
+}
+
+.unicorn-sh{
+    font-size: 120%;
+    font-weight: bold;
+}
