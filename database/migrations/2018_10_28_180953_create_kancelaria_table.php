@@ -24,6 +24,7 @@ class CreateKancelariaTable extends Migration
             $table->string('IBAN');
             $table->string('ICO');
             $table->string('DIC');
+            $table->string('remember_token');
             $table->timestamps();
         });
     }

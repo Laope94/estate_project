@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inzerat;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,71 +19,30 @@ use Illuminate\Support\Facades\DB;
 
 class autentification_controller extends Controller
 {
-    //registracia pouzivatela
-    public function registrovat(Request $request){
-        $meno = $request->input('name');
-        $priezvisko = $request->input('surname');
-        $mesto = $request->input('town');
-        $adresa = $request->input('address');
-        $mail = $request->input('email');
-        $telefon = $request->input('tel_num');
-        $heslo = md5($request->input('password'));
-        $opravnenie = $request->input('permission');
-        $timestamp = Carbon::now()->toDateTimeString();
-        $token = $request->input('_token'); //remember token, mozno ho tam nebude treba (zistit na co to je)
-
-        if($meno == null || $priezvisko == null || $mesto == null || $adresa == null || $mail == null ||
-           $telefon == null || $heslo == null){
-            echo "Nevyplnili ste všetky údaje!";
-        } else{
-            DB::insert('INSERT INTO pouzivatelia(id, meno, priezvisko, mesto, adresa, mail, heslo, telefon, opravnenie, 
-                remember_token, created_at, updated_at) 
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',
-                [null, $meno, $priezvisko,$mesto, $adresa, $mail, $heslo, $telefon, $opravnenie, $token,
-                 $timestamp, $timestamp]);
-            echo "Vaša registrácia prebehla úspešne.";
-        }
-    }
-
-    //registracia kancelarie
-    public function registraciaKancelarie(Request $request){
-        $nazov = $request->input('nazov');
-        $konatel = $request->input('konatel');
-        $adresa = $request->input('adresa');
-        $tel_cislo = $request->input('tel_cislo');
-        $mail = $request->input('email');
-        $iban = $request->input('iban');
-        $ico = $request->input('ico');
-        $dic = $request->input('dic');
-        $timestamp = Carbon::now()->toDateTimeString();
-        $token = $request->input('_token');
-
-        if($nazov == null || $konatel == null || $adresa == null || $tel_cislo == null || $mail == null ||
-           $iban == null || $ico == null || $dic == null){
-            echo "Nevyplnili ste všetky údaje!";
-        } else{
-            DB::insert('INSERT INTO kancelaria(nazov, konatel, adresa, telefon, mail, IBAN, ICO, DIC,
-                remember_token, created_at, updated_at) 
-                VALUES(?,?,?,?,?,?,?,?,?,?,?)',
-                [$nazov, $konatel, $adresa, $tel_cislo, $mail, $iban, $ico, $dic, $token, $timestamp, $timestamp]);
-            echo "Vaša kancelária bola úspešne zaregistrovaná.";
-        }
-    }
-
     public function login(Request $request){
         $mail = $request->input('email');
         $heslo = md5($request->input('password'));
+        $id = User::select('id')->where("mail", "=", $mail)->first();
+        $idSubst = substr($id, 6);
 
         $data = DB::select('SELECT id FROM pouzivatelia WHERE mail = ? and heslo = ?', [$mail, $heslo]);
         if(count($data) == 1){
-            echo "Ahoj, úspešne si sa prihlásil/a.";
+            //sem pojde view ktory vypise inzeraty daneho usera, alebo ukaze jeho profil
+
+            echo "Ahoj, úspešne si sa prihlásil. <br /><br />";
+            $inzeraty = Inzerat::where('pouzivatelia_id', '=', $idSubst)->get();
+            echo "<strong>Tu sú tvoje inzeráty: </strong><br /><br />";
+            foreach ($inzeraty as $inzerat){
+                echo "<strong>Názov: </strong>".$inzerat->nadpis.", ";
+                echo "<strong>Cena: </strong>".$inzerat->cena."<br />";
+            }
         } else {
             echo "Nezadali ste správne prihlasovacie údaje.";
         }
     }
-/*
+
     public function logout(){
         Auth::logout();
+        return view('/login');
     }
-*/
 }

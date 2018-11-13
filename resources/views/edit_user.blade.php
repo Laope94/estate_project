@@ -79,24 +79,23 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Registrácia
+            Editácia používateľa
         </div>
-        <h3>Polia označené hviezdičkou je potrebné vyplniť!</h3>
-       <div class="content">
-           <form class="" action="{{URL::to('/register')}}" method="post">
-               <label>*Meno: </label><input type="text" name="name" value=""> <br /><br />
-               <label>*Priezvisko: </label><input type="text" name="surname" value=""> <br /><br />
-               <label>*Mesto: </label><input type="text" name="town" value=""> <br /><br />
-               <label>*Adresa: </label><input type="text" name="address" value=""> <br /><br />
-               <label>*Email: </label><input type="email" name="email" value=""> <br /><br />
-               <label>*Telefónne číslo: </label><input type="number" name="tel_num" value=""> <br /><br />
-               <label>Telefónne číslo 2: </label><input type="number" name="tel_num2" value=""> <br /><br />
-               <label>*Heslo: </label> <input type="password" name="password" value=""> <br /><br />
-               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-               <input type="hidden" name="permission" value="0">;
-               <button type="submit" name="register">Registrovať</button>
-           </form>
-       </div>
+
+        <div class="content">
+            <form class="" action="{{ action('UserController@updateUser', ['id' => $user->id]) }}" method="get">
+                <label>Meno: </label><input type="text" name="meno" value="{{ $user->meno }}"> <br /><br />
+                <label>Priezvisko: </label><input type="text" name="priezvisko" value="{{ $user->priezvisko }}"> <br /><br />
+                <label>Iban: </label><input type="text" name="iban" value="{{ $user->IBAN }}"> <br /><br />
+                <label>Mesto:</label><input type="text" name="mesto" value="{{ $user->mesto }}"> <br /><br />
+                <label>Adresa: </label><input type="string" name="adresa" value="{{ $user->adresa }}"> <br /><br />
+                <label>Email: </label><input type="email" name="mail" value="{{ $user->mail }}"> <br /><br />
+                <label>Telefón: </label><input type="number" name="tel_num" value="{{ $user->telefon }}"> <br /><br />
+                <label>Telefón2: </label><input type="number" name="tel_num2" value="{{ $user->telefon2 }}"> <br /><br />
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="submit" value="Upraviť">
+            </form>
+        </div>
     </div>
 </div>
 </body>
