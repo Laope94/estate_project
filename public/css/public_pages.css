@@ -51,7 +51,7 @@ nav {
     height: 100%;
     width: 100%;
     line-height: 100%;
-    background-image: url("../images/house.jpg");
+    background-image: url("../images/house2.jpg");
     background-size: cover;
 }
 
@@ -68,7 +68,7 @@ nav {
     color: #4A1F1F;
     font-weight: 300;
     padding: 50px;
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .chevron-circle-container {
@@ -81,7 +81,7 @@ nav {
 .arrow-down{
     font-size: 65px;
     margin: 2.5% 0 2.5% 0;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .arrow-down:hover {
@@ -89,12 +89,58 @@ nav {
     cursor: pointer;
 }
 
-.search-bar-title {
+.about-container {
+    height: 100%;
+}
+
+.about-text {
+    font-size: 25px;
+    color: #4A1F1F;
+}
+
+.title-container {
+    height:15%;
+}
+
+.l-second-title{
+    margin: 0;
     text-align: center;
     font-size: 50px;
     padding-top: 20px;
-    color: #D7D6D6;
     font-weight: lighter;
+}
+
+.title-light {
+    color: #D7D6D6;
+}
+
+.title-dark {
+    color: #4A1F1F;
+}
+
+.column-container {
+    width: 80%;
+    padding: 0 10% 0 10%;
+    height: 85%;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+.column {
+    height: 100%;
+    text-align: center;
+}
+
+.single-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.double-container {
+    height: 50%
 }
 
 .quick-search-container {
@@ -104,7 +150,7 @@ nav {
 
 .quick-search-bar {
     width: 70%;
-    margin: 2% 10% 0 10%;
+    margin: 2% 15% 0 15%;
     padding: 0 25px 0 25px;
     font-size: 35px;
     height: 50px;
@@ -112,6 +158,56 @@ nav {
     border-radius: 50px;
     text-align: center;
     outline: none;
+}
+
+.card-container{
+    width: 400px;
+    height: 500px;
+    background: #FFFEFE;
+    border: solid 1px;
+}
+
+.card-image-container {
+    width: 390px;
+    background: #7D0E0E;
+    margin: 15px 5px 5px 5px;
+}
+
+.card-image{
+    image-resolution: 300dpi;
+    width: 380px;
+    height: auto;
+    padding: 5px 5px 5px 5px;}
+
+.card-round-container {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 20px 0;
+}
+
+.card-round-buttons {
+    display: inline-block;
+}
+
+.card-round-wrapper{
+    width: 100px;
+    float: left;
+    text-align: center;
+    margin: 0 15px 0 15px;
+}
+
+.card-round-button{
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    border-radius: 100%;
+    background: #836C6C;
+}
+
+.card-awesome {
+    margin-top:10px;
+   font-size: 30px;
+    color: #4A1F1F;
 }
 
 .upper-footer {
@@ -160,6 +256,7 @@ nav {
 
 .awesome-about {
     color: #4A1F1F;
+    margin: 10px 0 10px 0;
     font-size: 100px;
 }
 
@@ -182,3 +279,4 @@ nav {
     margin: 0 30px 0 30px;
     vertical-align: middle;
 }
+
