@@ -52,7 +52,12 @@
 
         <div>
             <h2 class="l-second-title title-dark">Najnovšie inzeráty</h2>
-           @include('inzerat_karta')
+            <div style="padding: 50px 0 50px 0;">
+                <div style="column-count: 2";>
+                    <div style="margin: 5px 0 5px 0">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
+                    <div style="margin: 5px 0 5px 0">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'60'])</div>
+                </div>
+            </div>
         </div>
 
     </div>

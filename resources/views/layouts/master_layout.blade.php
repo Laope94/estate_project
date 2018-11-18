@@ -2,8 +2,7 @@
     <title>bytvdome.sk | @yield('title') </title>
     <link href="{{asset('/css/public_pages.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
 </head>
 <body>
@@ -15,8 +14,8 @@
                 <a class="nav-link" href="">Domov</a>
                 <a class="nav-link" href="">Vyhľadať nehnuteľnosť</a>
                 <a class="nav-link" href="">Realitné kancelárie</a>
-                <a class="nav-link" href="">Registrácia</a>
                 <a class="nav-link" href="">Kontakt</a>
+                <a class="nav-link" href="">Prihlásenie a registrácia</a>
             </nav>
     </div>
     <div class="intro-page-container"></div>
