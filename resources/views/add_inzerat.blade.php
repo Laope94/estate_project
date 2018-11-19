@@ -83,7 +83,7 @@
         </div>
 
         <div class="content">
-            <form class="" action="{{URL::to('/pridajInzerat')}}" method="post">
+            <form class="" action="{{URL::to('/pridajInzerat')}}" method="post" enctype="multipart/form-data">
                 <h5>Políčka označené * je potrebné vyplniť!</h5> <br /><br />
                 <label>*Názov inzerátu: </label><input type="text" name="nadpis" value=""> <br /><br />
                 <label>Ulica: </label><input type="text" name="ulica" value=""> <br /><br />
@@ -91,6 +91,7 @@
                 <label>*Cena: </label><input type="number" name="cena" value=""> <br /><br />
                 <label>*Počet izieb: </label><input type="number" name="pocet_izieb" value=""> <br /><br />
                 <label>*Poschodie: </label><input type="number" name="poschodie" value=""> <br /><br />
+                <label>*Fotografie: </label><input type="file" name="obrazok[]" multiple><br /><br />
                 <label>*Popis </label><textarea rows="3" type="text-" name="popis" value=""></textarea> <br /><br />
                 <label>*Typ nehnuteľnosti: </label>
                 <select name="typ_nehnutelnosti">
@@ -108,7 +109,7 @@
                     <option value="3">Banská Štiavnica</option>
                 </select> <br /> <br />
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button type="submit" name="register">Pridať inzerát</button>
+                <button type="submit" name="add">Pridať inzerát</button>
             </form>
         </div>
     </div>

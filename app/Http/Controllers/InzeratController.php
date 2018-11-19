@@ -14,7 +14,7 @@ use App\Models\TypNehnutelnosti;
 use function foo\func;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use Webpatser\Uuid\Uuid;
 
 class InzeratController extends Controller
 {
@@ -26,7 +26,7 @@ class InzeratController extends Controller
         $cena = $request->input('cena');
         $izby = $request->input('pocet_izieb');
         $poschodie = $request->input('poschodie');
-        $fotografie = "fotka";
+        $fotografie = $this->foto($request);
         $popis = $request->input('popis');
         $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
         $okres = $request->input('okres');
@@ -95,5 +95,44 @@ class InzeratController extends Controller
     public function showAllAction(){
         $inzeraty = Inzerat::all();
         return view("inzeraty", ['inzeraty' => $inzeraty]);
+    }
+
+    //vyriesit viacero formatov fotiek, nie iba jpg
+    public function foto(Request $request){
+        $foto = $request->file('obrazok');
+        $input = Uuid::generate();
+        $destinationPath = public_path('images/'.$input);
+        $foto->move($destinationPath, $input.".jpg");
+
+        return $input;
+    }
+
+    //-------------------------------Filtre--------------------------------------
+    //vsade pridat view potom
+
+    //filter na lokalitu
+    public function localityFilter(Request $request){
+        $okres_id = $request->input('okres');
+        $lokalita = Inzerat::all()->where("okres_id", "=", $okres_id);
+    }
+
+    public function priceFilter(Request $request){
+        $cena = $request->input('cena');
+        $cenovo = Inzerat::all()->where("cena", ">=", $cena+5000);
+    }
+
+    public function typeFilter(Request $request){
+        $typ_nehnutelnosti = $request->input('typ_nehnutelnosti');
+        $typ = Inzerat::all()->where("typ_nehnutelnosti_id", "=", $typ_nehnutelnosti);
+    }
+
+    public function roomFilter(Request $request){
+        $izby = $request->input('pocet_izieb');
+        $pocet_izieb = Inzerat::all()->where("pocet_izieb", "=", $izby);
+    }
+
+    public function officeFilter(Request $request){
+        $office = $request->input('office');
+        $kancel = Inzerat::all()->where("kancelaria_id", "=", $office);
     }
 }
