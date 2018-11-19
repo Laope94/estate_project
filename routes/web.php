@@ -49,6 +49,7 @@ Route::get('delete/{id}','InzeratController@deleteAdv');
 Route::get('updateAdv/{id}', 'InzeratController@showAction');
 Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 
+//--------------------------------------------AUTH-------------------------------------------------------
 //login
 Route::view('/prihlasenie', "login");
 Route::post('/prihlaseny', 'autentification_controller@login');

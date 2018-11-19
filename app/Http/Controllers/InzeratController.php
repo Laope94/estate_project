@@ -10,8 +10,6 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Inzerat;
-use App\Models\TypNehnutelnosti;
-use function foo\func;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Webpatser\Uuid\Uuid;
@@ -97,14 +95,23 @@ class InzeratController extends Controller
         return view("inzeraty", ['inzeraty' => $inzeraty]);
     }
 
-    //vyriesit viacero formatov fotiek, nie iba jpg
+    //pripadne sa pozriet na resize fotiek este
     public function foto(Request $request){
-        $foto = $request->file('obrazok');
-        $input = Uuid::generate();
-        $destinationPath = public_path('images/'.$input);
-        $foto->move($destinationPath, $input.".jpg");
+        $input1 = Uuid::generate();
+        $destinationPath = public_path('images/'.$input1);
 
-        return $input;
+        if ($request->hasFile('obrazok')) {
+
+            foreach ($request->file('obrazok') as $foto) {
+                //ziskanie koncovky suboru
+                $extension = $foto->getClientOriginalExtension();
+                //nazov suboru
+                $input = Uuid::generate().'.'.$extension;
+                $foto->move($destinationPath, $input);
+            }
+        }
+
+        return $input1;
     }
 
     //-------------------------------Filtre--------------------------------------
