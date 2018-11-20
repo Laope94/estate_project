@@ -22,3 +22,9 @@ Route::get('zobrazadminov',['as'=> 'Update','uses' => 'AdminController@zobrazAdm
 Route::get('zobrazadmina/{id}',['as'=> 'Update','uses' => 'AdminController@zobrazAdmina']);
 Route::post('editujadmina/{id}',['as'=> 'Update','uses' => 'AdminController@upravAdmina']);
 Route::get('vymazadmina/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazAdmina']);
+
+
+Route::get('zobrazinzeraty',['as'=> 'Update','uses' => 'AdminController@zobrazInzeraty']);
+Route::get('zobrazinzerat/{id}',['as'=> 'Update','uses' => 'AdminController@zobrazInzerat']);
+Route::post('editujinzerat/{id}',['as'=> 'Update','uses' => 'AdminController@upravInzerat']);
+Route::get('vymazinzerat/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazInzeraz']);

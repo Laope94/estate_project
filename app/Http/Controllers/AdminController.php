@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin_model;
+use App\Models\Inzerat_model;
 use Illuminate\Http\Request;
 class AdminController
 {
@@ -82,5 +83,20 @@ class AdminController
 
         return redirect()->action('AdminController@zobrazAdminov');
 }
+
+
+    public function zobrazInzeraty(){
+        $inzeraty=Inzerat_model::all();
+        return view("zobrazinzeraty",['inzeraty' =>$inzeraty]);
+    }
+
+
+    public function vymazInzerat($id){
+        $inzerat=Inzerat_model::find($id);
+        $inzerat->delete();
+        $inzeraty=Inzerat_model::all();
+        return view("zobrazinzeraty",['inzeraty' =>$inzeraty]);
+
+    }
 
 }
