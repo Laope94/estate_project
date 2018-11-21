@@ -24,11 +24,15 @@ class CreateInzeratTable extends Migration
             $table->longText('fotografie');
             $table->longText('popis');
             $table->unsignedInteger('typ_nehnutelnosti_id');
-            $table->unsignedInteger('okres_id');
-            $table->unsignedInteger('pouzivatelia_id');
+            $table->unsignedInteger('pouzivatelia_id')->nullable();
+            $table->unsignedInteger('okres_id')->nullable();
+            $table->unsignedInteger('village_id')->nullable();
+            $table->unsignedInteger('kancelaria_id')->nullable();
+            $table->foreign('kancelaria_id')->references('id')->on('kancelaria');
             $table->foreign('typ_nehnutelnosti_id')->references('id')->on('typ_nehnutelnosti');
+            $table->foreign('pouzivatelia_id')->references('id')->on('pouzivatelia');
             $table->foreign('okres_id')->references('id')->on('okres');
-            $table->foreign('pouzivatelia_id')->nullable()->references('id')->on('pouzivatelia');
+            $table->foreign('village_id')->references('id')->on('village');
             $table->rememberToken();
             $table->timestamps();
         });
