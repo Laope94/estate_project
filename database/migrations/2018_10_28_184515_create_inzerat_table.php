@@ -28,7 +28,7 @@ class CreateInzeratTable extends Migration
             $table->unsignedInteger('pouzivatelia_id');
             $table->foreign('typ_nehnutelnosti_id')->references('id')->on('typ_nehnutelnosti');
             $table->foreign('okres_id')->references('id')->on('okres');
-            $table->foreign('pouzivatelia_id')->references('id')->on('pouzivatelia');
+            $table->foreign('pouzivatelia_id')->nullable()->references('id')->on('pouzivatelia');
             $table->rememberToken();
             $table->timestamps();
         });
