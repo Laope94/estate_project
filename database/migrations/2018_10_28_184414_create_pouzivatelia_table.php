@@ -20,7 +20,7 @@ class CreatePouzivateliaTable extends Migration
             $table->string('IBAN')->nullable();
             $table->string('mesto');
             $table->string('adresa');
-            $table->string('mail');
+            $table->string('email');
             $table->mediumText('heslo');
             $table->string('telefon');
             $table->string('telefon2')->nullable();

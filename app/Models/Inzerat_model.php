@@ -9,7 +9,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-class Inzerat_model
+class Inzerat_model extends Model
 {
     protected  $table = 'inzerat';
 
