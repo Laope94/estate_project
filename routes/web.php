@@ -21,5 +21,5 @@ Route::view('/register', "register");
 Route::post('/registrovat', 'autentification_controller@registrovat');
 
 //login
-Route::view('/prihlasenie', "login");
+Route::view('/prihlasenie', 'prihlasenie');
 Route::post('/prihlaseny', 'autentification_controller@login');

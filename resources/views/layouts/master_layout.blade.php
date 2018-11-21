@@ -11,11 +11,11 @@
     <div class="nav-container">
         @section('menu')
             <nav>
-                <a class="nav-link" href="">Domov</a>
+                <a class="nav-link" href="/">Domov</a>
                 <a class="nav-link" href="">Vyhľadať nehnuteľnosť</a>
                 <a class="nav-link" href="">Realitné kancelárie</a>
                 <a class="nav-link" href="">Kontakt</a>
-                <a class="nav-link" href="">Prihlásenie a registrácia</a>
+                <a class="nav-link" href="/prihlasenie" title="Prihlásenie">Prihlásenie a registrácia</a>
             </nav>
     </div>
     <div class="intro-page-container"></div>

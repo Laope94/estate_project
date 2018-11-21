@@ -2,7 +2,7 @@
 @section('title', 'Domov')
 @section('menu')
     @parent
-    <div style="background: #F6F6F6;">
+    <div class="content-container">
         <div class="intro-title-wrapper">
             <h1 class="intro-title">Nájdeme pre Vás to pravé.</h1>
         </div>
@@ -50,13 +50,15 @@
                    onblur="this.placeholder='Zadaj okres...'">
         </div>
 
-        <div>
+        <div class="newest-container">
             <h2 class="l-second-title title-dark">Najnovšie inzeráty</h2>
-            <div style="padding: 50px 0 50px 0;">
-                <div style="column-count: 2";>
-                    <div style="margin: 5px 0 5px 0">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
-                    <div style="margin: 5px 0 5px 0">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'60'])</div>
-                </div>
+            <div class="newest-row">
+                <div class="newest-card">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
+                <div class="newest-card">@include('inzerat_karta', ['cena'=>'900', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'52'])</div>
+                <div class="newest-card">@include('inzerat_karta', ['cena'=>'500', 'lokalita'=>'Vrakuňa', 'rozloha'=>'35'])</div>
+                <div class="newest-card">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
+                <div class="newest-card">@include('inzerat_karta', ['cena'=>'900', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'52'])</div>
+                <div class="newest-card">@include('inzerat_karta', ['cena'=>'500', 'lokalita'=>'Vrakuňa', 'rozloha'=>'35'])</div>
             </div>
         </div>
 

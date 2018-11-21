@@ -22,10 +22,15 @@ nav {
     display: inline;
 }
 
+.content-container{
+    background: #F6F6F6;
+}
+
 .web-logo-container {
     position: absolute;
     top: 20px;
     left: 50px;
+    z-index: 10;
 }
 
 .web-logo {
@@ -37,6 +42,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .nav-link {
@@ -149,7 +155,7 @@ nav {
 
 .quick-search-container {
     height: 40%;
-    background: #631D1D;
+    background: #2B2B2B ;
 }
 
 .quick-search-bar {
@@ -168,22 +174,26 @@ nav {
     width: 400px;
     height: 540px;
     background: #FFFEFE;
-    color: #4A1F1F;
+    color: #262226;
     padding-top: 10px;
     box-shadow: 0px 0px 8px 1px #888888;
 }
 
+.card-container:hover {
+    box-shadow: 0px 0px 16px 1px #888888;
+}
+
 .card-image-container {
     width: 390px;
-    background: #7D0E0E;
+    background: #635D5D;
     margin: 5px 5px 5px 5px;
 }
 
 .card-image{
     image-resolution: 300dpi;
-    width: 380px;
+    width: 384px;
     height: auto;
-    padding: 5px 5px 5px 5px;}
+    padding: 3px 3px 3px 3px;}
 
 .card-round-container {
     width: 100%;
@@ -208,7 +218,7 @@ nav {
     width: 50px;
     margin: 0 auto;
     border-radius: 100%;
-    background: #836C6C;
+    background: #AAA0A0;
 }
 
 .card-awesome {
@@ -235,7 +245,7 @@ nav {
     height: 30px;
     width: 200px;
     border-radius: 50px;
-    background-color: #631D1D;
+    background-color: #B72727;
     color: #FFFFFF;
     border-style: none;
     font-size: 15px;
@@ -283,6 +293,20 @@ nav {
     margin: 0 15px 0 15px;
 }
 
+.newest-container {
+    min-height: 100%;
+}
+
+.newest-row {
+    padding: 20px 5% 20px 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newest-card {
+    margin: 10px 20px 10px 20px;
+}
+
 .awesome-social {
     color: #D7D6D6;
     font-size: 30px;
@@ -293,6 +317,23 @@ nav {
     color: #4A1F1F;
     margin: 10px 0 10px 0;
     font-size: 100px;
+}
+
+.register-button {
+    color: #ffffff;
+    background: #B72727;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
+    padding: 0 10px 0 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.register-button:hover {
+    cursor: pointer;
 }
 
 .footer-unicorn {
@@ -314,4 +355,5 @@ nav {
     margin: 0 30px 0 30px;
     vertical-align: middle;
 }
+
 
