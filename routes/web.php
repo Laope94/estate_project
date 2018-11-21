@@ -52,4 +52,5 @@ Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 //--------------------------------------------AUTH-------------------------------------------------------
 //login
 Route::view('/prihlasenie', "login");
-Route::post('/prihlaseny', 'autentification_controller@login');
+Route::post('/prihlaseny', 'AuthController@login');
+Auth::routes();
