@@ -52,7 +52,7 @@
 
         <div class="newest-container">
             <h2 class="l-second-title title-dark">Najnovšie inzeráty</h2>
-            <div class="newest-row">
+            <div class="flex-container">
                 <div class="newest-card">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
                 <div class="newest-card">@include('inzerat_karta', ['cena'=>'900', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'52'])</div>
                 <div class="newest-card">@include('inzerat_karta', ['cena'=>'500', 'lokalita'=>'Vrakuňa', 'rozloha'=>'35'])</div>
