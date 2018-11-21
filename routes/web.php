@@ -11,8 +11,9 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
@@ -53,9 +54,6 @@ Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 //login
 Route::view('/prihlasenie', "login");
 Route::post('/prihlaseny', 'AuthController@login');
-
-
-//--------------------------------------------ADMIN------------------------------------------------------
 Route::post('pridajAdmina',['uses' => 'AdminController@pridajAdmina']);
 Route::get('adminform',['as'=> 'Insert','uses' => 'AdminController@adminForm']);
 Route::get('zobrazadminov',['as'=> 'Update','uses' => 'AdminController@zobrazAdminov']);
