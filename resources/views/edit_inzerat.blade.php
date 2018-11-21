@@ -95,10 +95,10 @@
                 <label>*Typ nehnuteľnosti: </label>
                 <select name="typ_nehnutelnosti">
                     <option value=""></option>
-                    <option value="byt">Byt</option>
-                    <option value="garsonka">Garsónka</option>
-                    <option value="pozemok">Pozemok</option>
-                    <option value="rodinny_dom">Rodinný dom</option>
+                    <option value="1">Byt</option>
+                    <option value="2">Garsónka</option>
+                    <option value="3">Pozemok</option>
+                    <option value="4">Rodinný dom</option>
                 </select> <br /> <br />
                 <label>*Okres: </label>
                 <select name="okres">

@@ -20,6 +20,7 @@ class UserController extends Controller
     public function registrovat(Request $request){
         $meno = $request->input('name');
         $priezvisko = $request->input('surname');
+        $iban = $request->input('iban');
         $mesto = $request->input('town');
         $adresa = $request->input('address');
         $mail = $request->input('email');
@@ -42,6 +43,7 @@ class UserController extends Controller
             $user = new User();
             $user->meno = $meno;
             $user->priezvisko = $priezvisko;
+            $user->IBAN = $iban;
             $user->mesto = $mesto;
             $user->adresa = $adresa;
             $user->mail = $mail;

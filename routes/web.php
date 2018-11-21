@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia noveho clena
-Route::view('/register', "register");
+Route::view('/registracia', "register");
 Route::post('/register', 'UserController@registrovat');
 
 //registracia kancelarie
@@ -54,6 +54,8 @@ Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 Route::view('/prihlasenie', "login");
 Route::post('/prihlaseny', 'AuthController@login');
 
+
+//--------------------------------------------ADMIN------------------------------------------------------
 Route::post('pridajAdmina',['uses' => 'AdminController@pridajAdmina']);
 Route::get('adminform',['as'=> 'Insert','uses' => 'AdminController@adminForm']);
 Route::get('zobrazadminov',['as'=> 'Update','uses' => 'AdminController@zobrazAdminov']);
@@ -66,3 +68,7 @@ Route::get('zobrazinzeraty',['as'=> 'Update','uses' => 'AdminController@zobrazIn
 Route::get('zobrazinzerat/{id}',['as'=> 'Update','uses' => 'AdminController@zobrazInzerat']);
 Route::post('editujinzerat/{id}',['as'=> 'Update','uses' => 'AdminController@upravInzerat']);
 Route::get('vymazinzerat/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazInzeraz']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

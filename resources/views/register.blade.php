@@ -86,6 +86,7 @@
            <form class="" action="{{URL::to('/register')}}" method="post">
                <label>*Meno: </label><input type="text" name="name" value=""> <br /><br />
                <label>*Priezvisko: </label><input type="text" name="surname" value=""> <br /><br />
+               <label>IBAN: </label><input type="text" name="iban" value=""> <br /><br />
                <label>*Mesto: </label><input type="text" name="town" value=""> <br /><br />
                <label>*Adresa: </label><input type="text" name="address" value=""> <br /><br />
                <label>*Email: </label><input type="email" name="email" value=""> <br /><br />
