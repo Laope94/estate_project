@@ -74,8 +74,8 @@ class InzeratController extends Controller
             "poschodie" => $request->input('poschodie'),
             "fotografie" => "foto", //$request->input('foto'),
             "popis" => $request->input('popis'),
-            "typ_nehnutelnosti_id" => 1,
-            "okres_id" => 4,
+            "typ_nehnutelnosti_id" => $request->input('typ_nehnutelnosti'),
+            "okres_id" => $request->input('okres'),
             "updated_at" => $timestamp]);
 
         return redirect()->action('InzeratController@showAllAction');
