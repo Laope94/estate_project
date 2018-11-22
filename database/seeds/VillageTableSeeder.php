@@ -16,9 +16,7 @@ class VillageTableSeeder extends Seeder
         foreach ($data as $obj){
             \App\Models\Village_model::create(array('fullname'=>$obj->fullname,
                 'shortname'=>$obj->shortname,
-                'zip'=>$obj->zip,
                 'district_id'=>$obj->district_id,
-                'region_id'=>$obj->region_id
             ));}
     }
 }
