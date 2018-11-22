@@ -1,0 +1,369 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+nav {
+    margin: 20px 5% 0 0;
+    float: right;
+    display: inline;
+}
+
+.content-container{
+    background: #F6F6F6;
+}
+
+.web-logo-container {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    z-index: 10;
+}
+
+.web-logo {
+    height: 100px;
+}
+
+.nav-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.nav-link {
+    color: #4A1F1F;
+    text-decoration: none;
+    font-size: 125%;
+    display: inline-block;
+    margin: 0px 15px 0px 15px;
+}
+
+.nav-link:hover {
+    text-decoration: #4A1F1F underline;
+}
+
+.intro-page-container {
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
+    background-image: url("../images/house2.jpg");
+    background-size: cover;
+}
+
+.intro-title-wrapper {
+    position: absolute;
+    top: 40%;
+    margin: 0 25% 0 0;
+    line-height: 100px;
+}
+
+.intro-title {
+    text-align: center;
+    font-size: 80px;
+    color: #4A1F1F;
+    font-weight: 300;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.chevron-circle-container {
+    position: absolute;
+    top: 80%;
+    width: 100%;
+    text-align: center;
+}
+
+.arrow-down{
+    font-size: 65px;
+    margin: 2.5% 0 2.5% 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.arrow-down:hover {
+    font-size: 70px;
+    cursor: pointer;
+}
+
+.about-container {
+    height: 100%;
+}
+
+.about-text {
+    font-size: 25px;
+    color: #4A1F1F;
+}
+
+.title-container {
+    height:15%;
+}
+
+.l-second-title{
+    margin: 0;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 20px;
+    font-weight: lighter;
+}
+
+.title-light {
+    color: #D7D6D6;
+}
+
+.title-dark {
+    color: #4A1F1F;
+}
+
+.column-container {
+    width: 80%;
+    padding: 0 10% 0 10%;
+    height: 85%;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+.column {
+    height: 100%;
+    text-align: center;
+}
+
+.single-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.double-container {
+    height: 50%
+}
+
+.quick-search-container {
+    height: 40%;
+    background: #2B2B2B ;
+}
+
+.quick-search-bar {
+    width: 70%;
+    margin: 2% 15% 0 15%;
+    padding: 0 25px 0 25px;
+    font-size: 35px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    outline: none;
+}
+
+.card-container{
+    width: 400px;
+    height: 540px;
+    background: #FFFEFE;
+    color: #262226;
+    padding-top: 10px;
+    box-shadow: 0px 0px 8px 1px #888888;
+}
+
+.card-container:hover {
+    box-shadow: 0px 0px 16px 1px #888888;
+}
+
+.card-image-container {
+    width: 390px;
+    background: #635D5D;
+    margin: 5px 5px 5px 5px;
+}
+
+.card-image{
+    image-resolution: 300dpi;
+    width: 384px;
+    height: auto;
+    padding: 3px 3px 3px 3px;}
+
+.card-round-container {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+.card-round-buttons {
+    display: inline-block;
+}
+
+.card-round-wrapper{
+    width: 100px;
+    float: left;
+    text-align: center;
+    margin: 0 15px 0 15px;
+}
+
+.card-round-button{
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    border-radius: 100%;
+    background: #AAA0A0;
+}
+
+.card-awesome {
+    margin-top:10px;
+   font-size: 30px;
+}
+
+.card-price-tag{
+    margin: 10px 0 10px 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+.card-price {
+    margin: 0 0 0 20px;
+}
+
+.card-button-container {
+    text-align: center;
+    padding: 20px 0 0 0;
+ }
+
+.card-button {
+    height: 30px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: #B72727;
+    color: #FFFFFF;
+    border-style: none;
+    font-size: 15px;
+}
+
+.card-button:hover{
+    cursor: pointer;
+}
+
+.upper-footer {
+    min-height: 20%;
+    background: #D7D6D6;
+    color: #631D1D;
+}
+
+.upper-footer-container {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.lower-footer {
+    min-height: 80px;
+    background: #1A0000;
+    color: #836C6C;
+}
+
+.footer-social-container {
+    padding: 5px 25% 5px 25%;
+    text-align: center;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.round-button-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.round-button {
+    background: #1A0000;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 0 15px 0 15px;
+}
+
+.newest-container {
+    min-height: 100%;
+}
+
+.flex-container {
+    padding: 20px 5% 20px 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newest-card {
+    margin: 10px 20px 10px 20px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255,255,255, 0.5);
+    margin-bottom: 5px;
+    z-index: 0;
+}
+
+.awesome-social {
+    color: #D7D6D6;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.awesome-about {
+    color: #4A1F1F;
+    margin: 10px 0 10px 0;
+    font-size: 100px;
+}
+
+.register-button {
+    color: #ffffff;
+    background: #B72727;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
+    padding: 0 10px 0 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.register-button:hover {
+    cursor: pointer;
+}
+
+.footer-unicorn {
+    line-height: 80px;
+    text-align: center;
+}
+
+.unicorn-created {
+    color: #FF6161;
+}
+
+.unicorn-sh {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.unicorn-logo {
+    height: 60px;
+    margin: 0 30px 0 30px;
+    vertical-align: middle;
+}
+
+
