@@ -2,8 +2,11 @@
     <title>bytvdome.sk | @yield('title') </title>
     <link href="{{asset('/css/public_pages.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
 <div>
@@ -11,18 +14,27 @@
     <div class="nav-container">
         @section('menu')
             <nav>
-                <a class="nav-link" href="/">Domov</a>
+                <a class="nav-link" href="/" title="Domov">Domov</a>
                 <a class="nav-link" href="">Vyhľadať nehnuteľnosť</a>
                 <a class="nav-link" href="">Realitné kancelárie</a>
                 <a class="nav-link" href="">Kontakt</a>
-                <a class="nav-link" href="/prihlasenie" title="Prihlásenie">Prihlásenie a registrácia</a>
+                @if (Auth::check())
+                    <a class="nav-link" href="" title="Môj profil">Môj profil</a>
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       title="Odhlásiť sa"><i class="fas fa-sign-out-alt"></i></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">{{ csrf_field() }}</form>
+                @else
+                    <a class="nav-link" href="/login" title="Prihlásenie">Prihlásenie a registrácia</a>
+                @endif
             </nav>
     </div>
     <div class="intro-page-container"></div>
     @show
-
 </div>
 </body>
+
 <footer>
     <div class="upper-footer">
         <div class="upper-footer-container">
@@ -59,3 +71,5 @@
         </div>
     </div>
 </footer>
+
+@yield('skripty')

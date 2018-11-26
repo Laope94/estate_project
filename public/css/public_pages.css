@@ -22,6 +22,23 @@ nav {
     display: inline;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+ }
+
+textarea{
+    resize: none;
+}
+
+.ui-menu-item {
+    background: #FFFFFF;
+    width: 80%;
+    min-height: 20px;
+}
+
 .content-container{
     background: #F6F6F6;
 }
@@ -58,11 +75,93 @@ nav {
 }
 
 .intro-page-container {
+    position: absolute;
+    top: 0;
     height: 100%;
     width: 100%;
     line-height: 100%;
     background-image: url("../images/house2.jpg");
     background-size: cover;
+}
+
+.login-register-container {
+    margin-top: 150px;
+    width: 100%;
+}
+
+.login-field-container {
+    padding: 15px 10px 15px 10px;
+}
+
+.login-field {
+    width: 360px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #AAA0A0;
+}
+
+.login-field:valid{
+    border: 1px solid #AAA0A0;
+}
+
+
+.login-error {
+    height: 40px;
+    color: #B72727;
+}
+
+.login-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 20px 0;
+    padding: 0 30px 0 30px;
+}
+
+.register-description{
+    width: 380px;
+    font-size: 15px;
+    text-align: center;
+    padding: 40px 10px 40px 10px;
+}
+
+.login-card{
+    text-align: center;
+    background: white;
+    width: 400px;
+    height: 450px;
+    box-shadow: 0px 0px 8px 1px #888888;
+    margin: 10px 20px 10px 20px;
+    justify-content: center;
+}
+
+.register-card{
+    background: white;
+    min-width: 400px;
+    max-width: 95%;
+    width: fit-content;
+    box-shadow: 0px 0px 8px 1px #888888;
+}
+
+.register-inner-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 30px 50px 30px;
+    justify-content: center;
+}
+
+.register-small-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.register-half{
+    margin: 0 20px 0 20px;
+}
+
+.register-title{
+    padding: 20px 0 0 50px;
 }
 
 .intro-title-wrapper {
@@ -298,9 +397,10 @@ nav {
 }
 
 .flex-container {
-    padding: 20px 5% 20px 5%;
+    padding: 20px 0 20px 0;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .newest-card {
@@ -308,13 +408,13 @@ nav {
 }
 
 .overlay {
-    position: absolute;
+    position: relative;
     top: 0;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     background: rgba(255,255,255, 0.5);
-    margin-bottom: 5px;
     z-index: 0;
+    overflow: auto;
 }
 
 .awesome-social {
@@ -337,6 +437,7 @@ nav {
     border-radius: 10px;
     height: 50px;
     width: 200px;
+    margin: 10px 0 10px 0;
     padding: 0 10px 0 10px;
     text-transform: uppercase;
     font-weight: bold;
@@ -344,6 +445,16 @@ nav {
 
 .register-button:hover {
     cursor: pointer;
+}
+
+.advert-desc{
+    width: 360px;
+    height: 440px;
+    font-size: 20px;
+}
+
+.advert-photo-upload{
+    width: 360px;
 }
 
 .footer-unicorn {

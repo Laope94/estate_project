@@ -1,118 +1,123 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master_layout')
+@section('title', 'Registrácia')
+@section('menu')
+    @parent
+    <div class="content-container">
+        <div class="overlay">
+            <div class="login-register-container">
+                <div class="flex-container">
+                    <div class="register-card">
+                        <form action="{{URL::to('/pridajInzerat')}}" method="post" enctype="multipart/form-data">
+                            <h2 class="register-title">Inzerát</h2>
+                            <div>
 
-    <title>Laravel</title>
+                            <div class="register-inner-flex">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+                                <div>
+                                    <h3 class="login-title">Informácie o nehnuteľnosti</h3>
+                                    <div class="register-small-flex">
+                                    <div class="login-field-container">
+                                        <label for="nadpis">Názov inzerátu: *</label>
+                                        <div>
+                                            <input id="nadpis" class="login-field" type="text" name="nadpis" value="">
+                                        </div>
+                                    </div>
+                                    <div class="login-field-container">
+                                        <label for="cena">Cena: *</label>
+                                        <div>
+                                            <input id="cena" class="login-field" min="0" type="number" name="cena" required
+                                                   value="">
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="register-small-flex">
+                                    <div class="login-field-container">
+                                        <label for="typ">Typ nehnuteľnosti: *</label>
+                                        <div>
+                                            <select id="typ" name="typ_nehnutelnosti" required class="login-field">
+                                                <option>------------------------------</option>
+                                                <option value="1">Garsónka</option>
+                                                <option value="2">Byt</option>
+                                                <option value="3">Rodinný dom</option>
+                                                <option value="4">Nebytový priestor</option>
+                                                <option value="5">Pozemok</option>
+                                                <option value="6">Iné</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="login-field-container">
+                                        <label for="plocha">Plocha (m2): *</label>
+                                        <div>
+                                            <input id="plocha" class="login-field" type="number" min="1" name="plocha" required
+                                                   value="">
+                                        </div>
+                                    </div>
+                                    </div>
 
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
+                                    <div class="register-small-flex">
+                                        <div class="login-field-container">
+                                            <label for="pocet_izieb">Počet izieb: *</label>
+                                            <div>
+                                                <input id="pocet_izieb" class="login-field" type="number" min="0"
+                                                       name="pocet_izieb" required value="">
+                                            </div>
+                                        </div>
+                                        <div class="login-field-container">
+                                            <label for="poschodie">Poschodie: </label>
+                                            <div>
+                                                <input id="poschodie" class="login-field" type="number" name="poschodie"
+                                                       value="">
+                                            </div>
+                                        </div>
+                                    </div>
 
-        .full-height {
-            height: 100vh;
-        }
+                                    <div class="register-small-flex">
+                                        <div class="login-field-container">
+                                            <label for="okres">Okres: *</label>
+                                            <div>
+                                                <select id="okres" name="okres" required class="login-field">
+                                                    <option>------------------------------</option>
+                                                    <option value="1">Bánovce nad Bebravou</option>
+                                                    <option value="2">Banská Bystrica</option>
+                                                    <option value="3">Banská Štiavnica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="login-field-container">
+                                            <label for="ulica">Ulica: </label>
+                                            <div>
+                                                <input id="ulica" class="login-field" type="text" name="ulica" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="login-field-container">
+                                        <label for="obrazok">Fotografie:</label>
+                                        <div>
+                                            <input class="advert-photo-upload" id="obrazok" type="file" name="obrazok[]" multiple>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                </div>
+                                <div>
+                                    <h3 class="login-title">Napíšte nám niečo viac</h3>
+                                    <div class="login-field-container">
+                                        <label for="popis">Popis: *</label>
+                                        <div>
+                                            <textarea class="advert-desc" id="popis" rows="3" type="text" name="popis" required
+                                                      value=""></textarea>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <button type="submit" class="register-button" name="add">Uložiť inzerát</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
 
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Register</a>
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            Pridávanie inzerátov
-        </div>
-
-        <div class="content">
-            <form class="" action="{{URL::to('/pridajInzerat')}}" method="post" enctype="multipart/form-data">
-                <h5>Políčka označené * je potrebné vyplniť!</h5> <br /><br />
-                <label>*Názov inzerátu: </label><input type="text" name="nadpis" value=""> <br /><br />
-                <label>Ulica: </label><input type="text" name="ulica" value=""> <br /><br />
-                <label>*Plocha (m2): </label><input type="number" name="plocha" value=""> <br /><br />
-                <label>*Cena: </label><input type="number" name="cena" value=""> <br /><br />
-                <label>*Počet izieb: </label><input type="number" name="pocet_izieb" value=""> <br /><br />
-                <label>*Poschodie: </label><input type="number" name="poschodie" value=""> <br /><br />
-                <label>*Fotografie: </label><input type="file" name="obrazok[]" multiple><br /><br />
-                <label>*Popis </label><textarea rows="3" type="text-" name="popis" value=""></textarea> <br /><br />
-                <label>*Typ nehnuteľnosti: </label>
-                <select name="typ_nehnutelnosti">
-                    <option value=""></option>
-                    <option value="1">Byt</option>
-                    <option value="2">Garsónka</option>
-                    <option value="3">Pozemok</option>
-                    <option value="4">Rodinný dom</option>
-                </select> <br /> <br />
-                <label>*Okres: </label>
-                <select name="okres">
-                    <option value=""></option>
-                    <option value="1">Bánovce nad Bebravou</option>
-                    <option value="2">Banská Bystrica</option>
-                    <option value="3">Banská Štiavnica</option>
-                </select> <br /> <br />
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button type="submit" name="add">Pridať inzerát</button>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+@endsection
