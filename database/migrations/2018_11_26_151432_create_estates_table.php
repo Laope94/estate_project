@@ -28,9 +28,9 @@ class CreateEstatesTable extends Migration
             $table->unsignedInteger('district_id')->nullable();
             $table->unsignedInteger('village_id')->nullable();
             $table->unsignedInteger('agency_id')->nullable();
-            $table->foreign('agency_id')->references('id')->on('agencies');
+            $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->foreign('estate_type_id')->references('id')->on('estate_types');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('district_id')->references('id')->on('districts');
             $table->foreign('village_id')->references('id')->on('villages');
             $table->rememberToken();

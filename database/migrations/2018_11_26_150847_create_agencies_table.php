@@ -21,7 +21,7 @@ class CreateAgenciesTable extends Migration
             $table->string('phone');
             $table->string('phone2')->nullable();
             $table->string('email');
-            $table->string('IBAN');
+            $table->string('IBAN')->nullable();
             $table->string('ICO');
             $table->string('DIC');
             $table->rememberToken();
