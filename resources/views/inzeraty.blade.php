@@ -17,13 +17,13 @@
         </tr>
         @foreach($inzeraty as $inzerat)
             <tr>
-                <td>{{ $inzerat->nadpis }}</td>
-                <td>{{ $inzerat->ulica }}</td>
-                <td>{{ $inzerat->plocha }}</td>
-                <td>{{ $inzerat->cena }}</td>
-                <td>{{ $inzerat->pocet_izieb }}</td>
-                <td>{{ $inzerat->poschodie }}</td>
-                <td>{{ $inzerat->popis }}</td>
+                <td>{{ $inzerat->title }}</td>
+                <td>{{ $inzerat->street }}</td>
+                <td>{{ $inzerat->area }}</td>
+                <td>{{ $inzerat->price }}</td>
+                <td>{{ $inzerat->room_number }}</td>
+                <td>{{ $inzerat->floors }}</td>
+                <td>{{ $inzerat->description }}</td>
                 <td><a href="{{ action("InzeratController@showAction", ['id' => $inzerat->id]) }}"><button class="btn btn-default">Edit</button></a>&nbsp;
                     <a href = 'delete/{{ $inzerat->id }}'><button class="btn btn-danger">Delete</button></a>
             </tr>

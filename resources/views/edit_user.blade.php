@@ -84,14 +84,14 @@
 
         <div class="content">
             <form class="" action="{{ action('UserController@updateUser', ['id' => $user->id]) }}" method="get">
-                <label>Meno: </label><input type="text" name="meno" value="{{ $user->meno }}"> <br /><br />
-                <label>Priezvisko: </label><input type="text" name="priezvisko" value="{{ $user->priezvisko }}"> <br /><br />
+                <label>Meno: </label><input type="text" name="meno" value="{{ $user->name }}"> <br /><br />
+                <label>Priezvisko: </label><input type="text" name="priezvisko" value="{{ $user->surname }}"> <br /><br />
                 <label>Iban: </label><input type="text" name="iban" value="{{ $user->IBAN }}"> <br /><br />
-                <label>Mesto:</label><input type="text" name="mesto" value="{{ $user->mesto }}"> <br /><br />
-                <label>Adresa: </label><input type="string" name="adresa" value="{{ $user->adresa }}"> <br /><br />
-                <label>Email: </label><input type="email" name="mail" value="{{ $user->mail }}"> <br /><br />
-                <label>Telefón: </label><input type="number" name="tel_num" value="{{ $user->telefon }}"> <br /><br />
-                <label>Telefón2: </label><input type="number" name="tel_num2" value="{{ $user->telefon2 }}"> <br /><br />
+                <label>Mesto:</label><input type="text" name="mesto" value="{{ $user->city }}"> <br /><br />
+                <label>Adresa: </label><input type="string" name="adresa" value="{{ $user->address }}"> <br /><br />
+                <label>Email: </label><input type="email" name="mail" value="{{ $user->email }}"> <br /><br />
+                <label>Telefón: </label><input type="number" name="tel_num" value="{{ $user->phone }}"> <br /><br />
+                <label>Telefón2: </label><input type="number" name="tel_num2" value="{{ $user->phone2 }}"> <br /><br />
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="submit" value="Upraviť">
             </form>

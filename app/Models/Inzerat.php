@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inzerat extends Model
 {
-    protected $table = 'inzerat';
+    protected $table = 'estates';
 
-    protected $fillable = ['nadpis', 'ulica', 'plocha', 'cena', 'pocet_izieb', 'poschodie',
-        'fotografie', 'popis', 'typ_nehnutelnosti_id', 'okres_id', 'pouzivatelia_id',
+    protected $fillable = ['title', 'street', 'area', 'price', 'room_number', 'floors',
+        'pictures', 'description', 'estate_type_id', 'users_id', 'district_id','village_id','agency_id',
         'remember_token', 'created_at', 'updated_at'];
 }

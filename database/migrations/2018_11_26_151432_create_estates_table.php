@@ -45,6 +45,9 @@ class CreateEstatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estates');
+        Schema::dropIfExists('inzerat');
     }
 }
+
+
+

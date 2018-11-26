@@ -85,13 +85,13 @@
         <div class="content">
             <form class="" action="{{ action('InzeratController@updateAdv', ['id' => $inzerat->id]) }}" method="get">
                 <h5>Políčka označené * je potrebné vyplniť!</h5> <br /><br />
-                <label>*Názov inzerátu: </label><input type="text" name="nadpis" value="{{ $inzerat->nadpis }}"> <br /><br />
-                <label>Ulica: </label><input type="text" name="ulica" value="{{ $inzerat->ulica }}"> <br /><br />
-                <label>*Plocha (m2): </label><input type="number" name="plocha" value="{{ $inzerat->plocha }}"> <br /><br />
-                <label>*Cena: </label><input type="number" name="cena" value="{{ $inzerat->cena }}"> <br /><br />
-                <label>*Počet izieb: </label><input type="number" name="pocet_izieb" value="{{ $inzerat->pocet_izieb }}"> <br /><br />
-                <label>*Poschodie: </label><input type="number" name="poschodie" value="{{ $inzerat->poschodie }}"> <br /><br />
-                <label>*Popis </label><input type="text" name="popis" value="{{ $inzerat->popis }}"></input> <br /><br />
+                <label>*Názov inzerátu: </label><input type="text" name="nadpis" value="{{ $inzerat->title }}"> <br /><br />
+                <label>Ulica: </label><input type="text" name="ulica" value="{{ $inzerat->street }}"> <br /><br />
+                <label>*Plocha (m2): </label><input type="number" name="plocha" value="{{ $inzerat->area }}"> <br /><br />
+                <label>*Cena: </label><input type="number" name="cena" value="{{ $inzerat->price }}"> <br /><br />
+                <label>*Počet izieb: </label><input type="number" name="pocet_izieb" value="{{ $inzerat->room_number }}"> <br /><br />
+                <label>*Poschodie: </label><input type="number" name="poschodie" value="{{ $inzerat->floors }}"> <br /><br />
+                <label>*Popis </label><input type="text" name="popis" value="{{ $inzerat->description }}"></input> <br /><br />
                 <label>*Typ nehnuteľnosti: </label>
                 <select name="typ_nehnutelnosti">
                     <option value=""></option>

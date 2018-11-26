@@ -41,16 +41,16 @@ class UserController extends Controller
             echo "Nevyplnili ste všetky údaje!";
         } else{
             $user = new User();
-            $user->meno = $meno;
-            $user->priezvisko = $priezvisko;
+            $user->name = $meno;
+            $user->surname = $priezvisko;
             $user->IBAN = $iban;
-            $user->mesto = $mesto;
-            $user->adresa = $adresa;
-            $user->mail = $mail;
-            $user->telefon = $telefon;
-            $user->telefon2 = $telefon2;
-            $user->heslo = $heslo;
-            $user->opravnenie = $opravnenie;
+            $user->city = $mesto;
+            $user->address = $adresa;
+            $user->email = $mail;
+            $user->phone = $telefon;
+            $user->phone2 = $telefon2;
+            $user->password = $heslo;
+            $user->privilege = $opravnenie;
             $user->remember_token = $token;
             $user->created_at = $timestamp;
             $user->updated_at = $timestamp;
@@ -85,12 +85,12 @@ class UserController extends Controller
             echo "Nevyplnili ste všetky údaje!";
         } else{
             $kancel = new Kancelaria();
-            $kancel->nazov = $nazov;
-            $kancel->konatel = $konatel;
-            $kancel->adresa = $adresa;
-            $kancel->telefon = $telefon;
-            $kancel->telefon2 = $telefon2;
-            $kancel->mail = $mail;
+            $kancel->name = $nazov;
+            $kancel->director = $konatel;
+            $kancel->address = $adresa;
+            $kancel->phone = $telefon;
+            $kancel->phone2 = $telefon2;
+            $kancel->email = $mail;
             $kancel->IBAN = $iban;
             $kancel->ICO = $ico;
             $kancel->DIC = $dic;
@@ -112,15 +112,15 @@ class UserController extends Controller
     public function updateUser($id, Request $request){
         $timestamp = Carbon::now()->toDateTimeString();
         $user = User::where("id", "=", $id)->first();
-        $user->update(["meno" => $request->input('meno'),
-            "priezvisko" => $request->input('priezvisko'),
+        $user->update(["name" => $request->input('meno'),
+            "surname" => $request->input('priezvisko'),
             "IBAN"=> $request->input('iban'),
-            "mesto" => $request->input('mesto'),
-            "adresa" => $request->input('adresa'),
-            "mail" => $request->input('mail'),
-            "telefon" => $request->input('tel_num'),
-            "telefon2" => $request->input('tel_num2'),
-            "opravnenie" => 0,
+            "city" => $request->input('mesto'),
+            "address" => $request->input('adresa'),
+            "email" => $request->input('mail'),
+            "phone" => $request->input('tel_num'),
+            "phone2" => $request->input('tel_num2'),
+            "privilege" => 0,
             "updated_at" => $timestamp]);
 
         return redirect()->action('UserController@showAllAction');
