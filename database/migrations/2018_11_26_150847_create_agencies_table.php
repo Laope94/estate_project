@@ -24,7 +24,6 @@ class CreateAgenciesTable extends Migration
             $table->string('IBAN')->nullable();
             $table->string('ICO');
             $table->string('DIC');
-            $table->string('UUID');
             $table->rememberToken();
             $table->timestamps();
         });
