@@ -113,26 +113,26 @@ class InzeratController extends Controller
     //filter na lokalitu
     public function localityFilter(Request $request){
         $okres_id = $request->input('okres');
-        $lokalita = Inzerat::all()->where("okres_id", "=", $okres_id);
+        $lokalita = Inzerat::all()->where("district_id", "=", $okres_id);
     }
 
     public function priceFilter(Request $request){
         $cena = $request->input('cena');
-        $cenovo = Inzerat::all()->where("cena", ">=", $cena+5000);
+        $cenovo = Inzerat::all()->where("price", ">=", $cena+5000);
     }
 
     public function typeFilter(Request $request){
         $typ_nehnutelnosti = $request->input('typ_nehnutelnosti');
-        $typ = Inzerat::all()->where("typ_nehnutelnosti_id", "=", $typ_nehnutelnosti);
+        $typ = Inzerat::all()->where("estate_type_id", "=", $typ_nehnutelnosti);
     }
 
     public function roomFilter(Request $request){
         $izby = $request->input('pocet_izieb');
-        $pocet_izieb = Inzerat::all()->where("pocet_izieb", "=", $izby);
+        $pocet_izieb = Inzerat::all()->where("room_number", "=", $izby);
     }
 
     public function officeFilter(Request $request){
         $office = $request->input('office');
-        $kancel = Inzerat::all()->where("kancelaria_id", "=", $office);
+        $kancel = Inzerat::all()->where("agency_id", "=", $office);
     }
 }

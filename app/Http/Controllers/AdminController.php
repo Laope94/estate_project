@@ -36,17 +36,17 @@ class AdminController
         $kancelaria_id=$request ->input('kancelaria_id');
 
         $admin = new Admin_model();
-        $admin -> meno = $meno;
-        $admin -> priezvisko = $priezvisko;
+        $admin -> name = $meno;
+        $admin -> surname = $priezvisko;
         $admin-> IBAN = $IBAN;
-        $admin -> mesto = $mesto;
-        $admin -> adresa = $adresa;
-        $admin-> mail = $email;
-        $admin-> heslo=$heslo;
-        $admin -> telefon = $telefon;
-        $admin -> telefon2 = $telefon2;
-        $admin -> opravnenie = $opravnenie;
-        $admin -> kancelaria_id = $kancelaria_id;
+        $admin -> city = $mesto;
+        $admin -> address = $adresa;
+        $admin-> email = $email;
+        $admin-> password=$heslo;
+        $admin -> phone = $telefon;
+        $admin -> phone2 = $telefon2;
+        $admin -> privilege = $opravnenie;
+        $admin -> agency_id = $kancelaria_id;
         $admin ->save();
         return response()->view('pridajadmina');
 
@@ -68,32 +68,29 @@ class AdminController
 
     public function upravAdmina($id, Request $request){
         $admin=Admin_model::where("id","=",$id )->first();
-        $admin ->update (["meno"=>$request->input('meno'),
-            "priezvisko"=>$request->input('priezvisko'),
+        $admin ->update (["name"=>$request->input('meno'),
+            "surname"=>$request->input('priezvisko'),
             "IBAN"=>$request->input('IBAN'),
-            "mail"=>$request->input('email'),
-            "adresa"=>$request->input('adresa'),
-            "mesto"=>$request->input('mesto'),
-            "telefon"=>$request->input('telefon'),
-            "telefon2"=>$request->input('telefon2'),
-            "opravnenie"=>$request->input('opravnenie'),
-            "heslo"=>$request->input('heslo')]);
+            "email"=>$request->input('email'),
+            "address"=>$request->input('adresa'),
+            "city"=>$request->input('mesto'),
+            "phone"=>$request->input('telefon'),
+            "phone2"=>$request->input('telefon2'),
+            "privilege"=>$request->input('opravnenie'),
+            "password"=>$request->input('heslo')]);
 
 
         return redirect()->action('AdminController@zobrazAdminov');
 }
 
 
-    public function zobrazInzeraty(){
-        $inzeraty=Inzerat_model::all();
-        return view("zobrazinzeraty",['inzeraty' =>$inzeraty]);
-    }
+
 
 
     public function vymazInzerat($id){
-        $inzerat=Inzerat_model::find($id);
+        $inzerat=Inzerat::find($id);
         $inzerat->delete();
-        $inzeraty=Inzerat_model::all();
+        $inzeraty=Inzerat::all();
         return view("zobrazinzeraty",['inzeraty' =>$inzeraty]);
 
     }

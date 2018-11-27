@@ -17,14 +17,14 @@
     </tr>
     @foreach($users as $user)
         <tr>
-            <td>{{ $user->meno }}</td>
-            <td>{{ $user->priezvisko }}</td>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->surname }}</td>
             <td>{{ $user->IBAN }}</td>
-            <td>{{ $user->mesto }}</td>
-            <td>{{ $user->adresa }}</td>
-            <td>{{ $user->mail }}</td>
-            <td>{{ $user->telefon }}</td>
-            <td>{{ $user->telefon2 }}</td>
+            <td>{{ $user->city }}</td>
+            <td>{{ $user->address }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ $user->phone }}</td>
+            <td>{{ $user->phone2 }}</td>
             <td><a href="{{ action("UserController@showAction", ['id' => $user->id]) }}"><button class="btn btn-default">Edit</button></a>&nbsp;
                 <a href = 'delete-user/{{ $user->id }}'><button class="btn btn-danger">Delete</button></a>
         </tr>

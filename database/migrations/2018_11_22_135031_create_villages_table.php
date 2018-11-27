@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOkresTable extends Migration
+class CreateVillagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateOkresTable extends Migration
      */
     public function up()
     {
-        Schema::create('okres', function (Blueprint $table) {
+        Schema::create('villages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nazov');
-            $table->unsignedInteger('kraj_id');
-            $table->foreign('kraj_id')->references('id')->on('kraj');
+            $table->string('fullname');
+            $table->string('shortname');
+            $table->unsignedInteger('district_id');
+            $table->foreign('district_id')->references('id')->on('districts');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateOkresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('okres');
+        Schema::dropIfExists('villages');
     }
 }

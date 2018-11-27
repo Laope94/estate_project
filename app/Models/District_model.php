@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class District_model extends Model
 {
-    protected  $table = 'district';
+    protected  $table = 'districts';
 
     protected $fillable = [
-        'name', 'veh_reg_num','code','region_id'
+        'name','region_id'
     ];
 }

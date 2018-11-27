@@ -9,22 +9,22 @@
     @foreach($inzeraty as $item)
         <tr>
             <td>
-                {{$item->nadpis}}
+                {{$item->title}}
             </td>
             <td>
-                {{$item -> ulica}}
+                {{$item -> street}}
             </td>
             <td>
-                {{$item -> plocha}}
+                {{$item -> area}}
             </td>
             <td>
-                {{$item -> cena}}
+                {{$item -> price}}
             </td>
             <td>
-                {{$item -> pocet_izieb}}
+                {{$item -> room_number}}
             </td>
             <td>
-                {{$item -> poschodie}}
+                {{$item -> floors}}
             </td>
             <td>
                 <a href="{{action("AdminController@zobrazInzerat",['id' => $item-> id])}}"> Editovať</a>

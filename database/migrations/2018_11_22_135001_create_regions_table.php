@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypNehnutelnostiTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTypNehnutelnostiTable extends Migration
      */
     public function up()
     {
-        Schema::create('typ_nehnutelnosti', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('typ');
+            $table->string('name');
+            $table->string('shortcut');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTypNehnutelnostiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('typ_nehnutelnosti');
+        Schema::dropIfExists('regions');
     }
 }

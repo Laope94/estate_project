@@ -102,15 +102,15 @@ class UserController extends Controller
     public function updateUser($id, Request $request){
         $timestamp = Carbon::now()->toDateTimeString();
         $user = User::where("id", "=", $id)->first();
-        $user->update(["meno" => $request->input('meno'),
-            "priezvisko" => $request->input('priezvisko'),
+        $user->update(["name" => $request->input('meno'),
+            "surname" => $request->input('priezvisko'),
             "IBAN"=> $request->input('iban'),
-            "mesto" => $request->input('mesto'),
-            "adresa" => $request->input('adresa'),
-            "mail" => $request->input('mail'),
-            "telefon" => $request->input('tel_num'),
-            "telefon2" => $request->input('tel_num2'),
-            "opravnenie" => 0,
+            "city" => $request->input('mesto'),
+            "address" => $request->input('adresa'),
+            "email" => $request->input('mail'),
+            "phone" => $request->input('tel_num'),
+            "phone2" => $request->input('tel_num2'),
+            "privilege" => 0,
             "updated_at" => $timestamp]);
 
         return redirect()->action('UserController@showAllAction');

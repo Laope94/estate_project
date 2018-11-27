@@ -11,6 +11,8 @@ class User extends Model implements Authenticatable
     use AuthenticableTrait;
     protected $table = 'users';
 
-    protected $fillable = ['name', 'priezvisko', 'IBAN', 'mesto', 'adresa', 'email',
-        'password', 'telefon', 'telefon2', 'opravnenie', 'kancelaria_id', 'remember_token', 'created_at', 'updated_at'];
+
+    protected $fillable = [
+        'name', 'surname', 'IBAN', 'city', 'address', 'email', 'password', 'phone', 'phone2', 'privilege', 'agency_id', 'remember_token', 'created_at', 'updated_at'
+    ];
 }
