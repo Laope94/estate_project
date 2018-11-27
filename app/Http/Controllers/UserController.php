@@ -13,50 +13,14 @@ use App\Models\User;
 use App\Models\Kancelaria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Webpatser\Uuid\Uuid;
 
 class UserController extends Controller
 {
-    //registracia pouzivatela
-    public function registrovat(Request $request){
-        $meno = $request->input('name');
-        $priezvisko = $request->input('surname');
-        $iban = $request->input('iban');
-        $mesto = $request->input('town');
-        $adresa = $request->input('address');
-        $mail = $request->input('email');
-        $telefon = $request->input('tel_num');
-        $telefon2 = $request->input('tel_num2');
-        $heslo = md5($request->input('password'));
-        $opravnenie = 0;
-        $timestamp = Carbon::now()->toDateTimeString();
-        $token = $request->input('_token');
-        if($telefon2 == null){
-            $telefon2 == null;
-        } else {
-            $telefon2 = $request->input('tel_num2');
-        }
-
-        $user = new User();
-        $user->meno = $meno;
-        $user->priezvisko = $priezvisko;
-        $user->IBAN = $iban;
-        $user->mesto = $mesto;
-        $user->adresa = $adresa;
-        $user->mail = $mail;
-        $user->telefon = $telefon;
-        $user->telefon2 = $telefon2;
-        $user->heslo = $heslo;
-        $user->opravnenie = $opravnenie;
-        $user->remember_token = $token;
-        $user->created_at = $timestamp;
-        $user->updated_at = $timestamp;
-        $user->save();
-
-        return redirect()->action('UserController@showAllAction');
-    }
 
     //registracia kancelarie
     public function registraciaKancelarie(Request $request){
+        $uuid = Uuid::generate();
         $nazov = $request->input('nazov');
         $konatel = $request->input('konatel');
         $adresa = $request->input('adresa');
@@ -76,15 +40,16 @@ class UserController extends Controller
         }
 
         $kancel = new Kancelaria();
-        $kancel->nazov = $nazov;
-        $kancel->konatel = $konatel;
-        $kancel->adresa = $adresa;
-        $kancel->telefon = $telefon;
-        $kancel->telefon2 = $telefon2;
-        $kancel->mail = $mail;
+        $kancel->name = $nazov;
+        $kancel->director = $konatel;
+        $kancel->address = $adresa;
+        $kancel->phone = $telefon;
+        $kancel->phone2 = $telefon2;
+        $kancel->email = $mail;
         $kancel->IBAN = $iban;
         $kancel->ICO = $ico;
         $kancel->DIC = $dic;
+        $kancel->UUID = $uuid;
         $kancel->remember_token = $token;
         $kancel->created_at = $timestamp;
         $kancel->updated_at = $timestamp;

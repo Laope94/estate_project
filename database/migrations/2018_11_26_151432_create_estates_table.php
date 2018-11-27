@@ -15,7 +15,6 @@ class CreateEstatesTable extends Migration
     {
         Schema::create('estates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
             $table->string('street')->nullable();
             $table->integer('area');
             $table->decimal('price');
@@ -33,6 +32,7 @@ class CreateEstatesTable extends Migration
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('district_id')->references('id')->on('districts');
             $table->foreign('village_id')->references('id')->on('villages');
+            $table->string('UUID');
             $table->rememberToken();
             $table->timestamps();
         });

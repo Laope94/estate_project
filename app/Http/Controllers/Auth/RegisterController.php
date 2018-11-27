@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Webpatser\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -64,12 +65,15 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'priezvisko' => "test",
-            'mesto' => "nitra",
-            'adresa' => "ulica",
-            'telefon' => "00541315",
-            'opravnenie' => 0,
+            'surname' => $data['surname'],
+            'city' => $data['city'],
+            'address' => $data['street'],
             'email' => $data['email'],
+            'phone' => $data['phone_prim'],
+            'phone2' => $data['phone_sec'],
+            'privilege' => 0,
+            'agency_id' => null,
+            'UUID' => Uuid::generate(),
             'remember_token' => $data['_token'],
             'password' => bcrypt($data['password']),
         ]);
