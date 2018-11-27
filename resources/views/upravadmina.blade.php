@@ -7,35 +7,35 @@
  */?>
 <form method="post" action="{{action('AdminController@upravAdmina', ['id'=> $admin -> id])}}">
     Meno:<br>
-    <input type="text" name="meno" value="{{$admin -> meno}}">
+    <input type="text" name="meno" value="{{$admin -> name}}">
     <br>
     Priezvisko:<br>
-    <input type="text" name="priezvisko" value="{{$admin -> priezvisko}}">
+    <input type="text" name="priezvisko" value="{{$admin -> surname}}">
     <br>
     Email:<br>
-    <input type="text" name="email" value="{{$admin -> mail}}">
+    <input type="text" name="email" value="{{$admin -> email}}">
     <br>
 
     IBAN:<br>
     <input type="text" name="IBAN" value="{{$admin -> IBAN}}">
     <br>
     Mesto:<br>
-    <input type="text" name="mesto" value="{{$admin -> mesto}}">
+    <input type="text" name="mesto" value="{{$admin -> city}}">
     <br>
     Adresa:<br>
-    <input type="text" name="adresa" value="{{$admin -> adresa}}">
+    <input type="text" name="adresa" value="{{$admin -> address}}">
     <br>
     Telefon:<br>
-    <input type="text" name="telefon" value="{{$admin -> telefon}}">
+    <input type="text" name="telefon" value="{{$admin -> phone}}">
     <br>
     Telefon2:<br>
-    <input type="text" name="telefon2" value="{{$admin -> telefon2}}">
+    <input type="text" name="telefon2" value="{{$admin -> phone2}}">
     <br>
     Opravnenie:<br>
-    <input type="text" name="opravnenie" value="{{$admin -> opravnenie}}">
+    <input type="text" name="opravnenie" value="{{$admin -> privilege}}">
     <br>
     Heslo:<br>
-    <input type="text" name="heslo" value="{{$admin -> heslo}}">
+    <input type="text" name="heslo" value="{{$admin -> password}}">
     <br>
     <br>
     <input type="hidden" name="_token" value="{{ csrf_token() }}">

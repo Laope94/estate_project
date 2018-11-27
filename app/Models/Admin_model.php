@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin_model extends Model
 {
-    protected  $table = 'pouzivatelia';
+    protected  $table = 'users';
 
     protected $fillable = [
-        'meno','priezvisko', 'IBAN', 'mesto','adresa','mail','heslo','telefon','telefon2','opravnenie','kancelaria_id'
+        'name','surname', 'IBAN', 'city','address','email','password','phone','phone2','privilege','agency_id'
     ];
 }

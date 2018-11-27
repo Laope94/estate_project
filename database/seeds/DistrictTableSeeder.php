@@ -15,8 +15,6 @@ class DistrictTableSeeder extends Seeder
         $data=json_decode($json);
         foreach ($data as $obj){
             \App\Models\District_model::create(array('name'=>$obj->name,
-                'veh_reg_num'=>$obj->veh_reg_num,
-                'code'=>$obj->code,
                     'region_id'=>$obj->region_id
                 ));
     }

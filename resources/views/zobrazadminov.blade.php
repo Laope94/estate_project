@@ -9,28 +9,28 @@
     @foreach($admini as $item)
         <tr>
             <td>
-                {{$item->meno}} {{$item->priezvisko}}
+                {{$item->name}} {{$item->surname}}
             </td>
             <td>
-                {{$item -> mail}}
+                {{$item -> email}}
             </td>
             <td>
-                {{$item -> telefon}}
+                {{$item -> phone}}
             </td>
             <td>
-                {{$item -> telefon2}}
+                {{$item -> phone2}}
             </td>
             <td>
                 {{$item -> IBAN}}
             </td>
             <td>
-                {{$item -> mesto}}
+                {{$item -> city}}
             </td>
             <td>
-                {{$item -> adresa}}
+                {{$item -> address}}
             </td>
             <td>
-                {{$item -> opravnenie}}
+                {{$item -> privilege}}
             </td>
             <td>
                 <a href="{{action("AdminController@zobrazAdmina",['id' => $item-> id])}}"> Editovať</a>

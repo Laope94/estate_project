@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region_model extends Model
 {
-    protected  $table = 'region';
+    protected  $table = 'regions';
 
     protected $fillable = [
         'name', 'shortcut'

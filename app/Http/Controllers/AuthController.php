@@ -14,7 +14,7 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function login($id){
-        $opravnenie = User::where("id", "=", $id)->get("opravnenie");
+        $opravnenie = User::where("id", "=", $id)->get("privilege");
         //rozdelenie pouzivatelov
         //0 - registrovany, 1 - realitka, 2 - admin realitky, 3 - admin, 4 - super admin
         if($opravnenie == 0){

@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {for ($a=0;$a<5;$a++){
+        DB::table('users')->insert([
+            'name' => "Meno".uniqid(),
+            'surname' => "Priezvisko".uniqid(),
+            'IBAN' => "IBAN".uniqid(),
+            'city' => "mesto".uniqid(),
+            'address' => "adresa".uniqid(),
+            'email' => str_random(10).'@gmail.com',
+            'password' => '123456',
+            'phone' => "123456789",
+            'phone2' => "987654321",
+            'privilege'=>$a,
+            'agency_id'=> 2
+        ]);}
+    }
+}

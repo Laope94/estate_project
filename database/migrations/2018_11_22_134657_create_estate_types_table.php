@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRegionTable extends Migration
+class CreateEstateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateRegionTable extends Migration
      */
     public function up()
     {
-        Schema::create('region', function (Blueprint $table) {
+        Schema::create('estate_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('shortcut');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateRegionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('region');
+        Schema::dropIfExists('estate_types');
     }
 }

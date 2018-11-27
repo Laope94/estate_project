@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TypNehnutelnosti extends Model
 {
-    protected $table = 'typ_nehnutelnosti';
+    protected $table = 'estate_types';
 
-    protected $fillable = ['id', 'typ', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'type', 'created_at', 'updated_at'];
 }

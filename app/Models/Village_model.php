@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Village_model extends Model
 {
-    protected  $table = 'village';
+    protected  $table = 'villages';
 
     protected $fillable = [
-        'fullname', 'shortname','zip','district_id','region_id'
+        'fullname', 'shortname','district_id'
     ];
 }

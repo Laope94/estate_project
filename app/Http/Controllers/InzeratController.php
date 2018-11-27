@@ -37,17 +37,17 @@ class InzeratController extends Controller
             echo "Nevyplnili ste všetky údaje!";
         } else{
             $inzerat = new Inzerat();
-            $inzerat->nadpis = $nadpis;
-            $inzerat->ulica = $ulica;
-            $inzerat->plocha = $plocha;
-            $inzerat->cena = $cena;
-            $inzerat->pocet_izieb = $izby;
-            $inzerat->poschodie = $poschodie;
-            $inzerat->fotografie = $fotografie;
-            $inzerat->popis = $popis;
-            $inzerat->typ_nehnutelnosti_id = $typ_nehnutelnosti_id;
-            $inzerat->okres_id = $okres;
-            $inzerat->pouzivatelia_id = $pouzivatel;
+            $inzerat->title = $nadpis;
+            $inzerat->street = $ulica;
+            $inzerat->area = $plocha;
+            $inzerat->price = $cena;
+            $inzerat->room_number = $izby;
+            $inzerat->floors = $poschodie;
+            $inzerat->pictures = $fotografie;
+            $inzerat->description = $popis;
+            $inzerat->estate_type_id = $typ_nehnutelnosti_id;
+            $inzerat->district_id = $okres;
+            $inzerat->users_id = $pouzivatel;
             $inzerat->remember_token = $token;
             $inzerat->created_at = $timestamp;
             $inzerat->updated_at = $timestamp;
@@ -66,16 +66,16 @@ class InzeratController extends Controller
     public function updateAdv(Request $request, $id){
         $timestamp = Carbon::now()->toDateTimeString();
         $inzerat = Inzerat::where("id", "=", $id)->first();
-        $inzerat->update(["nadpis" => $request->input('nadpis'),
-            "ulica" => $request->input('ulica'),
-            "plocha"=> $request->input('plocha'),
-            "cena" => $request->input('cena'),
-            "pocet_izieb" => $request->input('pocet_izieb'),
-            "poschodie" => $request->input('poschodie'),
-            "fotografie" => "foto", //$request->input('foto'),
-            "popis" => $request->input('popis'),
-            "typ_nehnutelnosti_id" => $request->input('typ_nehnutelnosti'),
-            "okres_id" => $request->input('okres'),
+        $inzerat->update(["title" => $request->input('nadpis'),
+            "street" => $request->input('ulica'),
+            "area"=> $request->input('plocha'),
+            "price" => $request->input('cena'),
+            "room_number" => $request->input('pocet_izieb'),
+            "floors" => $request->input('poschodie'),
+            "pictures" => "foto", //$request->input('foto'),
+            "description" => $request->input('popis'),
+            "estate_type_id" => $request->input('typ_nehnutelnosti'),
+            "district_id" => $request->input('okres'),
             "updated_at" => $timestamp]);
 
         return redirect()->action('InzeratController@showAllAction');
@@ -120,26 +120,26 @@ class InzeratController extends Controller
     //filter na lokalitu
     public function localityFilter(Request $request){
         $okres_id = $request->input('okres');
-        $lokalita = Inzerat::all()->where("okres_id", "=", $okres_id);
+        $lokalita = Inzerat::all()->where("district_id", "=", $okres_id);
     }
 
     public function priceFilter(Request $request){
         $cena = $request->input('cena');
-        $cenovo = Inzerat::all()->where("cena", ">=", $cena+5000);
+        $cenovo = Inzerat::all()->where("price", ">=", $cena+5000);
     }
 
     public function typeFilter(Request $request){
         $typ_nehnutelnosti = $request->input('typ_nehnutelnosti');
-        $typ = Inzerat::all()->where("typ_nehnutelnosti_id", "=", $typ_nehnutelnosti);
+        $typ = Inzerat::all()->where("estate_type_id", "=", $typ_nehnutelnosti);
     }
 
     public function roomFilter(Request $request){
         $izby = $request->input('pocet_izieb');
-        $pocet_izieb = Inzerat::all()->where("pocet_izieb", "=", $izby);
+        $pocet_izieb = Inzerat::all()->where("room_number", "=", $izby);
     }
 
     public function officeFilter(Request $request){
         $office = $request->input('office');
-        $kancel = Inzerat::all()->where("kancelaria_id", "=", $office);
+        $kancel = Inzerat::all()->where("agency_id", "=", $office);
     }
 }
