@@ -3,11 +3,14 @@
 @section('menu')
     @parent
     <div class="content-container">
-        <div class="intro-title-wrapper">
-            <h1 class="intro-title">Nájdeme pre Vás to pravé.</h1>
+        <div style="height: 100%;">
+            <div class="intro-title-wrapper">
+                <h1 class="intro-title">Nájdeme pre Vás to pravé.</h1>
+            </div>
+
+            <div class="chevron-circle-container"><i id="scroll-down" class="fas fa-chevron-circle-down arrow-down"></i></div>
         </div>
-        <div class="chevron-circle-container"><i class="fas fa-chevron-circle-down arrow-down"></i></div>
-        <div class="about-container">
+        <div id="about" class="about-container">
             <div class="title-container">
                 <h2 class="l-second-title title-dark">U nás nájdete</h2>
             </div>
@@ -23,7 +26,8 @@
                     <div class="double-container">
                         <div class="single-container">
                             <div>
-                                <i class="fab fa-connectdevelop awesome-about"></i><br><span class="about-text">100k+<br>inzercií</span>
+                                <i class="fab fa-connectdevelop awesome-about"></i><br><span
+                                        class="about-text">100k+<br>inzercií</span>
                             </div>
                         </div>
                     </div>
@@ -46,7 +50,8 @@
         </div>
         <div class="quick-search-container">
             <h2 class="l-second-title title-light">Rýchle vyhľadávanie</h2>
-            <input class="quick-search-bar" type="text" placeholder="Zadaj okres..." onfocus="this.placeholder=''"
+            <label for="tags">Tags: </label>
+            <input id="tags" class="quick-search-bar" placeholder="Zadaj okres..." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Zadaj okres...'">
         </div>
 
@@ -61,8 +66,6 @@
                 <div class="newest-card">@include('inzerat_karta', ['cena'=>'500', 'lokalita'=>'Vrakuňa', 'rozloha'=>'35'])</div>
             </div>
         </div>
-
     </div>
-
-
+    @include('skripty')
 @endsection

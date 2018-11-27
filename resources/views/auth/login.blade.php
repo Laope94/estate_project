@@ -1,69 +1,83 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+@extends('layouts.master_layout')
+@section('title', 'Prihlásenie')
+@section('menu')
+    @parent
+    <div class="content-container">
+        <div class="overlay">
+            <div class="login-register-container">
+                <div class="flex-container">
+                    <div class="login-card">
+                        <div class="login-title">Máte účet? Prihláste sa!</div>
+                    <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="login-field-container">
+                            <label for="email">E-Mail: </label>
+                                <input id="email" type="email" class="login-field" name="email"
+                                       value="{{ old('email') }}" required autofocus>
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                        <div class="{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="login-field-container">
+                            <label for="password">Heslo:</label>
+                                <input id="password" type="password" class="login-field" name="password" required>
+                            </div>
+                        </div>
+                        <div >
+                            <div class="login-error">
+                                @if ($errors->has('email'))
+                                    <span>
+                                        <strong>Zadali ste zlý email alebo heslo</strong>
+                                    </span>
+                                @endif
+                                    @if ($errors->has('password'))
+                                        <span>
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
+                            <div>
+                                <div>
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        Zapamätať si ma
                                     </label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
+                        <div>
+                            <div>
+                                <button type="submit" class="register-button">
+                                    Prihlásiť
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                <br>
+                                <a href="{{ route('password.request') }}">
+                                    Zabudli ste heslo?
                                 </a>
                             </div>
                         </div>
                     </form>
+                    </div>
+                    <div class="login-card">
+                        <div class="login-title">Zvoľte si kategóriu, v ktorej sa chcete registrovať</div>
+                        <div class="register-description">
+                        Realitné kancelárie a všetky samostatne zárobkové osoby vyvíjajúce realitnú
+                        činnosť (sprostredkovatelia), sa MUSIA registrovať ako "Realitná kancelária". V
+                        opačnom prípade Vám môže byť odopreté právo inzercie na bytvdome.sk
+                        </div>
+                        <div>
+                            <a href="/register">
+                                <button class="register-button">Súkromná osoba</button>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <button class="register-button">Realitná kancelária</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
