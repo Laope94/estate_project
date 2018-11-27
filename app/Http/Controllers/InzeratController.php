@@ -19,6 +19,7 @@ class InzeratController extends Controller
 {
     //pridavanie inzeratov - pridat uuid
     public function pridajInzerat(Request $request){
+        $uuid = Uuid::generate();
         $ulica = $request->input('ulica');
         $plocha = $request->input('plocha');
         $cena = $request->input('cena');
@@ -30,19 +31,21 @@ class InzeratController extends Controller
         $okres = $request->input('okres');
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
-        $pouzivatel = Auth::id();
+        //$pouzivatel = Auth::id();
+        $pouzivatel = 1;
 
         $inzerat = new Inzerat();
-        $inzerat->ulica = $ulica;
-        $inzerat->plocha = $plocha;
-        $inzerat->cena = $cena;
-        $inzerat->pocet_izieb = $izby;
-        $inzerat->poschodie = $poschodie;
-        $inzerat->fotografie = $fotografie;
-        $inzerat->popis = $popis;
-        $inzerat->typ_nehnutelnosti_id = $typ_nehnutelnosti_id;
-        $inzerat->okres_id = $okres;
-        $inzerat->pouzivatelia_id = $pouzivatel;
+        $inzerat->street = $ulica;
+        $inzerat->area = $plocha;
+        $inzerat->price = $cena;
+        $inzerat->room_number = $izby;
+        $inzerat->floors = $poschodie;
+        $inzerat->pictures = $fotografie;
+        $inzerat->description = $popis;
+        $inzerat->estate_type_id = $typ_nehnutelnosti_id;
+        $inzerat->district_id = $okres;
+        $inzerat->users_id = $pouzivatel;
+        $inzerat->UUID = $uuid;
         $inzerat->remember_token = $token;
         $inzerat->created_at = $timestamp;
         $inzerat->updated_at = $timestamp;
