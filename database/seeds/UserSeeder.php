@@ -15,14 +15,15 @@ class UserSeeder extends Seeder
             'name' => "Meno".uniqid(),
             'surname' => "Priezvisko".uniqid(),
             'IBAN' => "IBAN".uniqid(),
-            'city' => "mesto".uniqid(),
             'address' => "adresa".uniqid(),
             'email' => str_random(10).'@gmail.com',
             'password' => '123456',
             'phone' => "123456789",
             'phone2' => "987654321",
             'privilege'=>$a,
-            'agency_id'=> 2
+            'agency_id'=> 2,
+            'village_id'=> $a+4,
+            'UUID'=>Uuid::generate()
         ]);}
     }
 }

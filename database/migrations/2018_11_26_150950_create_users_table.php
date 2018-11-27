@@ -18,15 +18,16 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('IBAN')->nullable();;
-            $table->string('city');
             $table->string('address');
             $table->string('email');
             $table->string('password');
             $table->string('phone');
             $table->string('phone2')->nullable();
+            $table->string('UUID');
             $table->integer('privilege');
             $table->unsignedInteger('agency_id')->nullable();
-            $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
+            $table->unsignedInteger('village_id')->nullable();
+            $table->foreign('village_id')->references('id')->on('villages');
             $table->rememberToken();
             $table->timestamps();
         });

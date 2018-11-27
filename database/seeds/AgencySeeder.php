@@ -21,7 +21,8 @@ class AgencySeeder extends Seeder
                 'email' => str_random(10).'@gmail.com',
                 'IBAN' => "IBAN".uniqid(),
                 'ICO' => "ICO".uniqid(),
-                'DIC' => "DIC".uniqid()
+                'DIC' => "DIC".uniqid(),
+                'UUID'=>Uuid::generate()
 
 
             ]);}

@@ -15,19 +15,20 @@ class CreateEstatesTable extends Migration
     {
         Schema::create('estates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
             $table->string('street')->nullable();
             $table->integer('area');
             $table->decimal('price');
             $table->integer('room_number');
             $table->integer('floors');
-            $table->longText('pictures');
+            $table->boolean('issale');
+            $table->longText('pictures')->nullable();
             $table->longText('description');
             $table->unsignedInteger('estate_type_id');
             $table->unsignedInteger('users_id')->nullable();
             $table->unsignedInteger('district_id')->nullable();
             $table->unsignedInteger('village_id')->nullable();
             $table->unsignedInteger('agency_id')->nullable();
+            $table->string('UUID');
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->foreign('estate_type_id')->references('id')->on('estate_types');
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
