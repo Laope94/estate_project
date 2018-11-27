@@ -7,9 +7,9 @@
         });
         $(function () {
             var availableTags = new Array();
-            $.getJSON("{{asset('/districts.json')}}", function (data) {
+            $.getJSON("{{asset('/villages.json')}}", function (data) {
                 $.each(data, function (index, value) {
-                    availableTags.push(value.name);
+                    availableTags.push(value.fullname);
                 });
                 $("#tags").autocomplete({
                     source: availableTags

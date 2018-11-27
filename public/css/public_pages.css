@@ -290,7 +290,8 @@ textarea{
 
 .card-image{
     image-resolution: 300dpi;
-    width: 384px;
+    max-width: 384px;
+    max-height: 262px;
     height: auto;
     padding: 3px 3px 3px 3px;}
 

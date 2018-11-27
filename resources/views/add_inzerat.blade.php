@@ -17,12 +17,6 @@
                                     <h3 class="login-title">Informácie o nehnuteľnosti</h3>
                                     <div class="register-small-flex">
                                     <div class="login-field-container">
-                                        <label for="nadpis">Názov inzerátu: *</label>
-                                        <div>
-                                            <input id="nadpis" class="login-field" type="text" name="nadpis" value="">
-                                        </div>
-                                    </div>
-                                    <div class="login-field-container">
                                         <label for="cena">Cena: *</label>
                                         <div>
                                             <input id="cena" class="login-field" min="0" type="number" name="cena" required
