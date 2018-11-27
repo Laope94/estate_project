@@ -23,7 +23,6 @@ class AdminController
         return view("zobrazadminov",['admini' =>$admini]);
     }
     public function pridajAdmina(Request $request){
-
         $meno = $request ->input('meno');
         $priezvisko = $request ->input('priezvisko');
         $IBAN=$request ->input('IBAN');

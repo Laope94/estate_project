@@ -36,28 +36,23 @@ class UserController extends Controller
             $telefon2 = $request->input('tel_num2');
         }
 
-        if($meno == null || $priezvisko == null || $mesto == null || $adresa == null || $mail == null ||
-            $telefon == null || $heslo == null){
-            echo "Nevyplnili ste všetky údaje!";
-        } else{
-            $user = new User();
-            $user->name = $meno;
-            $user->surname = $priezvisko;
-            $user->IBAN = $iban;
-            $user->city = $mesto;
-            $user->address = $adresa;
-            $user->email = $mail;
-            $user->phone = $telefon;
-            $user->phone2 = $telefon2;
-            $user->password = $heslo;
-            $user->privilege = $opravnenie;
-            $user->remember_token = $token;
-            $user->created_at = $timestamp;
-            $user->updated_at = $timestamp;
-            $user->save();
+        $user = new User();
+        $user->meno = $meno;
+        $user->priezvisko = $priezvisko;
+        $user->IBAN = $iban;
+        $user->mesto = $mesto;
+        $user->adresa = $adresa;
+        $user->mail = $mail;
+        $user->telefon = $telefon;
+        $user->telefon2 = $telefon2;
+        $user->heslo = $heslo;
+        $user->opravnenie = $opravnenie;
+        $user->remember_token = $token;
+        $user->created_at = $timestamp;
+        $user->updated_at = $timestamp;
+        $user->save();
 
-            return redirect()->action('UserController@showAllAction');
-        }
+        return redirect()->action('UserController@showAllAction');
     }
 
     //registracia kancelarie
@@ -80,27 +75,22 @@ class UserController extends Controller
             $telefon2 = $request->input('tel_num2');
         }
 
-        if($nazov == null || $konatel == null || $adresa == null || $telefon == null || $mail == null ||
-            $iban == null || $ico == null || $dic == null){
-            echo "Nevyplnili ste všetky údaje!";
-        } else{
-            $kancel = new Kancelaria();
-            $kancel->name = $nazov;
-            $kancel->director = $konatel;
-            $kancel->address = $adresa;
-            $kancel->phone = $telefon;
-            $kancel->phone2 = $telefon2;
-            $kancel->email = $mail;
-            $kancel->IBAN = $iban;
-            $kancel->ICO = $ico;
-            $kancel->DIC = $dic;
-            $kancel->remember_token = $token;
-            $kancel->created_at = $timestamp;
-            $kancel->updated_at = $timestamp;
-            $kancel->save();
+        $kancel = new Kancelaria();
+        $kancel->nazov = $nazov;
+        $kancel->konatel = $konatel;
+        $kancel->adresa = $adresa;
+        $kancel->telefon = $telefon;
+        $kancel->telefon2 = $telefon2;
+        $kancel->mail = $mail;
+        $kancel->IBAN = $iban;
+        $kancel->ICO = $ico;
+        $kancel->DIC = $dic;
+        $kancel->remember_token = $token;
+        $kancel->created_at = $timestamp;
+        $kancel->updated_at = $timestamp;
+        $kancel->save();
 
-            return redirect()->action('UserController@showAllAction');
-        }
+        return redirect()->action('UserController@showAllAction');
     }
 
     //editacia pouzivatela
