@@ -12,13 +12,13 @@ namespace App\Http\Controllers;
 use App\Models\Inzerat;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
 
 class InzeratController extends Controller
 {
-    //treba nejako poriesit foreign key
+    //pridavanie inzeratov - pridat uuid
     public function pridajInzerat(Request $request){
-        $nadpis = $request->input('nadpis');
         $ulica = $request->input('ulica');
         $plocha = $request->input('plocha');
         $cena = $request->input('cena');
@@ -30,31 +30,25 @@ class InzeratController extends Controller
         $okres = $request->input('okres');
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
-        $pouzivatel = 3;
+        $pouzivatel = Auth::id();
 
-        if($nadpis == null || $plocha == null || $cena == null || $izby == null || $poschodie == null ||
-            $popis == null || $typ_nehnutelnosti_id == null || $okres == null){
-            echo "Nevyplnili ste všetky údaje!";
-        } else{
-            $inzerat = new Inzerat();
-            $inzerat->nadpis = $nadpis;
-            $inzerat->ulica = $ulica;
-            $inzerat->plocha = $plocha;
-            $inzerat->cena = $cena;
-            $inzerat->pocet_izieb = $izby;
-            $inzerat->poschodie = $poschodie;
-            $inzerat->fotografie = $fotografie;
-            $inzerat->popis = $popis;
-            $inzerat->typ_nehnutelnosti_id = $typ_nehnutelnosti_id;
-            $inzerat->okres_id = $okres;
-            $inzerat->pouzivatelia_id = $pouzivatel;
-            $inzerat->remember_token = $token;
-            $inzerat->created_at = $timestamp;
-            $inzerat->updated_at = $timestamp;
-            $inzerat->save();
+        $inzerat = new Inzerat();
+        $inzerat->ulica = $ulica;
+        $inzerat->plocha = $plocha;
+        $inzerat->cena = $cena;
+        $inzerat->pocet_izieb = $izby;
+        $inzerat->poschodie = $poschodie;
+        $inzerat->fotografie = $fotografie;
+        $inzerat->popis = $popis;
+        $inzerat->typ_nehnutelnosti_id = $typ_nehnutelnosti_id;
+        $inzerat->okres_id = $okres;
+        $inzerat->pouzivatelia_id = $pouzivatel;
+        $inzerat->remember_token = $token;
+        $inzerat->created_at = $timestamp;
+        $inzerat->updated_at = $timestamp;
+        $inzerat->save();
 
-            return redirect()->action('InzeratController@showAllAction');
-        }
+        return redirect()->action('InzeratController@showAllAction');
     }
 
     //editacia inzeratu
@@ -66,8 +60,7 @@ class InzeratController extends Controller
     public function updateAdv(Request $request, $id){
         $timestamp = Carbon::now()->toDateTimeString();
         $inzerat = Inzerat::where("id", "=", $id)->first();
-        $inzerat->update(["nadpis" => $request->input('nadpis'),
-            "ulica" => $request->input('ulica'),
+        $inzerat->update(["ulica" => $request->input('ulica'),
             "plocha"=> $request->input('plocha'),
             "cena" => $request->input('cena'),
             "pocet_izieb" => $request->input('pocet_izieb'),
@@ -95,7 +88,7 @@ class InzeratController extends Controller
         return view("inzeraty", ['inzeraty' => $inzeraty]);
     }
 
-    //pripadne sa pozriet na resize fotiek este
+    //pridavanie fotiek
     public function foto(Request $request){
         $input1 = Uuid::generate();
         $destinationPath = public_path('images/'.$input1);
