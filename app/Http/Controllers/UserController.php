@@ -63,6 +63,12 @@ class UserController extends Controller
         $user = User::find($id);
         return view("edit_user", ['user' => $user]);
     }
+    public function show_users_estatesAction($id){
+        //vypíše všetky inzeráty používateľa
+        $user = User::find($id);
+        return view("users_estates", ['user' => $user]);
+
+    }
 
     public function updateUser($id, Request $request){
         $timestamp = Carbon::now()->toDateTimeString();

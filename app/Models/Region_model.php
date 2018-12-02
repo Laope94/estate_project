@@ -18,4 +18,9 @@ class Region_model extends Model
     protected $fillable = [
         'name', 'shortcut'
     ];
+
+    public function regions(){
+
+        return $this->hasMany('App\Models\District_model','region_id');
+    }
 }

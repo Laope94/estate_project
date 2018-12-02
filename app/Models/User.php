@@ -16,4 +16,14 @@ class User extends Model implements Authenticatable
         'name', 'surname', 'city', 'address', 'email', 'password', 'phone', 'phone2', 'privilege', 'agency_id', 'UUID',
         'remember_token', 'created_at', 'updated_at'
     ];
+
+    public function estates(){
+
+        return $this->hasMany('App\Models\Inzerat','users_id');
+    }
+
+    public function agency()
+    {
+        return $this->belongsTo('Kancelaria');
+    }
 }

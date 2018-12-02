@@ -35,6 +35,9 @@ Route::get('delete-user/{id}','UserController@deleteUser');
 Route::get('updateUser/{id}', "UserController@showAction");
 Route::get('update/{id}', "UserController@updateUser");
 
+//zobrazi inzeraty pouzivatela
+Route::get('/inzuz/{id}', 'UserController@show_users_estatesAction');
+
 //------------------------------------------INZERATY-----------------------------------------------------
 //pridanie inzeratu
 Route::view('/pridanie-inzeratu', "add_inzerat");
@@ -50,6 +53,12 @@ Route::get('delete/{id}','InzeratController@deleteAdv');
 Route::get('updateAdv/{id}', 'InzeratController@showAction');
 Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 
+// 6 najnovsich inzeratov
+Route::get('/najnovsie', 'InzeratController@mostRecentEstates');
+
+//detail inzeratu - chýba view
+Route::get('', 'InzeratController@estateDetail');
+
 //--------------------------------------------AUTH-------------------------------------------------------
 //login
 Route::view('/prihlasenie', "login");
@@ -62,7 +71,7 @@ Route::get('zobrazadmina/{id}',['as'=> 'Update','uses' => 'AdminController@zobra
 Route::post('editujadmina/{id}',['as'=> 'Update','uses' => 'AdminController@upravAdmina']);
 Route::get('vymazadmina/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazAdmina']);
 
-
+Route::get('/',['as'=> 'HOME','uses' => 'InzeratController@mostRecentEstates']);
 
 Auth::routes();
 
