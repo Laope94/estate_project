@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    @section('includes')
+        @show
 </head>
 <body>
 <div>
@@ -19,7 +21,7 @@
                 <a class="nav-link" href="">Realitné kancelárie</a>
                 <a class="nav-link" href="">Kontakt</a>
                 @if (Auth::check())
-                    <a class="nav-link" href="" title="Môj profil">Môj profil</a>
+                    <a class="nav-link" href="/profil" title="Môj profil">Môj profil</a>
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                        title="Odhlásiť sa"><i class="fas fa-sign-out-alt"></i></a>

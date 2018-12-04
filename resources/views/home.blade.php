@@ -50,9 +50,11 @@
         </div>
         <div class="quick-search-container">
             <h2 class="l-second-title title-light">Rýchle vyhľadávanie</h2>
-            <label for="tags">Tags: </label>
+            <div class="bar-container">
+            <label for="tags"></label>
             <input id="tags" class="quick-search-bar" placeholder="Zadaj okres..." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Zadaj okres...'">
+            </div>
         </div>
 
         <div class="newest-container">
@@ -65,5 +67,5 @@
             </div>
         </div>
     </div>
-    @include('skripty')
+    <script src="{{ asset('js/jquery-custom.js') }}"></script>
 @endsection

@@ -31,16 +31,23 @@ Route::get('delete-user/{id}','UserController@deleteUser');
 Route::get('updateUser/{id}', "UserController@showAction");
 Route::get('update/{id}', "UserController@updateUser");
 
+//môj profil
+Route::get('/profil', "UserController@getMe");
+
 //zobrazi inzeraty pouzivatela
 Route::get('/inzuz/{id}', 'UserController@show_users_estatesAction');
 
 //------------------------------------------INZERATY-----------------------------------------------------
 //pridanie inzeratu
-Route::view('/pridanie-inzeratu', "add_inzerat");
+Route::view('/pridat-inzerat', "/inzerat/add_inzerat");
 Route::post('/pridajInzerat', 'InzeratController@pridajInzerat');
 
 //vypis inzeratov
 Route::get('/inzeraty', 'InzeratController@showAllAction');
+
+//detail inzerátu
+//TODO: pridať ID inzerátu aby to natvrdo nevracalo jeden view
+Route::view('/inzerat', '/inzerat/inzerat_detail');
 
 //mazanie inzeratu
 Route::get('delete/{id}','InzeratController@deleteAdv');
