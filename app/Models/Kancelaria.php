@@ -10,4 +10,11 @@ class Kancelaria extends Model
 
     protected $fillable = ['name', 'director', 'address', 'phone', 'phone2', 'email',
         'IBAN', 'ICO', 'DIC', 'UUID', 'remember_token', 'created_at', 'updated_at'];
+
+
+    public function users(){
+
+        return $this->hasMany('App\Models\User','agency_id');
+    }
+
 }

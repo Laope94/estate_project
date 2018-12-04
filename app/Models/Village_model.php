@@ -18,4 +18,10 @@ class Village_model extends Model
     protected $fillable = [
         'fullname', 'shortname','district_id'
     ];
+
+
+    public function estates(){
+
+        return $this->hasMany('App\Models\Inzerat','village_id');
+    }
 }

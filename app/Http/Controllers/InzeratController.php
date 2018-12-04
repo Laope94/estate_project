@@ -9,8 +9,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Eetvview;
+use App\Models\EstateUsers;
 use App\Models\Inzerat;
-use function foo\func;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -65,18 +67,35 @@ class InzeratController extends Controller
         return view("edit_inzerat", ['inzerat' => $inzerat]);
     }
 
+
+    public function mostRecentEstates(){
+        //6 najnovších inzerátov z viewu
+       $inzeraty = Eetvview::orderBy('id','desc')->take(6)->get();
+   // return view("najnovsie", ['inzeraty' => $inzeraty]);
+       return view("home", ['inzeraty' => $inzeraty]);
+
+     }
+    public function estateDetail($id){
+        //všetky detaily inzerátu
+        $inzeraty = Eetvview::find($id);
+    }
+
+
+
+
+
     public function updateAdv(Request $request, $id){
         $timestamp = Carbon::now()->toDateTimeString();
         $inzerat = Inzerat::where("id", "=", $id)->first();
-        $inzerat->update(["ulica" => $request->input('ulica'),
-            "plocha"=> $request->input('plocha'),
-            "cena" => $request->input('cena'),
-            "pocet_izieb" => $request->input('pocet_izieb'),
-            "poschodie" => $request->input('poschodie'),
-            "fotografie" => "foto", //$request->input('foto'),
-            "popis" => $request->input('popis'),
-            "typ_nehnutelnosti_id" => $request->input('typ_nehnutelnosti'),
-            "okres_id" => $request->input('okres'),
+        $inzerat->update(["street" => $request->input('ulica'),
+            "area"=> $request->input('plocha'),
+            "price" => $request->input('cena'),
+            "room_number" => $request->input('pocet_izieb'),
+            "floors" => $request->input('poschodie'),
+            "pictures" => "foto", //$request->input('foto'),
+            "description" => $request->input('popis'),
+            "estate_type_id" => $request->input('typ_nehnutelnosti'),
+            "district_id" => $request->input('okres'),
             "updated_at" => $timestamp]);
 
         return redirect()->action('InzeratController@showAllAction');
@@ -95,6 +114,7 @@ class InzeratController extends Controller
         $inzeraty = Inzerat::all();
         return view("inzeraty", ['inzeraty' => $inzeraty]);
     }
+
 
     //pridavanie fotiek
     public function foto(Request $request){
