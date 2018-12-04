@@ -17,10 +17,6 @@ Route::get('/', function () {
 });
 
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
-//registracia noveho clena
-Route::view('/registracia', "register");
-Route::post('/register', 'UserController@registrovat');
-
 //registracia kancelarie
 Route::view('/register-kancelarie', "register_kancelarie");
 Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
@@ -50,6 +46,9 @@ Route::get('delete/{id}','InzeratController@deleteAdv');
 Route::get('updateAdv/{id}', 'InzeratController@showAction');
 Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 
+//filter inzeratov
+Route::get('/filter', 'InzeratController@megaFilter');
+
 //--------------------------------------------AUTH-------------------------------------------------------
 //login
 Route::view('/prihlasenie', "login");
@@ -67,3 +66,5 @@ Route::get('vymazadmina/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazA
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/charts', 'ChartController@index');

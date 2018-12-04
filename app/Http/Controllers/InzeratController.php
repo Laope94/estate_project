@@ -10,14 +10,17 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Inzerat;
+use function foo\func;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rules\In;
 use Webpatser\Uuid\Uuid;
 
 class InzeratController extends Controller
 {
-    //pridavanie inzeratov - pridat uuid
+    //pridavanie inzeratov
     public function pridajInzerat(Request $request){
         $uuid = Uuid::generate();
         $ulica = $request->input('ulica');
@@ -31,6 +34,7 @@ class InzeratController extends Controller
         $okres = $request->input('okres');
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
+        $issale = 0;
         //$pouzivatel = Auth::id();
         $pouzivatel = 1;
 
@@ -40,6 +44,7 @@ class InzeratController extends Controller
         $inzerat->price = $cena;
         $inzerat->room_number = $izby;
         $inzerat->floors = $poschodie;
+        $inzerat->issale = $issale;
         $inzerat->pictures = $fotografie;
         $inzerat->description = $popis;
         $inzerat->estate_type_id = $typ_nehnutelnosti_id;
@@ -111,31 +116,48 @@ class InzeratController extends Controller
     }
 
     //-------------------------------Filtre--------------------------------------
-    //vsade pridat view potom
 
-    //filter na lokalitu
-    public function localityFilter(Request $request){
-        $okres_id = $request->input('okres');
-        $lokalita = Inzerat::all()->where("district_id", "=", $okres_id);
-    }
+    public function megaFilter(){
+        $estates = Inzerat::where(function($query){
+            $types = Input::has('type') ? Input::get('type') : [];
+            $isforsale = Input::has('issale') ? Input::get('issale') : [];
+            $min_price = Input::has('min_price') ? Input::get('min_price') : null;
+            $max_price = Input::has('max_price') ? Input::get('max_price') : null;
+            $min_area = Input::has('min_area') ? Input::get('min_area') : null;
+            $max_area = Input::has('max_area') ? Input::get('max_area') : null;
+            $room_number = Input::has('room_number') ? Input::get('room_number') : null;
 
-    public function priceFilter(Request $request){
-        $cena = $request->input('cena');
-        $cenovo = Inzerat::all()->where("price", ">=", $cena+5000);
-    }
+            //s tymto treba este nieco spravit, aby to fungovalo spravne, pripadne tam dat combobox
+            if(isset($types)){
+                foreach ($types as $type) {
+                    $query->where('estate_type_id', '=', $type);
+                }
+            }
 
-    public function typeFilter(Request $request){
-        $typ_nehnutelnosti = $request->input('typ_nehnutelnosti');
-        $typ = Inzerat::all()->where("estate_type_id", "=", $typ_nehnutelnosti);
-    }
+            if(isset($isforsale)){
+                if(count($isforsale) > 1){
 
-    public function roomFilter(Request $request){
-        $izby = $request->input('pocet_izieb');
-        $pocet_izieb = Inzerat::all()->where("room_number", "=", $izby);
-    }
+                } else {
+                    foreach ($isforsale as $issale) {
+                        $query->where('issale', '=', $issale);
+                    }
+                }
+            }
 
-    public function officeFilter(Request $request){
-        $office = $request->input('office');
-        $kancel = Inzerat::all()->where("agency_id", "=", $office);
+            if(isset($min_price) && isset($max_price)) {
+                $query->where('price', '>=', $min_price)
+                    ->where('price', '<=', $max_price);
+            }
+
+            if(isset($min_area) && isset($max_area)){
+                $query->where('area', '>=', $min_area)
+                    ->where('area', '<=', $max_area);
+            }
+
+            if(isset($room_number)){
+                $query->where('room_number', '=', $room_number);
+            }
+        })->get();
+        return view("filter", ['estates' => $estates]);
     }
 }
