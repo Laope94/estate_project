@@ -6,6 +6,10 @@ button {
     font-family: 'Open Sans', sans-serif;
 }
 
+button:focus{
+    outline: none;
+}
+
 body {
     margin: 0%;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -22,6 +26,31 @@ nav {
     display: inline;
 }
 
+hr {
+    border: 0;
+    border-top: 1px solid #5e5d5d;
+    box-shadow: none;
+}
+
+summary{
+    height:fit-content;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+summary:hover{
+    cursor: pointer;
+}
+
+summary:focus{
+    outline: none;
+}
+
+details summary::-webkit-details-marker {
+    display:none;
+}
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -33,10 +62,37 @@ textarea{
     resize: none;
 }
 
+#izby{
+    display: none;
+}
+
+#save-changes{
+    display: none;
+}
+
+.no-display{
+    display: none;
+}
+
+.ui-menu{
+    max-width: 75% !important;
+    max-height: 50%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .ui-menu-item {
     background: #FFFFFF;
-    width: 80%;
+    max-width: 100%;
+    font-size: 20px;
     min-height: 20px;
+    list-style-type: none;
+    text-align: center;
+}
+
+.ui-menu-item:hover{
+    font-weight: bold;
+    background-color: #d5d5d5;
 }
 
 .content-container{
@@ -65,7 +121,7 @@ textarea{
 .nav-link {
     color: #4A1F1F;
     text-decoration: none;
-    font-size: 125%;
+    font-size: 115%;
     display: inline-block;
     margin: 0px 15px 0px 15px;
 }
@@ -101,10 +157,40 @@ textarea{
     border: 1px solid #AAA0A0;
 }
 
+.profile-field-container{
+    padding: 5px 10px 5px 10px;
+}
+
+.profile-field{
+    width: 260px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.profile-field:disabled{
+    border-style:none;
+    background-color: white;
+    color: black;
+}
+
+.profile-dropdown:disabled{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.profile-label{
+    display: inline-block;
+    width: 100px;
+    alignment: right;
+}
+
 .login-field:valid{
     border: 1px solid #AAA0A0;
 }
 
+.login-field-required {
+    color: #B72727;
+}
 
 .login-error {
     height: 40px;
@@ -154,6 +240,12 @@ textarea{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.title-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .register-half{
@@ -257,9 +349,13 @@ textarea{
     background: #2B2B2B ;
 }
 
+.bar-container{
+    width:80%;
+    padding: 50px 10% 0 10%;
+}
+
 .quick-search-bar {
-    width: 70%;
-    margin: 2% 15% 0 15%;
+    width: 100%;
     padding: 0 25px 0 25px;
     font-size: 35px;
     height: 50px;
@@ -418,6 +514,11 @@ textarea{
     overflow: auto;
 }
 
+.awesome-edit:hover{
+    cursor: pointer;
+    color: #B72727;
+}
+
 .awesome-social {
     color: #D7D6D6;
     font-size: 30px;
@@ -428,6 +529,10 @@ textarea{
     color: #4A1F1F;
     margin: 10px 0 10px 0;
     font-size: 100px;
+}
+
+.button-wrapper{
+    text-align: center;
 }
 
 .register-button {
@@ -448,6 +553,27 @@ textarea{
     cursor: pointer;
 }
 
+.add-button-container{
+    max-width: 100%;
+    text-align: right;
+}
+
+.add-button {
+    color: #ffffff;
+    background: #B72727;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    padding:5px;
+    border:none;
+    border-radius: 50px;
+    margin: 10px;
+}
+
+.add-button:hover{
+    cursor: pointer;
+}
+
 .advert-desc{
     width: 360px;
     height: 440px;
@@ -456,6 +582,86 @@ textarea{
 
 .advert-photo-upload{
     width: 360px;
+}
+
+.user-details-container{
+    width: 400px;
+    min-height: 470px;
+    margin: 0 10px 0 10px;
+}
+
+.user-edit-awesome {
+    font-size: 25px;
+}
+
+.peek-card-container{
+    margin-bottom: 2px;
+    min-width:400px;
+}
+
+.peek-sum{
+    padding: 5px 10px 5px 10px;
+}
+
+.peek-half{
+    min-width: 400px;
+    height: fit-content;
+}
+
+.peek-title{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.peek-group{
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.peek-awesome{
+    color: black;
+    margin: 0 0 0 20px;
+}
+
+.peek-awesome:hover{
+    cursor: pointer;
+    color: #B72727;
+}
+
+.peek-detail-container{
+    padding: 0 30px 20px 30px;
+}
+
+.peek-label{
+    font-weight: bold;
+}
+
+.gallery-container{
+    position: relative;
+}
+
+.more-container{
+    line-height: 40px;
+    text-align: center;
+}
+
+.more-gallery{
+    color: rgba(255, 255, 255, 0.0);
+    position: absolute;
+    padding-top: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 150px;
+}
+
+.more-gallery:hover{
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-unicorn {
@@ -477,5 +683,4 @@ textarea{
     margin: 0 30px 0 30px;
     vertical-align: middle;
 }
-
 
