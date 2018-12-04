@@ -18,4 +18,9 @@ class District_model extends Model
     protected $fillable = [
         'name','region_id'
     ];
+
+    public function villages(){
+
+        return $this->hasMany('App\Models\Village_model','district_id');
+    }
 }

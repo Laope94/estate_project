@@ -14,7 +14,6 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Meno".uniqid(),
             'surname' => "Priezvisko".uniqid(),
-            'IBAN' => "IBAN".uniqid(),
             'address' => "adresa".uniqid(),
             'email' => str_random(10).'@gmail.com',
             'password' => '123456',

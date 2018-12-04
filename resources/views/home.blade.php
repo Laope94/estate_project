@@ -50,22 +50,22 @@
         </div>
         <div class="quick-search-container">
             <h2 class="l-second-title title-light">Rýchle vyhľadávanie</h2>
-            <label for="tags">Tags: </label>
+            <div class="bar-container">
+            <label for="tags"></label>
             <input id="tags" class="quick-search-bar" placeholder="Zadaj okres..." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Zadaj okres...'">
+            </div>
         </div>
 
         <div class="newest-container">
             <h2 class="l-second-title title-dark">Najnovšie inzeráty</h2>
             <div class="flex-container">
-                <div class="newest-card">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
-                <div class="newest-card">@include('inzerat_karta', ['cena'=>'900', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'52'])</div>
-                <div class="newest-card">@include('inzerat_karta', ['cena'=>'500', 'lokalita'=>'Vrakuňa', 'rozloha'=>'35'])</div>
-                <div class="newest-card">@include('inzerat_karta', ['cena'=>'340', 'lokalita'=>'Bratislava IV', 'rozloha'=>'60'])</div>
-                <div class="newest-card">@include('inzerat_karta', ['cena'=>'900', 'lokalita'=>'Spišská Nová Ves', 'rozloha'=>'52'])</div>
-                <div class="newest-card">@include('inzerat_karta', ['cena'=>'500', 'lokalita'=>'Vrakuňa', 'rozloha'=>'35'])</div>
+                @foreach($inzeraty as $inzerat)
+                <div class="newest-card">@include('inzerat/inzerat_karta', ['fotka'=>$inzerat->pictures,'typ'=>$inzerat->type,'cena'=>$inzerat->price,
+                 'predaj'=>$inzerat->issale, 'lokalita'=>$inzerat->village, 'rozloha'=>$inzerat->area, 'izby'=>$inzerat->room_number])</div>
+                    @endforeach
             </div>
         </div>
     </div>
-    @include('skripty')
+    <script src="{{ asset('js/jquery-custom.js') }}"></script>
 @endsection

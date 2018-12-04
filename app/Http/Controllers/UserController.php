@@ -13,10 +13,18 @@ use App\Models\User;
 use App\Models\Kancelaria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
 
 class UserController extends Controller
 {
+
+    public function getMe(){
+        //TODO: pridať ineráty usera
+        $id = Auth::id();
+        $user = User::find($id);
+        return view("user/profile", ['user' => $user]);
+    }
 
     //registracia kancelarie
     public function registraciaKancelarie(Request $request){
@@ -61,7 +69,13 @@ class UserController extends Controller
     //editacia pouzivatela
     public function showAction($id){
         $user = User::find($id);
-        return view("edit_user", ['user' => $user]);
+        return view("profile", ['user' => $user]);
+    }
+    public function show_users_estatesAction($id){
+        //vypíše všetky inzeráty používateľa
+        $user = User::find($id);
+        return view("users_estates", ['user' => $user]);
+
     }
 
     public function updateUser($id, Request $request){

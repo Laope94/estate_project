@@ -16,14 +16,14 @@
                                     <div class="login-title">Informácie o Vás</div>
                                     <div class="register-small-flex">
                                         <div class="login-field-container {{ $errors->has('name') ? ' has-error' : '' }}">
-                                            <label for="name">Meno: *</label>
+                                            <label for="name">Meno: <span class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="name" class="login-field" type="text" name="name"
                                                        value="{{ old('name') }}" required autofocus>
                                             </div>
                                         </div>
                                         <div class="login-field-container">
-                                            <label for="surname">Priezvisko: *</label>
+                                            <label for="surname">Priezvisko: <span class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="surname" class="login-field" type="text" name="surname"
                                                        value="{{ old('surname') }}" required autofocus>
@@ -33,10 +33,33 @@
 
                                     <div class="register-small-flex">
                                         <div class="login-field-container">
-                                            <label for="city">Mesto: *</label>
+                                            <label for="kraj">Kraj: <span class="login-field-required">*</span></label>
                                             <div>
-                                                <input id="city" class="login-field" type="text" name="city"
-                                                       value="{{ old('city') }}" required autofocus>
+                                                <select id="kraj" class="login-field" type="" name="kraj"
+                                                        value="{{ old('kraj') }}" required autofocus>
+                                                    <option disabled selected value>----------------------------------</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="login-field-container">
+                                            <label for="okres">Okres: <span class="login-field-required">*</span></label>
+                                            <div>
+                                                <select id="okres" class="login-field" type="" name="okres"
+                                                        value="{{ old('okres') }}" required autofocus disabled>
+                                                    <option disabled selected value>----------------------------------</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="register-small-flex">
+                                        <div class="login-field-container">
+                                            <label for="city">Mesto: <span class="login-field-required">*</span></label>
+                                            <div>
+                                                <select id="city" class="login-field" type="" name="city"
+                                                        value="{{ old('city') }}" required autofocus disabled>
+                                                    <option disabled selected value>----------------------------------</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="login-field-container">
@@ -50,9 +73,9 @@
 
                                     <div class="register-small-flex">
                                         <div class="login-field-container">
-                                            <label for="phone_prim">Telefón 1: *</label>
+                                            <label for="phone_prim">Telefón 1: <span class="login-field-required">*</span></label>
                                             <div>
-                                                <input id="phone_prim" type="text" class="login-field" name="phone_prim"
+                                                <input id="phone_prim" type="text" pattern="[0-9]{9,}" class="login-field" name="phone_prim"
                                                        value="{{ old('phone_prim') }}"
                                                        required autofocus>
                                             </div>
@@ -60,7 +83,7 @@
                                         <div class="login-field-container">
                                             <label for="phone_sec">Telefón 2:</label>
                                             <div>
-                                                <input id="phone_sec" type="text" class="login-field" name="phone_sec"
+                                                <input id="phone_sec" type="tel" class="login-field" name="phone_sec"
                                                        value="{{ old('phone_sec') }}" autofocus>
                                             </div>
                                         </div>
@@ -73,19 +96,17 @@
                                         <div>
                                             <div>
                                                 <div class="login-field-container {{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label for="email">E-Mail: *</label>
+                                                    <label for="email">E-Mail: <span class="login-field-required">*</span></label>
 
                                                     <div>
                                                         <input id="email" type="email" class="login-field" name="email"
                                                                value="{{ old('email') }}"
                                                                required>
-
-
                                                     </div>
                                                 </div>
 
                                                 <div class="login-field-container {{ $errors->has('password') ? ' has-error' : '' }}">
-                                                    <label for="password">Heslo: *</label>
+                                                    <label for="password">Heslo: <span class="login-field-required">*</span></label>
 
                                                     <div>
                                                         <input id="password" type="password" class="login-field"
@@ -95,7 +116,7 @@
                                                 </div>
 
                                                 <div class="login-field-container">
-                                                    <label for="password-confirm">Potvrdiť heslo: *</label>
+                                                    <label for="password-confirm">Potvrdiť heslo: <span class="login-field-required">*</span></label>
                                                     <div>
                                                         <input id="password-confirm" type="password" class="login-field"
                                                                name="password_confirmation" required>
@@ -109,24 +130,25 @@
                                                         <span><strong>{{ $errors->first('name') }}</strong></span>
                                                     @endif
                                                     @if ($errors->has('email'))
-                                                        <span><strong>Tento email je už registrovaný.</strong></span>
+                                                        <span><strong>{{ $errors->first('email') }}</strong></span>
                                                     @endif
                                                     @if ($errors->has('password'))
-                                                        <span><strong>Heslá sa nezhodujú.</strong></span>
+                                                        <span><strong>{{ $errors->first('password') }}</strong></span>
                                                     @endif
                                                 </div>
                                                 <div>
                                                     <input type="checkbox" id="podmienky-agree" name="podmienky"
                                                            required>
                                                     <label for="podmienky-agree">Súhlasím s podmienkami používania
-                                                        *</label>
+                                                        <span class="login-field-required">*</span></label>
                                                 </div>
                                                 <div>
                                                     <input type="checkbox" id="vek-agree" name="vek" required>
                                                     <label for="vek-agree">Potvrdzujem, že mám viac ako 18 rokov
-                                                        *</label>
+                                                        <span class="login-field-required">*</span></label>
                                                 </div>
-                                                <div style="text-align: center;">
+                                                <div><span class="login-field-required">*</span> Takto označené pole je povinné.</div>
+                                                <div class="button-wrapper">
                                                     <button type="submit" class="register-button">
                                                         Registrovať
                                                     </button>
@@ -142,4 +164,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/jquery-custom.js') }}"></script>
 @endsection

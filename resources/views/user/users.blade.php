@@ -25,7 +25,8 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->phone }}</td>
             <td>{{ $user->phone2 }}</td>
-            <td><a href="{{ action("UserController@showAction", ['id' => $user->id]) }}"><button class="btn btn-default">Edit</button></a>&nbsp;
+            <td><a href="{{ action("UserController@showAction", ['id' => $user->id]) }}"><button class="btn btn-default">Edit</button></a>
+                <a href="{{ action("UserController@show_users_estatesAction", ['id' => $user->id]) }}"><button class="btn btn-default">ZobrazInzeraty</button></a>&nbsp;
                 <a href = 'delete-user/{{ $user->id }}'><button class="btn btn-danger">Delete</button></a>
         </tr>
     @endforeach
