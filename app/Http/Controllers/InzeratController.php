@@ -33,12 +33,12 @@ class InzeratController extends Controller
         $fotografie = $this->foto($request);
         $popis = $request->input('popis');
         $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
-        $okres = $request->input('okres');
+        $village_id = $request->input('city');
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
         $issale = 0;
-        //$pouzivatel = Auth::id();
-        $pouzivatel = 1;
+        $pouzivatel = Auth::id();
+
 
         $inzerat = new Inzerat();
         $inzerat->street = $ulica;
@@ -50,8 +50,9 @@ class InzeratController extends Controller
         $inzerat->pictures = $fotografie;
         $inzerat->description = $popis;
         $inzerat->estate_type_id = $typ_nehnutelnosti_id;
-        $inzerat->district_id = $okres;
         $inzerat->users_id = $pouzivatel;
+        $inzerat->village_id = $village_id;
+        $inzerat->agency_id = null;
         $inzerat->UUID = $uuid;
         $inzerat->remember_token = $token;
         $inzerat->created_at = $timestamp;
