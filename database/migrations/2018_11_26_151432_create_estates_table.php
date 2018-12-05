@@ -18,9 +18,9 @@ class CreateEstatesTable extends Migration
             $table->string('street')->nullable();
             $table->integer('area');
             $table->decimal('price');
-            $table->integer('room_number');
-            $table->integer('floors');
-            $table->boolean('issale');
+            $table->integer('room_number')->nullable();
+            $table->integer('floors')->nullable();
+            $table->string('issale');
             $table->string('pictures')->nullable();
             $table->longText('description');
             $table->unsignedInteger('estate_type_id');

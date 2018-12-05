@@ -17,15 +17,15 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('email');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('phone');
             $table->string('phone2')->nullable();
             $table->string('UUID');
             $table->integer('privilege');
             $table->unsignedInteger('agency_id')->nullable();
-            $table->unsignedInteger('village_id')->nullable();
+            $table->unsignedInteger('village_id');
             $table->foreign('village_id')->references('id')->on('villages');
             $table->rememberToken();
             $table->timestamps();
