@@ -369,7 +369,6 @@ class ComposerStaticInite3f8ed6f240bbf317ac96a68619c8cbb
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin_model' => __DIR__ . '/../..' . '/app/Models/Admin_model.php',
         'App\\Models\\District_model' => __DIR__ . '/../..' . '/app/Models/District_model.php',
-        'App\\Models\\Eetvview' => __DIR__ . '/../..' . '/app/Models/Eetvview.php',
         'App\\Models\\Inzerat' => __DIR__ . '/../..' . '/app/Models/Inzerat.php',
         'App\\Models\\Kancelaria' => __DIR__ . '/../..' . '/app/Models/Kancelaria.php',
         'App\\Models\\Region_model' => __DIR__ . '/../..' . '/app/Models/Region_model.php',

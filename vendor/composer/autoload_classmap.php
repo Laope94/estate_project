@@ -26,7 +26,6 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Admin_model' => $baseDir . '/app/Models/Admin_model.php',
     'App\\Models\\District_model' => $baseDir . '/app/Models/District_model.php',
-    'App\\Models\\Eetvview' => $baseDir . '/app/Models/Eetvview.php',
     'App\\Models\\Inzerat' => $baseDir . '/app/Models/Inzerat.php',
     'App\\Models\\Kancelaria' => $baseDir . '/app/Models/Kancelaria.php',
     'App\\Models\\Region_model' => $baseDir . '/app/Models/Region_model.php',
