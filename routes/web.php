@@ -34,8 +34,7 @@ Route::get('update/{id}', "UserController@updateUser");
 //môj profil
 Route::get('/profil', "UserController@getMe");
 
-//zobrazi inzeraty pouzivatela
-Route::get('/inzuz/{id}', 'UserController@show_users_estatesAction');
+
 
 //------------------------------------------INZERATY-----------------------------------------------------
 //pridanie inzeratu
@@ -46,11 +45,14 @@ Route::post('/pridajInzerat', 'InzeratController@pridajInzerat');
 Route::get('/inzeraty', 'InzeratController@showAllAction');
 
 //detail inzerátu
-//TODO: pridať ID inzerátu aby to natvrdo nevracalo jeden view
-Route::view('/inzerat', '/inzerat/inzerat_detail');
+Route::get('inzerat/{id}', 'InzeratController@estateDetail');
+
+//inzerat peek estatePeek
+Route::get('inzeratpeek', 'InzeratController@estatePeek');
 
 //mazanie inzeratu
 Route::get('delete/{id}','InzeratController@deleteAdv');
+Route::get('deletep/{id}','InzeratController@deleteAdvPeek');
 
 //editovanie inzeratov
 Route::get('updateAdv/{id}', 'InzeratController@showAction');
@@ -62,12 +64,11 @@ Route::get('/filter', 'InzeratController@megaFilter');
 // 6 najnovsich inzeratov
 Route::get('/najnovsie', 'InzeratController@mostRecentEstates');
 
-//detail inzeratu - chýba view
-Route::get('', 'InzeratController@estateDetail');
+
 
 //--------------------------------------------AUTH-------------------------------------------------------
 //login
-Route::view('/prihlasenie', "login");
+Route::view('/prihlasenie', "/auth/login");
 Route::post('/prihlaseny', 'AuthController@login');
 
 Route::post('pridajAdmina',['uses' => 'AdminController@pridajAdmina']);

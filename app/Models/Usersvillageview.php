@@ -9,7 +9,14 @@
 namespace App\Models;
 
 
-class Usersvillageview
+use Illuminate\Database\Eloquent\Model;
+
+
+class Usersvillageview extends Model
 {
+
     protected  $table='user_villageview';
+
+
+
 }

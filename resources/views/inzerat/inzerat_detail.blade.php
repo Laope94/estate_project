@@ -16,33 +16,34 @@
                             <div class="user-details-container">
                                 <h3 class="login-title">Základné informácie</h3>
                                 <div class="more-container">
-                                <strong>Ponuka:</strong> Predaj<br>
-                                <strong>Typ nehnuteľnosti:</strong> Dom<br>
-                                <strong>Počet izieb:</strong> 3<br>
-                                <strong>Poschodie:</strong> 5<br>
-                                <strong> Rozloha:</strong> 50m<sup>2</sup><br>
-                                <strong> Kraj:</strong> Banská Bystrica<br>
-                                <strong>Okres:</strong> Žiar nad Hronom <br>
-                                <strong>Mesto:</strong> Ladomerská Vieska <br>
-                                <strong>Ulica:</strong> U cigánov 4
-                                <h3 class="login-title">Kontakt</h3>
-                                <strong> Meno:</strong> John Doe <br>
+                                <strong>Ponuka:</strong> <?php  if(($inzerat->issale)==1){echo ' Predaj ';}else{echo ' Prenájom';} ?><br>
+                                <strong>Typ nehnuteľnosti:</strong> <?php echo $inzerat ->type?><br>
+                                <strong>Počet izieb:</strong> <?php echo $inzerat ->room_number?><br>
+                                <strong>Poschodie:</strong> <?php echo $inzerat ->floors?><br>
+                                <strong> Rozloha:</strong> <?php echo $inzerat ->area?><sup>2</sup><br>
+                                <strong> Kraj:</strong> <?php echo $inzerat ->region?><br>
+                                <strong>Okres:</strong> <?php echo $inzerat ->district?><br>
+                                <strong>Mesto:</strong> <?php echo $inzerat ->village?> <br>
+                                <strong>Ulica:</strong><?php echo $inzerat ->street?>
+                                    @if(Auth::id()!=$pouzivatel->id)
+                                    <h3 class="login-title">Kontakt</h3>
+                                <strong> Meno:</strong> <?php echo $pouzivatel->name ?> <?php echo $pouzivatel->surname ?> <br>
                                 <strong> Email:</strong> <a
-                                        href="mailto:johndoe@dead.com?Subject=Inzerát%20Prenájom: byt, Bratislava"
-                                        target="_top">johndoe@dead.com</a><br>
-                                <strong> Telefón 1:</strong> <a href="tel:0907123456">0907123456</a><br>
-                                <strong> Telefón 2:</strong> <a href="tel:0904456789">0904456789</a><br>
+                                        href="<?php echo 'mailto:'.$pouzivatel->email.'?Subject=Inzerát:%20'.strtolower($inzerat->type).', '.$inzerat->village ?>"
+                                        target="_top"><?php echo $pouzivatel->email ?></a><br>
+                                <strong> Telefón 1:</strong> <?php echo $pouzivatel->phone ?><a href="tel:0907123456"></a><br>
+                                <strong> Telefón 2:</strong> <?php echo $pouzivatel->phone2 ?> <a href="tel:0904456789"></a><br>
+                                        @else
+                                        <h3 class="login-title">Inzerát je váš</h3>
+                                    @endif
+
                                 </div>
+
                             </div>
                             <div class="user-details-container">
                                 <h3 class="login-title">Popis</h3>
                                 <div class="more-container">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur est et
-                                viverra condimentum. Quisque lacinia feugiat commodo. Proin rutrum consequat quam, ac
-                                egestas augue porttitor non. Mauris tellus ligula, posuere dapibus ipsum id, iaculis
-                                finibus lacus. Cras imperdiet, tortor in aliquet porttitor, erat sem maximus ante, ut
-                                egestas lectus metus sed lectus. Integer pretium varius tellus, et laoreet ipsum maximus
-                                sit amet. Etiam ac ultrices est.
+                                    <?php echo $inzerat ->description?>
                                 </div>
                             </div>
                             <div class="user-details-container"><h3 class="login-title">Galéria</h3>

@@ -10,7 +10,9 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {for ($a=0;$a<5;$a++){
+    {
+
+        for ($a=0;$a<5;$a++){
         DB::table('users')->insert([
             'name' => "Meno".uniqid(),
             'surname' => "Priezvisko".uniqid(),

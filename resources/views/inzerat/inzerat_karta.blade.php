@@ -26,9 +26,10 @@
     <div class="card-price-tag">
         <i class="fas fa-hand-holding-usd card-awesome"></i><span class="card-price"><?php  if($predaj==1){echo $cena , ' € ';}else{echo $cena, ' € / mesiac' ;} ?></span>
     </div>
-    <a href="">
+    <a href=""><form class="" action="{{ action('InzeratController@estateDetail', ['id' => $id]) }}" method="get">
         <div class="card-button-container">
             <button class="card-button">Zobraziť inzerát</button>
         </div>
+        </form>
     </a>
 </div>
