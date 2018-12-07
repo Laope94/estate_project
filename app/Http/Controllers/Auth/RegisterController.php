@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Village_model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Webpatser\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -62,9 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $help =  $data['city'];
+        $village = Village_model::where("fullname", "=", $help)->first();
+        $vil_id = $village->id;
+
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['surname'],
+            'village_id' => $vil_id,
+            'address' => $data['street'],
             'email' => $data['email'],
+            'phone' => $data['phone_prim'],
+            'phone2' => $data['phone_sec'],
+            'privilege' => 0,
+            'agency_id' => null,
+            'UUID' => Uuid::generate(),
+            'remember_token' => $data['_token'],
             'password' => bcrypt($data['password']),
         ]);
     }
