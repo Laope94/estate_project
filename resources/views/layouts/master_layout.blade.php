@@ -17,9 +17,9 @@
         @section('menu')
             <nav>
                 <a class="nav-link" href="/" title="Domov">Domov</a>
-                <a class="nav-link" href="">Vyhľadať nehnuteľnosť</a>
-                <a class="nav-link" href="">Realitné kancelárie</a>
-                <a class="nav-link" href="">Kontakt</a>
+                <a class="nav-link" href="" title="´Vyhľadať inzerát">Vyhľadať nehnuteľnosť</a>
+                <a class="nav-link" href="/pridat-inzerat" title="Pridať inzerát">Pridať inzerát</a>
+                <a class="nav-link" href="" title="Kontakt">Kontakt</a>
                 @if (Auth::check())
                     <a class="nav-link" href="/profil" title="Môj profil">Môj profil</a>
                     <a class="nav-link" href="{{ route('logout') }}"

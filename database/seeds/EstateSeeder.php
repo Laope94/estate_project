@@ -31,7 +31,9 @@ class EstateSeeder extends Seeder
                 'UUID'=>Uuid::generate()
 
 
-            ]);}
+            ]);
+
+            }
 
             else{
              DB::table('estates')->insert([

@@ -12,6 +12,47 @@
                             <div>
                                 <div class="register-inner-flex">
                                     <div class="register-half">
+                                        @if (!Auth::check())
+                                            <div>
+                                                <h3 class="login-title">Informácie o Vás</h3>
+                                                <div class="register-small-flex">
+                                                    <div class="login-field-container">
+                                                        <label for="name">Meno: <span
+                                                                    class="login-field-required">*</span></label>
+                                                        <div>
+                                                            <input id="name" type="text" class="login-field" name="name"
+                                                                   value="{{old('name')}}" required autofocus>
+                                                        </div>
+                                                    </div>
+                                                    <div class="login-field-container">
+                                                        <label for="surname">Priezvisko: <span
+                                                                    class="login-field-required">*</span></label>
+                                                        <div>
+                                                            <input id="surname" type="text" class="login-field" name="surname"
+                                                                   value="{{old('surname')}}" required autofocus>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="register-small-flex">
+                                                    <div class="login-field-container">
+                                                        <label for="email">Email: <span
+                                                                    class="login-field-required">*</span></label>
+                                                        <div>
+                                                            <input id="email" type="email" class="login-field" name="email"
+                                                                   value="{{old('email')}}" required autofocus>
+                                                        </div>
+                                                    </div>
+                                                    <div class="login-field-container">
+                                                        <label for="phone">Telefón: <span
+                                                                    class="login-field-required">*</span></label>
+                                                        <div>
+                                                            <input id="phone" type="tel"  pattern="[0-9]{9,}" class="login-field" name="phone"
+                                                                   value="{{old('phone')}}" required autofocus >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div>
                                             <h3 class="login-title">Informácie o nehnuteľnosti</h3>
                                             <div class="register-small-flex">
@@ -133,7 +174,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="login-field-container">
                                                 <label for="obrazok">Fotografie:</label>
