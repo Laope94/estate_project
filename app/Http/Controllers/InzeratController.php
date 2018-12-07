@@ -13,6 +13,7 @@ use App\Models\Eetvview;
 use App\Models\EstateUsers;
 use App\Models\Inzerat;
 use App\Models\User;
+use App\Models\Usersvillageview;
 use App\Models\Village_model;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -83,9 +84,22 @@ class InzeratController extends Controller
 
      }
     public function estateDetail($id){
-        //všetky detaily inzerátu
-        $inzeraty = Eetvview::find($id);
+        //všetky detaily inzerátu   ------funguje
+        $inzerat = Eetvview::find($id);
+
+         $pouzivatel= Usersvillageview::find($inzerat->users_id);
+
+        return view("inzerat/inzerat_detail", ['inzerat' => $inzerat],['pouzivatel'=>$pouzivatel]);
     }
+
+    public function estatePeek($id){
+        //inzerat_peek ----------treba mu ešte poslať to id
+        $inzerat = Eetvview::find($id);
+
+        return view("inzerat/inzerat_peek", ['inzerat' => $inzerat]);
+    }
+
+
 
 
 
@@ -102,7 +116,7 @@ class InzeratController extends Controller
             "pictures" => "foto", //$request->input('foto'),
             "description" => $request->input('popis'),
             "estate_type_id" => $request->input('typ_nehnutelnosti'),
-            "district_id" => $request->input('okres'),
+            "village_id" => $request->input('obec'),
             "updated_at" => $timestamp]);
 
         return redirect()->action('InzeratController@showAllAction');
@@ -115,12 +129,20 @@ class InzeratController extends Controller
 
         return redirect()->action('InzeratController@showAllAction');
     }
+    public function deleteAdvPeek($id) {
+        $inzerat = Inzerat::find($id);
+        $inzerat->delete();
+
+        return redirect()->action('UserController@getMe');
+    }
 
     //vypis vsetkych inzeratov
     public function showAllAction(){
         $inzeraty = Inzerat::all();
         return view("inzeraty", ['inzeraty' => $inzeraty]);
     }
+
+
 
 
     //pridavanie fotiek

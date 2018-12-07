@@ -85,7 +85,6 @@
         <div class="content">
             <form class="" action="{{ action('InzeratController@updateAdv', ['id' => $inzerat->id]) }}" method="get">
                 <h5>Políčka označené * je potrebné vyplniť!</h5> <br /><br />
-                <label>*Názov inzerátu: </label><input type="text" name="nadpis" value="{{ $inzerat->title }}"> <br /><br />
                 <label>Ulica: </label><input type="text" name="ulica" value="{{ $inzerat->street }}"> <br /><br />
                 <label>*Plocha (m2): </label><input type="number" name="plocha" value="{{ $inzerat->area }}"> <br /><br />
                 <label>*Cena: </label><input type="number" name="cena" value="{{ $inzerat->price }}"> <br /><br />
@@ -101,11 +100,11 @@
                     <option value="4">Rodinný dom</option>
                 </select> <br /> <br />
                 <label>*Okres: </label>
-                <select name="okres">
+                <select name="obec">
                     <option value=""></option>
-                    <option value="1">Bánovce nad Bebravou</option>
-                    <option value="2">Banská Bystrica</option>
-                    <option value="3">Banská Štiavnica</option>
+                    <option value="1">Nitra</option>
+                    <option value="2">Kuraľany</option>
+                    <option value="3">Nová Baňa</option>
                 </select> <br /> <br />
                 <button type="submit" name="edit">Editovať</button>
             </form>

@@ -2,7 +2,14 @@
     <details>
         <summary class="register-small-flex peek-sum">
                 <div class="peek-title">
-                    Prenájom: 5-izbový byt, Spišská nová Ves
+                    <?php
+                    if(($issale)=== 1){$sale="Predaj";}else{$sale="Prenájom";}
+                    if(($type)=== "Dom" || ($type) === "Byt" ){
+                        echo $sale.': '.$room_number.'-izbový '.strtolower($type).', '.$village;
+                    }
+                    else{
+                        echo $sale.': '.strtolower($type).', '.$area.'m2 '.', '.$village;
+                    }?>
                 </div>
             <div>
                 <div class="peek-half"></div>
@@ -11,29 +18,27 @@
         </summary>
         <div class="register-small-flex">
             <div class="peek-half">
-                <img class="card-image" src="{{asset('/images/sample.jpg')}}">
+                <img class="card-image" src="{{asset('/images/'.$pictures.'.jpg')}}">
             </div>
             <div class="peek-half">
                 <div class="peek-group">
-                    <a href="/inzerat" title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
-                    <a href="/update" title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
-                        <a href="/delete" title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
+                    <a href='/inzerat/{{ $inzerat->id }}' title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
+                    <a href='updateAdv/{{ $inzerat->id }}' title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
+                        <a href='deletep/{{ $inzerat->id }}' title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
                 </div>
                 <div class="peek-detail-container">
-                    <span class="peek-label">Typ inzerátu: </span> <br>
-                    <span class="peek-label">Typ nehnuteľnosti: </span> <br>
-                    <span class="peek-label">Počet izieb: </span> <br>
-                    <span class="peek-label">Kraj: </span> <br>
-                    <span class="peek-label">Okres: </span> <br>
-                    <span class="peek-label">Mesto: </span> <br>
-                    <span class="peek-label">Ulica: </span> <br>
-                    <span class="peek-label">Cena: </span> <br>
-                    <span class="peek-label">Pridaný: </span> <br>
-                    <span class="peek-label">Naposledy upravený: </span> <br>
+                    <span class="peek-label">Typ inzerátu: <?php echo $sale?> </span> <br>
+                    <span class="peek-label">Typ nehnuteľnosti: <?php echo $type?> </span> <br>
+                    <span class="peek-label">Počet izieb:<?php echo $room_number?> </span> <br>
+                    <span class="peek-label">Kraj:<?php echo str_replace("kraj", "", $region);?> </span> <br>
+                    <span class="peek-label">Okres: <?php echo $district?></span> <br>
+                    <span class="peek-label">Mesto: <?php echo $village?></span> <br>
+                    <span class="peek-label">Ulica: <?php echo $street?></span> <br>
+                    <span class="peek-label">Cena: <?php echo $price?></span> <br>
+                    <span class="peek-label">Pridaný: <?php echo $created_at?></span> <br>
+                    <span class="peek-label">Naposledy upravený:<?php echo $updated_at?> </span> <br>
                 </div>
-
             </div>
-
         </div>
         <hr>
     </details>

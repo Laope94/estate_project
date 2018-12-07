@@ -11,6 +11,20 @@ class AgencySeeder extends Seeder
      */
     public function run()
     {
+        DB::table('agencies')->insert([
+            'name' => "0",
+            'director' => "0",
+            'address' => "0",
+            'phone' => "0",
+            'phone2' => "0",
+            'email' => "0",
+            'IBAN' => "0",
+            'ICO' => "0",
+            'DIC' => "0",
+            'UUID'=>"0"
+
+        ]);
+
         for ($a=0;$a<5;$a++){
             DB::table('agencies')->insert([
                 'name' => "Nazov".uniqid(),
@@ -28,3 +42,4 @@ class AgencySeeder extends Seeder
             ]);}
     }
 }
+

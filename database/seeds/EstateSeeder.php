@@ -27,7 +27,6 @@ class EstateSeeder extends Seeder
                 'estate_type_id' => 1,
                 'users_id' => $a+1,
                 'village_id' => $a+1,
-                'agency_id' => $a+1,
                 'UUID'=>Uuid::generate()
 
 
@@ -48,7 +47,6 @@ class EstateSeeder extends Seeder
                 'estate_type_id' => 2,
                 'users_id' => $a+1,
                 'village_id' => $a*30,
-                'agency_id' => $a+1,
                 'UUID'=>Uuid::generate()
 
 

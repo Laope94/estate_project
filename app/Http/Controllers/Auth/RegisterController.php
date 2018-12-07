@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'phone' => $data['phone_prim'],
             'phone2' => $data['phone_sec'],
             'privilege' => 0,
-            'agency_id' => null,
+            'agency_id' => 1,
             'UUID' => Uuid::generate(),
             'remember_token' => $data['_token'],
             'password' => bcrypt($data['password']),

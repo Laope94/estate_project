@@ -10,6 +10,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Eetvview;
+use App\Models\Usersvillageview;
 use App\Models\Kancelaria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,8 +24,9 @@ class UserController extends Controller
     public function getMe(){
         //TODO: pridať ineráty usera
         $id = Auth::id();
-        $user = User::find($id);
-        return view("user/profile", ['user' => $user]);
+        $user = Usersvillageview::find($id);
+        $inzeraty = Eetvview::where('users_id', $id)->orderBy('id', 'desc')->get();
+        return view("user/profile", ['user' => $user],['inzeraty'=>$inzeraty]);
     }
 
     //registracia kancelarie
@@ -70,12 +73,6 @@ class UserController extends Controller
     public function showAction($id){
         $user = User::find($id);
         return view("profile", ['user' => $user]);
-    }
-    public function show_users_estatesAction($id){
-        //vypíše všetky inzeráty používateľa
-        $user = User::find($id);
-        return view("users_estates", ['user' => $user]);
-
     }
 
     public function updateUser($id, Request $request){

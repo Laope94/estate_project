@@ -41,21 +41,21 @@
                                                 </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="kraj">Kraj: </label>
-                                                    <select id="kraj" name="kraj" required autofocus
-                                                            class="profile-field dis-field profile-dropdown" disabled>
-                                                    </select>
+                                                    <input id="kraj" name="kraj" type="text" value="{{$user->region}}"  disabled
+                                                            class="profile-field dis-field ">
+
                                                 </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="okres">Okres: </label>
-                                                    <select id="okres" name="okres" required autofocus
+                                                    <input id="okres" name="okres" type="text" value="{{$user->district}}"
                                                             class="profile-field dis-field profile-dropdown" disabled>
-                                                    </select>
+
                                                 </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="city">Mesto: </label>
-                                                    <select id="city" name="city" required autofocus
+                                                    <input id="city" name="city" value="{{$user->village}}"
                                                             class="profile-field dis-field profile-dropdown" disabled>
-                                                    </select>
+
                                                 </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="street">Ulica: </label>
@@ -83,8 +83,12 @@
                                     <div class="register-small-flex">
 
                                         <div>
-                                            @include('inzerat.inzerat_peek')
-                                            @include('inzerat.inzerat_peek')
+                                            @foreach($inzeraty as $inzerat)
+                                                @include('inzerat.inzerat_peek', ['pictures'=>$inzerat->pictures,'type'=>$inzerat->type,'price'=>$inzerat->price,
+                                                'issale'=>$inzerat->issale,'region'=>$inzerat->region,'district'=>$inzerat->district, 'village'=>$inzerat->village,
+                                                 'area'=>$inzerat->area, 'room_number'=>$inzerat->room_number, 'id'=>$inzerat->id,'created_at'=>$inzerat->created_at,
+                                                 'updated_at'=>$inzerat->updated_at,'street'=>$inzerat->street,])
+                                            @endforeach
                                         </div>
                                     </div>
                                     </div>
