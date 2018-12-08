@@ -27,9 +27,9 @@
             <form class="" action="{{URL::to('/filter')}}" method="get">
                 <strong>Druh nehnuteľnosti: </strong> <br />
                 <select name="type[]" >
-                    <option name="type[]" value="1">Byt</option>
-                    <option name="type[]" value="2">Dom</option>
-                    <option name="type[]" value="3">Pozemok</option>
+                    <option name="type[]" value="Byt">Byt</option>
+                    <option name="type[]" value="Dom">Dom</option>
+                    <option name="type[]" value="Pozemok">Pozemok</option>
                 </select><br /> <br />
                 <strong>Typ:</strong> <br />
                 <input type="checkbox" name="issale[]" value="0"> Prenájom<br />
@@ -59,13 +59,10 @@
 
                     @foreach($estates as $estate)
                     <tr>
-                        <td> {{$estate->room_number}}</td>
-                        <td>@if($estate->estate_type_id == 1) Byt
-                            @elseif ($estate->estate_type_id == 2) Dom
-                                @elseif($estate->estate_type_id == 3) Pozemok
-                            @endif</td>
+                        <td>{{$estate->room_number}}</td>
+                        <td>{{$estate->type}}</td>
                         <td>{{$estate->area}}</td>
-                        <td>{{$estate->village_id}}</td>
+                        <td>{{$estate->village}}</td>
                         <td>{{$estate->price}}</td>
                         <td>@if($estate->issale == 0) Prenájom @else Predaj @endif</td>
                     </tr>

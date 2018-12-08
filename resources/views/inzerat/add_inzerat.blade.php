@@ -23,8 +23,8 @@
                                                             <option disabled selected value>
                                                                 ----------------------------------
                                                             </option>
+                                                            <option value="0">Prenájom</option>
                                                             <option value="1">Predaj</option>
-                                                            <option value="2">Prenájom</option>
                                                         </select>
                                                     </div>
                                                 </div>

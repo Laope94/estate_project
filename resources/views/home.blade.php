@@ -51,9 +51,11 @@
         <div class="quick-search-container">
             <h2 class="l-second-title title-light">Rýchle vyhľadávanie</h2>
             <div class="bar-container">
+            <form class="" action="{{URL::to('/distFilter')}}" method="get">
             <label for="tags"></label>
-            <input id="tags" class="quick-search-bar" placeholder="Zadaj okres..." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Zadaj okres...'">
+            <input id="tags" name="filter" class="quick-search-bar" placeholder="Zadaj okres..."
+                   onfocus="this.placeholder=''" onblur="this.placeholder='Zadaj okres...'">
+            </form>
             </div>
         </div>
 

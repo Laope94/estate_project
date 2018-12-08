@@ -1,7 +1,7 @@
 <div class="card-container">
     <div class="card-image-container">
 
-        <img class="card-image" src="<?php echo asset('/images/'.$fotka.'.jpg')?>">
+        <img class="card-image" src="{{asset('/images/'.$fotka.'.jpg')}}">
 
     </div>
     <div class="card-round-container">

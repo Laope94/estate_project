@@ -16,8 +16,8 @@
             <div class="peek-half">
                 <div class="peek-group">
                     <a href="/inzerat" title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
-                    <a href="" title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
-                        <a href="" title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
+                    <a href="/update" title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
+                        <a href="/delete" title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
                 </div>
                 <div class="peek-detail-container">
                     <span class="peek-label">Typ inzerátu: </span> <br>

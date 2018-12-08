@@ -58,6 +58,7 @@ Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 
 //filter inzeratov
 Route::get('/filter', 'InzeratController@megaFilter');
+Route::get('distFilter', 'InzeratController@filter');
 
 // 6 najnovsich inzeratov
 Route::get('/najnovsie', 'InzeratController@mostRecentEstates');

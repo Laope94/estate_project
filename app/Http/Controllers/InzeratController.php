@@ -13,6 +13,7 @@ use App\Models\Eetvview;
 use App\Models\EstateUsers;
 use App\Models\Inzerat;
 use App\Models\User;
+use App\Models\Village_model;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +25,13 @@ class InzeratController extends Controller
 {
     //pridavanie inzeratov
     public function pridajInzerat(Request $request){
+
+        $help =  $request['city'];
+        $village = Village_model::where("fullname", "=", $help)->first();
+        $vil_id = $village->id;
+
         $uuid = Uuid::generate();
-        $ulica = $request->input('ulica');
+        $ulica = $request->input('street');
         $plocha = $request->input('plocha');
         $cena = $request->input('cena');
         $izby = $request->input('pocet_izieb');
@@ -33,10 +39,10 @@ class InzeratController extends Controller
         $fotografie = $this->foto($request);
         $popis = $request->input('popis');
         $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
-        $village_id = $request->input('city');
+        $village_id = $vil_id;
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
-        $issale = 0;
+        $issale = $request->input('ponuka');
         $pouzivatel = Auth::id();
 
 
@@ -80,10 +86,6 @@ class InzeratController extends Controller
         //všetky detaily inzerátu
         $inzeraty = Eetvview::find($id);
     }
-
-
-
-
 
     public function updateAdv(Request $request, $id){
         $timestamp = Carbon::now()->toDateTimeString();
@@ -139,7 +141,7 @@ class InzeratController extends Controller
     //-------------------------------Filtre--------------------------------------
 
     public function megaFilter(){
-        $estates = Inzerat::where(function($query){
+        $estates = Eetvview::where(function($query){
             $types = Input::has('type') ? Input::get('type') : [];
             $isforsale = Input::has('issale') ? Input::get('issale') : [];
             $min_price = Input::has('min_price') ? Input::get('min_price') : null;
@@ -151,7 +153,7 @@ class InzeratController extends Controller
             //s tymto treba este nieco spravit, aby to fungovalo spravne, pripadne tam dat combobox
             if(isset($types)){
                 foreach ($types as $type) {
-                    $query->where('estate_type_id', '=', $type);
+                    $query->where('type', '=', $type);
                 }
             }
 
@@ -179,6 +181,12 @@ class InzeratController extends Controller
                 $query->where('room_number', '=', $room_number);
             }
         })->get();
+        return view("filter", ['estates' => $estates]);
+    }
+
+    public function filter(Request $request){
+        $district = $request->input('filter');
+        $estates = Eetvview::where('district', '=', $district)->get();
         return view("filter", ['estates' => $estates]);
     }
 }
