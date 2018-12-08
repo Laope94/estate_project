@@ -216,5 +216,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/jquery-custom.js') }}"></script>
+    <script src="{{ asset('js/room-lock.js') }}"></script>
+    <script src="{{ asset('js/load-locations.js') }}"></script>
 @endsection

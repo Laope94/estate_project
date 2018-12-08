@@ -66,5 +66,5 @@
     </div>
     <script type="text/javascript" src="{{asset('simplelightbox/simple-lightbox.min.js')}}">
     </script>
-    <script src="{{ asset('js/jquery-custom.js') }}"></script>
+    <script src="{{ asset('js/load-gallery.js') }}"></script>
 @endsection

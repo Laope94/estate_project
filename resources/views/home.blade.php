@@ -58,7 +58,7 @@
         </div>
 
         <div class="newest-container">
-            <h2 class="l-second-title title-dark">Najnovšie inzeráty</h2>
+
             <div class="flex-container">
                 @foreach($inzeraty as $inzerat)
                 <div class="newest-card">@include('inzerat/inzerat_karta', ['fotka'=>$inzerat->pictures,'typ'=>$inzerat->type,'cena'=>$inzerat->price,
@@ -67,5 +67,5 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/jquery-custom.js') }}"></script>
+    <script src="{{ asset('js/home-queries.js') }}"></script>
 @endsection

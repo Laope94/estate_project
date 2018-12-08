@@ -167,7 +167,7 @@ class InzeratController extends Controller
     //-------------------------------Filtre--------------------------------------
 
     public function megaFilter(){
-        $estates = Inzerat::where(function($query){
+        $estates = Eetvview::where(function($query){
             $types = Input::has('type') ? Input::get('type') : [];
             $isforsale = Input::has('issale') ? Input::get('issale') : [];
             $min_price = Input::has('min_price') ? Input::get('min_price') : null;

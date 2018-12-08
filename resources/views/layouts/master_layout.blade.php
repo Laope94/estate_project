@@ -17,7 +17,7 @@
         @section('menu')
             <nav>
                 <a class="nav-link" href="/" title="Domov">Domov</a>
-                <a class="nav-link" href="" title="´Vyhľadať inzerát">Vyhľadať nehnuteľnosť</a>
+                <a class="nav-link" href="/inzeraty" title="Hľadať nehnutelnost">Hľadať nehnutelnost</a>
                 <a class="nav-link" href="/pridat-inzerat" title="Pridať inzerát">Pridať inzerát</a>
                 <a class="nav-link" href="" title="Kontakt">Kontakt</a>
                 @if (Auth::check())

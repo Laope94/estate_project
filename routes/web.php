@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/home', function (){
+    return redirect('/');
+});
+
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
 Route::view('/register-kancelarie', "register_kancelarie");
@@ -59,7 +63,7 @@ Route::get('updateAdv/{id}', 'InzeratController@showAction');
 Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
 
 //filter inzeratov
-Route::get('/filter', 'InzeratController@megaFilter');
+Route::get('/inzeraty', 'InzeratController@megaFilter');
 
 // 6 najnovsich inzeratov
 Route::get('/najnovsie', 'InzeratController@mostRecentEstates');
@@ -81,7 +85,5 @@ Route::get('vymazadmina/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazA
 Route::get('/',['as'=> 'HOME','uses' => 'InzeratController@mostRecentEstates']);
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/charts', 'ChartController@index');

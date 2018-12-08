@@ -664,6 +664,28 @@ textarea{
     color: rgba(255, 255, 255, 0.9);
 }
 
+.small-field{
+    width: 250px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.small-field-label{
+    width: 60px;
+    padding: 0 10px 0 10px;
+}
+
+.small-field-range{
+    width: 190px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.search-button-container{
+    width: 100%;
+    text-align: center;
+}
+
 .footer-unicorn {
     line-height: 80px;
     text-align: center;
