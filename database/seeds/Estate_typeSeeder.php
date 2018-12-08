@@ -12,15 +12,27 @@ class Estate_typeSeeder extends Seeder
     public function run()
     {
         DB::table('estate_types')->insert([
+            'type' => "Garsónka",
+
+        ]);
+        DB::table('estate_types')->insert([
             'type' => "Byt",
 
         ]);
         DB::table('estate_types')->insert([
-            'type' => "Dom",
+            'type' => "Rodinný dom",
+
+        ]);
+        DB::table('estate_types')->insert([
+            'type' => "Nebytový priestor",
 
         ]);
         DB::table('estate_types')->insert([
             'type' => "Pozemok",
+
+        ]);
+        DB::table('estate_types')->insert([
+            'type' => "Iné",
 
         ]);
     }

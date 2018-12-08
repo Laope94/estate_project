@@ -16,7 +16,7 @@
                                         <div class="user-details-container">
                                             <button id="edit-user" class="add-button" title="Upraviť údaje"><i class="fas fa-pencil-alt user-edit-awesome"></i> </button>
                                             <button id="stop-edit" class="add-button" title="Zrušiť úpravy" style="display: none;"><i class="fas fa-times"></i> </button>
-                                                <form id="edit-user-form">
+                                                <form id="edit-user-form" action="{{ action('UserController@updateUserProfile') }}" method="get">
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="name">Meno: </label>
                                                     <input id="name" name="name" type="text" value="{{$user->name}}" disabled
@@ -27,6 +27,11 @@
                                                     <input id="surname" name="surname" type="text" value="{{$user->surname}}" disabled
                                                            required class="profile-field dis-field">
                                                 </div>
+                                                    <div class="profile-field-container">
+                                                        <label class="profile-label" for="email">Email: </label>
+                                                        <input id="email" name="email" type="text" value="{{$user->email}}" disabled
+                                                               required class="profile-field dis-field">
+                                                    </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="phone_prim">Tel. č. 1:</label>
                                                     <input id="phone_prim" name="phone_prim" type="text"

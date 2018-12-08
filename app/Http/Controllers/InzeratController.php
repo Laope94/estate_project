@@ -27,52 +27,54 @@ class InzeratController extends Controller
     //pridavanie inzeratov
     public function pridajInzerat(Request $request){
 
-        $help =  $request['city'];
-        $village = Village_model::where("fullname", "=", $help)->first();
-        $vil_id = $village->id;
+    $help =  $request['city'];
+    $village = Village_model::where("fullname", "=", $help)->first();
+    $vil_id = $village->id;
 
-        $uuid = Uuid::generate();
-        $ulica = $request->input('street');
-        $plocha = $request->input('plocha');
-        $cena = $request->input('cena');
-        $izby = $request->input('pocet_izieb');
-        $poschodie = $request->input('poschodie');
-        $fotografie = $this->foto($request);
-        $popis = $request->input('popis');
-        $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
-        $village_id = $vil_id;
-        $timestamp = Carbon::now()->toDateTimeString();
-        $token = $request->input('_token');
-        $issale = 0;
-        $pouzivatel = Auth::id();
+    $uuid = Uuid::generate();
+    $ulica = $request->input('street');
+    $plocha = $request->input('plocha');
+    $cena = $request->input('cena');
+    $izby = $request->input('pocet_izieb');
+    $poschodie = $request->input('poschodie');
+    $fotografie = $this->foto($request);
+    $popis = $request->input('popis');
+    $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
+    $village_id = $vil_id;
+    $timestamp = Carbon::now()->toDateTimeString();
+    $token = $request->input('_token');
+    $issale = 0;
+    $pouzivatel = Auth::id();
 
 
-        $inzerat = new Inzerat();
-        $inzerat->street = $ulica;
-        $inzerat->area = $plocha;
-        $inzerat->price = $cena;
-        $inzerat->room_number = $izby;
-        $inzerat->floors = $poschodie;
-        $inzerat->issale = $issale;
-        $inzerat->pictures = $fotografie;
-        $inzerat->description = $popis;
-        $inzerat->estate_type_id = $typ_nehnutelnosti_id;
-        $inzerat->users_id = $pouzivatel;
-        $inzerat->village_id = $village_id;
-        $inzerat->agency_id = null;
-        $inzerat->UUID = $uuid;
-        $inzerat->remember_token = $token;
-        $inzerat->created_at = $timestamp;
-        $inzerat->updated_at = $timestamp;
-        $inzerat->save();
+    $inzerat = new Inzerat();
+    $inzerat->street = $ulica;
+    $inzerat->area = $plocha;
+    $inzerat->price = $cena;
+    $inzerat->room_number = $izby;
+    $inzerat->floors = $poschodie;
+    $inzerat->issale = $issale;
+    $inzerat->pictures = $fotografie;
+    $inzerat->description = $popis;
+    $inzerat->estate_type_id = $typ_nehnutelnosti_id;
+    $inzerat->users_id = $pouzivatel;
+    $inzerat->village_id = $village_id;
+    $inzerat->agency_id = null;
+    $inzerat->UUID = $uuid;
+    $inzerat->remember_token = $token;
+    $inzerat->created_at = $timestamp;
+    $inzerat->updated_at = $timestamp;
+    $inzerat->save();
 
-        return redirect()->action('InzeratController@showAllAction');
-    }
+    return redirect()->action('InzeratController@showAllAction');
+}
+
 
     //editacia inzeratu
     public function showAction($id){
-        $inzerat = Inzerat::find($id);
-        return view("edit_inzerat", ['inzerat' => $inzerat]);
+        $inzerat = Eetvview::find($id);
+
+        return view("inzerat/edit_inzerat", ['inzerat' => $inzerat]);
     }
 
 
@@ -107,20 +109,42 @@ class InzeratController extends Controller
 
     public function updateAdv(Request $request, $id){
         $timestamp = Carbon::now()->toDateTimeString();
-        $inzerat = Inzerat::where("id", "=", $id)->first();
-        $inzerat->update(["street" => $request->input('ulica'),
+        $inzerat = Inzerat::find($id);
+        $inzerat->update(["street" => $request->input('street'),
             "area"=> $request->input('plocha'),
             "price" => $request->input('cena'),
             "room_number" => $request->input('pocet_izieb'),
             "floors" => $request->input('poschodie'),
-            "pictures" => "foto", //$request->input('foto'),
+            "pictures" => "sample", //$request->input('foto'),
             "description" => $request->input('popis'),
+            "issale" => $request->input('ponuka'),
             "estate_type_id" => $request->input('typ_nehnutelnosti'),
-            "village_id" => $request->input('obec'),
+            "village_id" => 5, //$request->input('obec'),
             "updated_at" => $timestamp]);
 
         return redirect()->action('InzeratController@showAllAction');
     }
+
+    public function updateAdvProfile(Request $request, $id){
+       //funguje ale do viewu treba opakovane zadávať do comboboxov ( option disabled)
+        $timestamp = Carbon::now()->toDateTimeString();
+
+        $inzerat = Inzerat::find($id);
+        $inzerat->update(["street" => $request->input('street'),
+            "area"=> $request->input('plocha'),
+            "price" => $request->input('cena'),
+            "room_number" => $request->input('pocet_izieb'),
+            "floors" => $request->input('poschodie'),
+            "pictures" => "sample", //$request->input('foto'),
+            "description" => $request->input('popis'),
+            "issale" => $request->input('ponuka'),
+            "estate_type_id" => $request->input('typ_nehnutelnosti'),
+            "village_id" => 5, //$request->input('obec'),
+            "updated_at" => $timestamp]);
+
+        return redirect()->action('UserController@getMe');
+    }
+
 
     //mazanie inzeratov
     public function deleteAdv($id) {

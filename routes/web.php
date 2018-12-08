@@ -30,6 +30,7 @@ Route::get('delete-user/{id}','UserController@deleteUser');
 //editovanie pozuivatela
 Route::get('updateUser/{id}', "UserController@showAction");
 Route::get('update/{id}', "UserController@updateUser");
+Route::get('updateUserP', "UserController@updateUserProfile");
 
 //môj profil
 Route::get('/profil', "UserController@getMe");
@@ -57,6 +58,7 @@ Route::get('deletep/{id}','InzeratController@deleteAdvPeek');
 //editovanie inzeratov
 Route::get('updateAdv/{id}', 'InzeratController@showAction');
 Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
+Route::get('updateAdvProfile/{id}', "InzeratController@updateAdvProfile");
 
 //filter inzeratov
 Route::get('/filter', 'InzeratController@megaFilter');
