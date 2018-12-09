@@ -71,7 +71,7 @@
                             </a>
                         </div>
                         <div>
-                            <a href="">
+                            <a href="/registracia-kancelarie">
                                 <button class="register-button">Realitná kancelária</button>
                             </a>
                         </div>

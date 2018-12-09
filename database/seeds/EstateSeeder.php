@@ -27,7 +27,7 @@ class EstateSeeder extends Seeder
                 'estate_type_id' => 1,
                 'users_id' => $a+1,
                 'village_id' => $a+1,
-                'UUID'=>Uuid::generate()
+                'UUID'=>"b5b27f44-39ca-47cf-a628-ff25b8701474"
 
 
             ]);

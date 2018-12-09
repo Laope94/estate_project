@@ -22,7 +22,9 @@ Route::get('/home', function (){
 
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
-Route::view('/register-kancelarie', "register_kancelarie");
+Route::get('/registracia-kancelarie', function (){
+    return view('/auth/register_kancelarie');
+});
 Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 
 //pouzivatelia vypis
