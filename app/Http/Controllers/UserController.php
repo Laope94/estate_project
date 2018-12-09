@@ -91,6 +91,21 @@ class UserController extends Controller
 
         return redirect()->action('UserController@showAllAction');
     }
+    public function updateUserProfile( Request $request){
+        $timestamp = Carbon::now()->toDateTimeString();
+        $id=Auth::id();
+        $user = User::find( $id);
+        $user->update(["name" => $request->input('name'),
+            "surname" => $request->input('surname'),
+            "village_id" => $request->input('city'),
+            "address" => $request->input('street'),
+            "email" => $request->input('email'),
+            "phone" => $request->input('phone_prim'),
+            "phone2" => $request->input('phone_sec'),
+            "updated_at" => $timestamp]);
+
+        return redirect()->action('UserController@getMe');
+    }
 
     //mazanie pouzivatelov
     public function deleteUser($id) {

@@ -1,115 +1,211 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master_layout')
+@section('title', 'Pridať inzerát')
+@section('menu')
+    @parent
+    <div class="content-container">
+        <div class="overlay">
+            <div class="login-register-container">
+                <div class="flex-container">
+                    <div class="register-card">
+                        <form action="{{ action('InzeratController@updateAdvProfile',['UUID'=>$inzerat->UUID]) }}" method="get" enctype="multipart/form-data">
+                            <h2 class="register-title">Inzerát</h2>
+                            <div>
+                                <div class="register-inner-flex">
+                                    <div class="register-half">
+                                        <div>
+                                            <h3 class="login-title">Informácie o nehnuteľnosti</h3>
+                                            <div class="register-small-flex">
+                                                <div class="login-field-container">
+                                                    <label for="ponuka">Ponuka: <span
+                                                                class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <select id="ponuka" name="ponuka" required class="login-field">
+                                                            @if ($inzerat->issale==1)
+                                                                <option value="1">Predaj</option>
+                                                                <option value="2">Prenájom</option>
+                                                            @else
+                                                                <option value="2">Prenájom</option>
+                                                                <option value="1">Predaj</option>
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="login-field-container">
+                                                    <label for="cena">Cena: <span class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <input id="cena" class="login-field" min="0" type="number"
+                                                               name="cena" required
+                                                               value="{{ $inzerat->price }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="register-small-flex">
+                                                <div class="login-field-container">
+                                                    <label for="typ">Typ nehnuteľnosti: <span
+                                                                class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <select id="typ" name="typ_nehnutelnosti" required
+                                                                class="login-field">
+                                                            @if ($inzerat->type=='Garsónka')
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="6">Iné</option>
+                                                            @elseif ($inzerat->type=='Byt')
+                                                                <option value="2">Byt</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="6">Iné</option>
+                                                            @elseif ($inzerat->type=='Rodinný dom')
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="6">Iné</option>
+                                                            @elseif ($inzerat->type=='Pozemok')
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="6">Iné</option>
+                                                            @else
+                                                                <option value="6">Iné</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                            @endif
 
-    <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="login-field-container">
+                                                    <label for="plocha">Plocha (m2): <span class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <input id="plocha" class="login-field" type="number" min="1"
+                                                               name="plocha" required
+                                                               value="{{ $inzerat->area }}">
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
+                                            <div class="register-small-flex">
+                                                <div class="login-field-container">
+                                                    <label for="pocet_izieb">Počet izieb:
+                                                        <span id="izby" class="login-field-required">*</span>
+                                                    </label>
+                                                    <div>
+                                                        <input id="pocet_izieb" class="login-field" type="number"
+                                                               min="0"
+                                                               name="pocet_izieb"  value="{{ $inzerat->room_number }}">
+                                                    </div>
+                                                </div>
+                                                <div class="login-field-container">
+                                                    <label for="poschodie">Poschodie: </label>
+                                                    <div>
+                                                        <input id="poschodie" class="login-field" type="number"
+                                                               name="poschodie"
+                                                               value="{{$inzerat->floors}}">
+                                                    </div>
+                                                </div>
+                                            </div>
 
-        .full-height {
-            height: 100vh;
-        }
+                                            <div class="register-small-flex">
+                                                <div class="login-field-container">
+                                                    <label for="kraj">Kraj: <span class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <select id="kraj" class="login-field" type="" name="kraj"
+                                                                value="{{ old('kraj') }}" required autofocus>
+                                                            <option disabled selected value>
+                                                                {{ $inzerat->region }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="login-field-container">
+                                                    <label for="okres">Okres: <span
+                                                                class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <select id="okres" class="login-field" type="" name="okres"
+                                                                value="{{ old('okres') }}" required autofocus disabled>
+                                                            <option disabled selected value>
+                                                                {{ $inzerat->district }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
+                                            <div class="register-small-flex">
+                                                <div class="login-field-container">
+                                                    <label for="city">Mesto: <span class="login-field-required">*</span></label>
+                                                    <div>
+                                                        <select id="city" class="login-field" type="" name="city"
+                                                                value="{{ old('city') }}" required autofocus disabled>
+                                                            <option disabled selected value>
+                                                                {{ $inzerat->village }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="login-field-container">
+                                                    <label for="street">Ulica:</label>
+                                                    <div>
+                                                        <input id="street" type="text" class="login-field" name="street"
+                                                               value="{{ $inzerat->street }}" autofocus>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-        .position-ref {
-            position: relative;
-        }
 
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
+                                            <div class="login-field-container">
+                                                <label for="obrazok">Fotografie:</label>
+                                                <div>
+                                                    <input class="advert-photo-upload" id="obrazok" type="file"
+                                                           name="obrazok[]" multiple>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        </div>
+                                    </div>
+                                    <div class="register-half">
+                                        <div>
+                                            <h3 class="login-title">Napíšte nám niečo viac</h3>
+                                            <div class="login-field-container">
+                                                <label for="popis">Popis: <span
+                                                            class="login-field-required">*</span></label>
+                                                <div>
+                                            <textarea class="advert-desc" id="popis" rows="3" type="text" name="popis"
+                                                      required
+                                                    >{{ $inzerat->description }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div><span class="login-field-required">*</span> Takto označené pole je
+                                                povinné.
+                                            </div>
+                                            <div class="button-wrapper">
+                                                <button type="submit" class="register-button" name="add">Uložiť
+                                                    inzerát
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Register</a>
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            Editácia inzerátu
-        </div>
-
-        <div class="content">
-            <form class="" action="{{ action('InzeratController@updateAdv', ['id' => $inzerat->id]) }}" method="get">
-                <h5>Políčka označené * je potrebné vyplniť!</h5> <br /><br />
-                <label>Ulica: </label><input type="text" name="ulica" value="{{ $inzerat->street }}"> <br /><br />
-                <label>*Plocha (m2): </label><input type="number" name="plocha" value="{{ $inzerat->area }}"> <br /><br />
-                <label>*Cena: </label><input type="number" name="cena" value="{{ $inzerat->price }}"> <br /><br />
-                <label>*Počet izieb: </label><input type="number" name="pocet_izieb" value="{{ $inzerat->room_number }}"> <br /><br />
-                <label>*Poschodie: </label><input type="number" name="poschodie" value="{{ $inzerat->floors }}"> <br /><br />
-                <label>*Popis </label><input type="text" name="popis" value="{{ $inzerat->description }}"></input> <br /><br />
-                <label>*Typ nehnuteľnosti: </label>
-                <select name="typ_nehnutelnosti">
-                    <option value=""></option>
-                    <option value="1">Byt</option>
-                    <option value="2">Garsónka</option>
-                    <option value="3">Pozemok</option>
-                    <option value="4">Rodinný dom</option>
-                </select> <br /> <br />
-                <label>*Okres: </label>
-                <select name="obec">
-                    <option value=""></option>
-                    <option value="1">Nitra</option>
-                    <option value="2">Kuraľany</option>
-                    <option value="3">Nová Baňa</option>
-                </select> <br /> <br />
-                <button type="submit" name="edit">Editovať</button>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+    <script src="{{ asset('js/jquery-custom.js') }}"></script>
+@endsection
