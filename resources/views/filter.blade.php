@@ -27,9 +27,12 @@
                                     <div class="login-field-container">
                                         <label for="type"><strong>Druh nehnuteľnosti</strong></label><br>
                                         <select id="type" class="small-field" name="type[]">
-                                            <option name="type[]" value="1">Byt</option>
-                                            <option name="type[]" value="2">Dom</option>
-                                            <option name="type[]" value="3">Pozemok</option>
+                                            <option name="type[]" value="Garsónka">Garsónka</option>
+                                            <option name="type[]" value="Byt">Byt</option>
+                                            <option name="type[]" value="Rodinný dom">Rodinný dom</option>
+                                            <option name="type[]" value="Nebytový priestor">Nebytový priestor</option>
+                                            <option name="type[]" value="Pozemok">Pozemok</option>
+                                            <option name="type[]" value="Iné">Iné</option>
                                         </select>
                                     </div>
                                     <div class="login-field-container">
