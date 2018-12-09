@@ -46,19 +46,19 @@ Route::post('/pridajInzerat', 'InzeratController@pridajInzerat');
 Route::get('/inzeraty', 'InzeratController@showAllAction');
 
 //detail inzerátu
-Route::get('inzerat/{id}', 'InzeratController@estateDetail');
+Route::get('inzerat/{UUID}', 'InzeratController@estateDetail');
 
 //inzerat peek estatePeek
 Route::get('inzeratpeek', 'InzeratController@estatePeek');
 
 //mazanie inzeratu
 Route::get('delete/{id}','InzeratController@deleteAdv');
-Route::get('deletep/{id}','InzeratController@deleteAdvPeek');
+Route::get('deletep/{UUID}','InzeratController@deleteAdvPeek');
 
 //editovanie inzeratov
-Route::get('updateAdv/{id}', 'InzeratController@showAction');
-Route::get('updateAdvert/{id}', "InzeratController@updateAdv");
-Route::get('updateAdvProfile/{id}', "InzeratController@updateAdvProfile");
+Route::get('updateAdv/{UUID}', 'InzeratController@showAction');
+Route::get('updateAdvert/{UUID}', "InzeratController@updateAdv");
+Route::get('updateAdvProfile/{UUID}', "InzeratController@updateAdvProfile");
 
 //filter inzeratov
 Route::get('/filter', 'InzeratController@megaFilter');

@@ -4,7 +4,7 @@
                 <div class="peek-title">
                     <?php
                     if(($issale)=== 1){$sale="Predaj";}else{$sale="Prenájom";}
-                    if(($type)=== "Dom" || ($type) === "Byt" ){
+                    if(($type)=== "Rodinný dom" || ($type) === "Byt" ){
                         echo $sale.': '.$room_number.'-izbový '.strtolower($type).', '.$village;
                     }
                     else{
@@ -22,21 +22,21 @@
             </div>
             <div class="peek-half">
                 <div class="peek-group">
-                    <a href='/inzerat/{{ $inzerat->id }}' title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
-                    <a href='updateAdv/{{ $inzerat->id }}' title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
-                        <a href='deletep/{{ $inzerat->id }}' title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
+                    <a href='/inzerat/{{ $inzerat->UUID }}' title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
+                    <a href='updateAdv/{{ $inzerat->UUID }}' title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
+                        <a href='deletep/{{ $inzerat->UUID }}' title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
                 </div>
                 <div class="peek-detail-container">
-                    <span class="peek-label">Typ inzerátu: <?php echo $sale?> </span> <br>
-                    <span class="peek-label">Typ nehnuteľnosti: <?php echo $type?> </span> <br>
-                    <span class="peek-label">Počet izieb:<?php echo $room_number?> </span> <br>
+                    <span class="peek-label">Typ inzerátu:  {{$sale}} </span> <br>
+                    <span class="peek-label">Typ nehnuteľnosti: {{$type}} </span> <br>
+                    <span class="peek-label">Počet izieb:{{$room_number}}</span> <br>
                     <span class="peek-label">Kraj:<?php echo str_replace("kraj", "", $region);?> </span> <br>
-                    <span class="peek-label">Okres: <?php echo $district?></span> <br>
-                    <span class="peek-label">Mesto: <?php echo $village?></span> <br>
-                    <span class="peek-label">Ulica: <?php echo $street?></span> <br>
-                    <span class="peek-label">Cena: <?php echo $price?></span> <br>
-                    <span class="peek-label">Pridaný: <?php echo $created_at?></span> <br>
-                    <span class="peek-label">Naposledy upravený:<?php echo $updated_at?> </span> <br>
+                    <span class="peek-label">Okres: {{$district}}</span> <br>
+                    <span class="peek-label">Mesto: {{$village}}</span> <br>
+                    <span class="peek-label">Ulica: {{$street}}</span> <br>
+                    <span class="peek-label">Cena: {{$price}}</span> <br>
+                    <span class="peek-label">Pridaný: {{$created_at}}</span> <br>
+                    <span class="peek-label">Naposledy upravený:{{$updated_at}} </span> <br>
                 </div>
             </div>
         </div>

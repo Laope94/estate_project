@@ -7,7 +7,7 @@
             <div class="login-register-container">
                 <div class="flex-container">
                     <div class="register-card">
-                        <form action="{{ action('InzeratController@updateAdvProfile',['id'=>$inzerat->id]) }}" method="get" enctype="multipart/form-data">
+                        <form action="{{ action('InzeratController@updateAdvProfile',['UUID'=>$inzerat->UUID]) }}" method="get" enctype="multipart/form-data">
                             <h2 class="register-title">Inzerát</h2>
                             <div>
                                 <div class="register-inner-flex">
@@ -20,11 +20,13 @@
                                                                 class="login-field-required">*</span></label>
                                                     <div>
                                                         <select id="ponuka" name="ponuka" required class="login-field">
-                                                                <?php if(($inzerat->issale)=== 1){echo '<option value="1">Predaj</option>';
-                                                                echo '<option value="2">Prenájom</option>';}
-                                                                else{echo '<option value="2">Prenájom</option>';
-                                                                    echo '<option value="1">Predaj</option>';}
-                                                                ?>
+                                                            @if ($inzerat->issale==1)
+                                                                <option value="1">Predaj</option>
+                                                                <option value="2">Prenájom</option>
+                                                            @else
+                                                                <option value="2">Prenájom</option>
+                                                                <option value="1">Predaj</option>
+                                                            @endif
                                                         </select>
                                                     </div>
                                                 </div>
@@ -44,54 +46,44 @@
                                                     <div>
                                                         <select id="typ" name="typ_nehnutelnosti" required
                                                                 class="login-field">
+                                                            @if ($inzerat->type=='Garsónka')
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="6">Iné</option>
+                                                            @elseif ($inzerat->type=='Byt')
+                                                                <option value="2">Byt</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="6">Iné</option>
+                                                            @elseif ($inzerat->type=='Rodinný dom')
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="6">Iné</option>
+                                                            @elseif ($inzerat->type=='Pozemok')
+                                                                <option value="5">Pozemok</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="6">Iné</option>
+                                                            @else
+                                                                <option value="6">Iné</option>
+                                                                <option value="1">Garsónka</option>
+                                                                <option value="2">Byt</option>
+                                                                <option value="3">Rodinný dom</option>
+                                                                <option value="4">Nebytový priestor</option>
+                                                                <option value="5">Pozemok</option>
+                                                            @endif
 
-                                                            <?php if(($inzerat->type)== 'Garsónka'){
-                                                                echo ' <option value="1">Garsónka</option>
-                                                            <option value="2">Byt</option>
-                                                            <option value="3">Rodinný dom</option>
-                                                            <option value="4">Nebytový priestor</option>
-                                                            <option value="5">Pozemok</option>
-                                                            <option value="6">Iné</option>';
-                                                                }
-                                                            else if(($inzerat->type)== 'Byt'){echo
-                                                            '<option value="2">Byt</option>
-                                                            <option value="1">Garsónka</option>
-                                                            <option value="3">Rodinný dom</option>
-                                                            <option value="4">Nebytový priestor</option>
-                                                            <option value="5">Pozemok</option>
-                                                            <option value="6">Iné</option>';
-                                                                }
-                                                            else if(($inzerat->type)== 'Rodinný dom'){echo
-                                                            '<option value="3">Rodinný dom</option>
-                                                            <option value="1">Garsónka</option>
-                                                            <option value="2">Byt</option>
-                                                            <option value="4">Nebytový priestor</option>
-                                                            <option value="5">Pozemok</option>
-                                                            <option value="6">Iné</option>';
-                                                            }
-                                                            else if(($inzerat->type)== 'Nebytový priestor'){echo
-                                                            '<option value="4">Nebytový priestor</option>
-                                                            <option value="1">Garsónka</option>
-                                                            <option value="2">Byt</option>
-                                                            <option value="3">Rodinný dom</option>
-                                                            <option value="5">Pozemok</option>
-                                                            <option value="6">Iné</option>';
-                                                            }else if(($inzerat->type)== 'Pozemok'){
-                                                                echo '
-                                                               <option value="5">Pozemok</option>
-                                                             <option value="1">Garsónka</option>
-                                                            <option value="2">Byt</option>
-                                                            <option value="3">Rodinný dom</option>
-                                                            <option value="4">Nebytový priestor</option>
-                                                            <option value="6">Iné</option>';
-                                                            }else{echo'<option value="6">Iné</option>
-                                                            <option value="1">Garsónka</option>
-                                                            <option value="2">Byt</option>
-                                                            <option value="3">Rodinný dom</option>
-                                                            <option value="4">Nebytový priestor</option>
-                                                            <option value="5">Pozemok</option>
-                                                            ';}
-                                                            ?>
+
                                                         </select>
                                                     </div>
                                                 </div>

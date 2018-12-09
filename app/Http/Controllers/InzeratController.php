@@ -71,8 +71,8 @@ class InzeratController extends Controller
 
 
     //editacia inzeratu
-    public function showAction($id){
-        $inzerat = Eetvview::find($id);
+    public function showAction($UUID){
+        $inzerat = Eetvview::where('UUID',$UUID)->first();
 
         return view("inzerat/edit_inzerat", ['inzerat' => $inzerat]);
     }
@@ -85,9 +85,9 @@ class InzeratController extends Controller
        return view("home", ['inzeraty' => $inzeraty]);
 
      }
-    public function estateDetail($id){
+    public function estateDetail($UUID){
         //všetky detaily inzerátu   ------funguje
-        $inzerat = Eetvview::find($id);
+        $inzerat = Eetvview::where('UUID',$UUID)->first();
 
          $pouzivatel= Usersvillageview::find($inzerat->users_id);
 
@@ -103,13 +103,9 @@ class InzeratController extends Controller
 
 
 
-
-
-
-
-    public function updateAdv(Request $request, $id){
+    public function updateAdv(Request $request, $UUID){
         $timestamp = Carbon::now()->toDateTimeString();
-        $inzerat = Inzerat::find($id);
+        $inzerat = Inzerat::where('UUID',$UUID)->first();
         $inzerat->update(["street" => $request->input('street'),
             "area"=> $request->input('plocha'),
             "price" => $request->input('cena'),
@@ -125,11 +121,11 @@ class InzeratController extends Controller
         return redirect()->action('InzeratController@showAllAction');
     }
 
-    public function updateAdvProfile(Request $request, $id){
+    public function updateAdvProfile(Request $request, $UUID){
        //funguje ale do viewu treba opakovane zadávať do comboboxov ( option disabled)
         $timestamp = Carbon::now()->toDateTimeString();
 
-        $inzerat = Inzerat::find($id);
+        $inzerat = Inzerat::where('UUID',$UUID)->first();;
         $inzerat->update(["street" => $request->input('street'),
             "area"=> $request->input('plocha'),
             "price" => $request->input('cena'),
@@ -147,14 +143,14 @@ class InzeratController extends Controller
 
 
     //mazanie inzeratov
-    public function deleteAdv($id) {
-        $user = Inzerat::find($id);
+    public function deleteAdv($UUID) {
+        $user = Inzerat::where('UUID',$UUID)->first();
         $user->delete();
 
         return redirect()->action('InzeratController@showAllAction');
     }
-    public function deleteAdvPeek($id) {
-        $inzerat = Inzerat::find($id);
+    public function deleteAdvPeek($UUID) {
+        $inzerat = Inzerat::where('UUID',$UUID)->first();
         $inzerat->delete();
 
         return redirect()->action('UserController@getMe');

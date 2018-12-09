@@ -62,7 +62,8 @@
             <div class="flex-container">
                 @foreach($inzeraty as $inzerat)
                 <div class="newest-card">@include('inzerat/inzerat_karta', ['fotka'=>$inzerat->pictures,'typ'=>$inzerat->type,'cena'=>$inzerat->price,
-                 'predaj'=>$inzerat->issale, 'lokalita'=>$inzerat->village, 'rozloha'=>$inzerat->area, 'izby'=>$inzerat->room_number, 'id'=>$inzerat->id])</div>
+                 'predaj'=>$inzerat->issale, 'lokalita'=>$inzerat->village, 'rozloha'=>$inzerat->area, 'izby'=>$inzerat->room_number, 'id'=>$inzerat->id,
+                 'UUID'=>$inzerat->UUID])</div>
                     @endforeach
             </div>
         </div>
