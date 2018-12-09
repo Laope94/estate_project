@@ -31,20 +31,20 @@ class InzeratController extends Controller
     $village = Village_model::where("fullname", "=", $help)->first();
     $vil_id = $village->id;
 
-    $uuid = Uuid::generate();
-    $ulica = $request->input('street');
-    $plocha = $request->input('plocha');
-    $cena = $request->input('cena');
-    $izby = $request->input('pocet_izieb');
-    $poschodie = $request->input('poschodie');
-    $fotografie = $this->foto($request);
-    $popis = $request->input('popis');
-    $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
-    $village_id = $vil_id;
-    $timestamp = Carbon::now()->toDateTimeString();
-    $token = $request->input('_token');
-    $issale = 0;
-    $pouzivatel = Auth::id();
+        $uuid = Uuid::generate();
+        $ulica = $request->input('street');
+        $plocha = $request->input('plocha');
+        $cena = $request->input('cena');
+        $izby = $request->input('pocet_izieb');
+        $poschodie = $request->input('poschodie');
+        $fotografie = $this->foto($request);
+        $popis = $request->input('popis');
+        $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
+        $village_id = $vil_id;
+        $timestamp = Carbon::now()->toDateTimeString();
+        $token = $request->input('_token');
+        $issale = $request->input('ponuka');
+        $pouzivatel = Auth::id();
 
 
     $inzerat = new Inzerat();
@@ -199,7 +199,7 @@ class InzeratController extends Controller
             //s tymto treba este nieco spravit, aby to fungovalo spravne, pripadne tam dat combobox
             if(isset($types)){
                 foreach ($types as $type) {
-                    $query->where('estate_type_id', '=', $type);
+                    $query->where('type', '=', $type);
                 }
             }
 
@@ -227,6 +227,12 @@ class InzeratController extends Controller
                 $query->where('room_number', '=', $room_number);
             }
         })->get();
+        return view("filter", ['estates' => $estates]);
+    }
+
+    public function filter(Request $request){
+        $district = $request->input('filter');
+        $estates = Eetvview::where('district', '=', $district)->get();
         return view("filter", ['estates' => $estates]);
     }
 }

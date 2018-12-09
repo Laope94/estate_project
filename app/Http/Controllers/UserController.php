@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Eetvview;
 use App\Models\Usersvillageview;
 use App\Models\Kancelaria;
+use App\Models\Village_model;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,12 +93,15 @@ class UserController extends Controller
         return redirect()->action('UserController@showAllAction');
     }
     public function updateUserProfile( Request $request){
+        $help =  $request['city'];
+        $village = Village_model::where("fullname", "=", $help)->first();
+        $vil_id = $village->id;
         $timestamp = Carbon::now()->toDateTimeString();
         $id=Auth::id();
         $user = User::find( $id);
         $user->update(["name" => $request->input('name'),
             "surname" => $request->input('surname'),
-            "village_id" => $request->input('city'),
+            "village_id" => $vil_id,
             "address" => $request->input('street'),
             "email" => $request->input('email'),
             "phone" => $request->input('phone_prim'),
