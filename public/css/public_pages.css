@@ -379,17 +379,19 @@ textarea{
 }
 
 .card-image-container {
-    width: 390px;
-    background: #635D5D;
-    margin: 5px 5px 5px 5px;
+    display: flex;
+    width: 100%;
+    height: 270px;
+    margin: 5px 0 5px 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-image{
     image-resolution: 300dpi;
     max-width: 384px;
-    max-height: 262px;
-    height: auto;
-    padding: 3px 3px 3px 3px;}
+    max-height: 264px;
+}
 
 .card-round-container {
     width: 100%;
@@ -601,6 +603,10 @@ textarea{
 
 .peek-sum{
     padding: 5px 10px 5px 10px;
+}
+
+.peek-more-container{
+    margin-top:20px;
 }
 
 .peek-half{

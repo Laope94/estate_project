@@ -114,11 +114,11 @@
                             <h3 class="login-title">Nájdené inzeráty</h3>
                             <div class="flex-container">
                                 @foreach($estates as $estate)
-                                    <div class="newest-card">@include('inzerat/inzerat_karta', ['fotka'=>$estate->pictures,'typ'=>$estate->type,'cena'=>$estate->price,
+                                    <div class="newest-card">@include('inzerat/inzerat_karta', ['uuid'=>$estate->UUID,'typ'=>$estate->type,'cena'=>$estate->price,
                       'predaj'=>$estate->issale, 'lokalita'=>$estate->village, 'rozloha'=>$estate->area, 'izby'=>$estate->room_number, 'id'=>$estate->id])</div>
                                 @endforeach
-                                @if($estates.count()==0)
-                                    <strong>Vybraným kritériam nevyhovuje žiadny inzerát./strong>
+                                @if(count($estates)==0)
+                                    <strong>Vybraným kritériam nevyhovuje žiadny inzerát.</strong>
                                     @endif
                             </div>
                         </div>

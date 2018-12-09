@@ -1,7 +1,20 @@
 <div class="card-container">
     <div class="card-image-container">
-
-        <img class="card-image" src="{{asset('/images/'.$fotka.'.jpg')}}">
+        @php
+            $images_list = array();
+            $images_list = glob('images/foundation/'.$uuid.'/*');
+            $images_count = count($images_list);
+         @endphp
+        @if($images_count>0)
+            @php
+            $image = $images_list[0];
+            @endphp
+            @else
+            @php
+            $image = 'images/no-photo.jpg'
+            @endphp
+            @endif
+        <img class="card-image" src="{{asset($image)}}">
 
     </div>
     <div class="card-round-container">

@@ -95,7 +95,7 @@
 
                                             <div>
                                                 @foreach($inzeraty as $inzerat)
-                                                    @include('inzerat.inzerat_peek', ['pictures'=>$inzerat->pictures,'type'=>$inzerat->type,'price'=>$inzerat->price,
+                                                    @include('inzerat.inzerat_peek', ['uuid'=>$inzerat->UUID,'type'=>$inzerat->type,'price'=>$inzerat->price,
                                                     'issale'=>$inzerat->issale,'region'=>$inzerat->region,'district'=>$inzerat->district, 'village'=>$inzerat->village,
                                                      'area'=>$inzerat->area, 'room_number'=>$inzerat->room_number, 'id'=>$inzerat->id,'created_at'=>$inzerat->created_at,
                                                      'updated_at'=>$inzerat->updated_at,'street'=>$inzerat->street,])
