@@ -17,7 +17,7 @@ class CreateEstatesTable extends Migration
             $table->increments('id');
             $table->string('street')->nullable();
             $table->integer('area');
-            $table->decimal('price');
+            $table->double('price');
             $table->integer('room_number')->nullable();
             $table->integer('floors')->nullable();
             $table->string('issale');

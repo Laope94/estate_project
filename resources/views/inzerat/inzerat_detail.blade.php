@@ -32,7 +32,7 @@
                                     <strong>Počet izieb:</strong> {{$inzerat ->room_number}}<br>
                                     <strong>Poschodie:</strong> {{$inzerat ->floors}}<br>
                                     <strong> Rozloha:</strong> {{$inzerat ->area}} m<sup>2</sup><br>
-                                    <strong> Kraj:</strong> {{$inzerat ->region}}<br>
+                                    <strong> Kraj:</strong> <?php echo str_replace("kraj", "", $region);?><br>
                                     <strong>Okres:</strong> {{$inzerat ->district}}<br>
                                     <strong>Mesto:</strong> {{$inzerat ->village}} <br>
                                     <strong>Ulica:</strong> {{$inzerat ->street}}

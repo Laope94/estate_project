@@ -25,6 +25,8 @@ class CreateAgenciesTable extends Migration
             $table->string('ICO');
             $table->string('DIC');
             $table->string('UUID');
+            $table->unsignedInteger('village_id')->nullable();
+            $table->foreign('village_id')->references('id')->on('villages');
             $table->rememberToken();
             $table->timestamps();
         });

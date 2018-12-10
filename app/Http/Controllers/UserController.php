@@ -23,7 +23,7 @@ class UserController extends Controller
 {
 
     public function getMe(){
-        //TODO: pridať ineráty usera
+        //funguje
         $id = Auth::id();
         $user = Usersvillageview::find($id);
         $inzeraty = Eetvview::where('users_id', $id)->orderBy('id', 'desc')->get();
@@ -32,24 +32,23 @@ class UserController extends Controller
 
     //registracia kancelarie
     public function registraciaKancelarie(Request $request){
+        $help =  $request['city'];
+        $village = Village_model::where("fullname", $help)->first();
+
         $uuid = Uuid::generate();
-        $nazov = $request->input('nazov');
+        $nazov = $request->input('estate_name');
         $konatel = $request->input('konatel');
-        $adresa = $request->input('adresa');
-        $telefon = $request->input('tel_cislo');
-        $telefon2 = $request->input('tel_num2');
+        $adresa = $request->input('street');
+        $telefon = $request->input('tel_1');
+        $telefon2 = $request->input('tel_2');
         $mail = $request->input('email');
         $iban = $request->input('iban');
         $ico = $request->input('ico');
         $dic = $request->input('dic');
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
+        $village_id=$village->id;
 
-        if($telefon2 == null){
-            $telefon2 == null;
-        } else {
-            $telefon2 = $request->input('tel_num2');
-        }
 
         $kancel = new Kancelaria();
         $kancel->name = $nazov;
@@ -62,12 +61,42 @@ class UserController extends Controller
         $kancel->ICO = $ico;
         $kancel->DIC = $dic;
         $kancel->UUID = $uuid;
+        $kancel->village_id=$village_id;
+        $kancel->remember_token = $token;
+        $kancel->created_at = $timestamp;
+        $kancel->updated_at = $timestamp;
+        $kancel->save();
+        $agency=Kancelaria::where('UUID',$uuid)->first();
+        $id_agency= $agency->id;
+
+        //admin kancelárie
+        $uuid = Uuid::generate();
+        $meno = $request->input('name');
+        $priezvisko = $request->input('surname');
+        $telefon = $request->input('tel_a');
+        $mail = $request->input('email_a');
+        $heslo = $request->input('password');
+        $timestamp = Carbon::now()->toDateTimeString();
+        $token = $request->input('_token');
+
+
+//admin kancelarie opravnenie 4
+        $kancel = new User();
+        $kancel->name = $meno;
+        $kancel->surname = $priezvisko;
+        $kancel->phone = $telefon;
+        $kancel->email = $mail;
+        $kancel->password = bcrypt($heslo);
+        $kancel->UUID = $uuid;
+        $kancel->privilege = 4;
+        $kancel->agency_id = $id_agency;
         $kancel->remember_token = $token;
         $kancel->created_at = $timestamp;
         $kancel->updated_at = $timestamp;
         $kancel->save();
 
-        return redirect()->action('UserController@showAllAction');
+
+        return redirect()->action('InzeratController@mostRecentEstates');
     }
 
     //editacia pouzivatela

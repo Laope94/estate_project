@@ -5,10 +5,10 @@
                     <?php
                     if(($issale)=== 1){$sale="Predaj";}else{$sale="Prenájom";}
                     if(($type)=== "Rodinný dom" || ($type) === "Byt" ){
-                        echo $sale.': '.$room_number.'-izbový '.strtolower($type).', '.$village;
+                        echo $sale.': '.$room_number.'-izbový '.mb_strtolower($type).', '.$village;
                     }
                     else{
-                        echo $sale.': '.strtolower($type).', '.$area.'m2 '.', '.$village;
+                        echo $sale.': '.mb_strtolower($type).', '.$area.'m2 '.', '.$village;
                     }?>
                 </div>
             <div>
