@@ -64,6 +64,9 @@ Route::get('deletep/{UUID}','InzeratController@deleteAdvPeek');
 //editovanie inzeratov
 Route::get('updateAdv/{UUID}', 'InzeratController@showAction');
 Route::get('updateAdvert/{UUID}', "InzeratController@updateAdv");
+Route::get('/byt-v-dome', function (){
+    return view('bytvdome/bytvdome');
+});
 Route::get('updateAdvProfile/{UUID}', "InzeratController@updateAdvProfile");
 
 //filter inzeratov
