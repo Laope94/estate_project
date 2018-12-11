@@ -1,0 +1,139 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button:focus{
+    outline: none;
+}
+
+body {
+    margin: 0%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+h1{
+    font-weight: lighter;
+    margin: 0;
+}
+
+footer{
+    width: 100%;
+    height: 5%;
+    line-height: 15px;
+    font-size: 15px;
+    color: #737373;
+    background-color: #403940 !important;
+    text-align: center;
+}
+
+footer div{
+    padding-top: 8px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.dash{
+    position: relative;
+    min-height:100%;
+    width: 400px;
+    background-color: #403940;
+    color: white;
+    z-index: 10;
+}
+
+.dash-title-container{
+    width: 100%;
+    text-align: center;
+    background-color: #262626;
+}
+
+.dash-title-container h1{
+    font-size: 40px;
+}
+
+.dash-title-row{
+    font-size: 30px;
+    height: 30px;
+    padding: 10px;
+}
+
+.dash-title-row a{
+    color: white;
+}
+
+.dash-to-home{
+    font-weight: lighter;
+    float: left;
+    font-size: 20px;
+    line-height: 0;
+}
+
+.dash nav{
+    width: 100%;
+}
+
+.dash-link-container {
+    width: 90%;
+    height: 35px;
+    font-size: 25px;
+    padding-left: 10%;
+    color: whitesmoke;
+    font-weight: lighter;
+}
+
+.dash-link-container:hover {
+    background-color: #4D444D;
+
+}
+
+.dash-container{
+    display: flex;
+}
+
+.dash-awesome{
+    font-size: 30px;
+}
+
+.dash-awesome:hover{
+    cursor: pointer;
+}
+
+.dash-content{
+    position: relative;
+    flex-grow: 1;
+    height:95%;
+    padding: 0px 100px 0px 100px;
+    overflow: auto;
+    z-index: 5;
+}
+
+.dash-display{
+    position:fixed;
+    top: 100px;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #262626;
+    z-index: 15;
+}
+
+.dash-display:hover{
+    cursor: pointer;
+}
+
+.dash-display i{
+    color: white;
+    font-size: 40px;
+    margin: 5px;
+}
