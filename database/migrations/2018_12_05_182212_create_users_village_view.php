@@ -13,8 +13,8 @@ class CreateUsersVillageView extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW user_villageView AS SELECT u.id, u.name, u.surname,a.name as agency, u.address, u.email, u.phone, u.phone2, 
-        v.fullname as village, d.name as district, r.name as region
+        DB::statement("CREATE VIEW user_villageView AS SELECT u.id, u.name, u.surname,a.name as agency, u.address, u.email, u.phone, u.phone2,
+        u.uuid,u.privilege, v.fullname as village, d.name as district, r.name as region
           FROM users u, villages v, districts d, regions r, agencies a
           WHERE  u.village_id= v.id AND v.district_id=d.id AND d.region_id=r.id AND u.agency_id=a.id");
     }

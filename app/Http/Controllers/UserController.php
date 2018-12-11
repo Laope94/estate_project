@@ -22,17 +22,19 @@ use Webpatser\Uuid\Uuid;
 class UserController extends Controller
 {
 
-    public function getMe(){
+    public function getMe()
+    {
         //funguje
         $id = Auth::id();
         $user = Usersvillageview::find($id);
         $inzeraty = Eetvview::where('users_id', $id)->orderBy('id', 'desc')->get();
-        return view("user/profile", ['user' => $user],['inzeraty'=>$inzeraty]);
+        return view("user/profile", ['user' => $user], ['inzeraty' => $inzeraty]);
     }
 
     //registracia kancelarie
-    public function registraciaKancelarie(Request $request){
-        $help =  $request['city'];
+    public function registraciaKancelarie(Request $request)
+    {
+        $help = $request['city'];
         $village = Village_model::where("fullname", $help)->first();
 
         $uuid = Uuid::generate();
@@ -47,7 +49,7 @@ class UserController extends Controller
         $dic = $request->input('dic');
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
-        $village_id=$village->id;
+        $village_id = $village->id;
 
 
         $kancel = new Kancelaria();
@@ -61,13 +63,13 @@ class UserController extends Controller
         $kancel->ICO = $ico;
         $kancel->DIC = $dic;
         $kancel->UUID = $uuid;
-        $kancel->village_id=$village_id;
+        $kancel->village_id = $village_id;
         $kancel->remember_token = $token;
         $kancel->created_at = $timestamp;
         $kancel->updated_at = $timestamp;
         $kancel->save();
-        $agency=Kancelaria::where('UUID',$uuid)->first();
-        $id_agency= $agency->id;
+        $agency = Kancelaria::where('UUID', $uuid)->first();
+        $id_agency = $agency->id;
 
         //admin kancelárie
         $uuid = Uuid::generate();
@@ -99,38 +101,46 @@ class UserController extends Controller
         return redirect()->action('InzeratController@mostRecentEstates');
     }
 
+    public function updateKancelarie(Request $request, $uuid)
+    {
+        $help = $request['city'];
+        $village = Village_model::where("fullname", $help)->first();
+
+        $timestamp = Carbon::now()->toDateTimeString();
+        $kancelaria = Kancelaria::where('UUID', $uuid)->first();
+        $kancelaria->update(["name" => $request->input('meno'),
+            "director" => $request->input('priezvisko'),
+            "address" => $request->input('adresa'),
+            "phone" => $request->input('tel_num'),
+            "phone2" => $request->input('tel_num2'),
+            "email" => $request->input('mail'),
+            "IBAN" => $request->input('iban'),
+            "ICO" => $request->input('ico'),
+            "DIC" => $request->input('dic'),
+            "village_id" => $village->id,
+            "updated_at" => $timestamp]);
+
+        return redirect()->action('InzeratController@mostRecentEstates');
+    }
+
     //editacia pouzivatela
-    public function showAction($id){
+    public function showAction($id)
+    {
         $user = User::find($id);
         return view("profile", ['user' => $user]);
     }
 
-    public function updateUser($id, Request $request){
-        $timestamp = Carbon::now()->toDateTimeString();
-        $user = User::where("id", "=", $id)->first();
-        $user->update(["name" => $request->input('meno'),
-            "surname" => $request->input('priezvisko'),
-            "IBAN"=> $request->input('iban'),
-            "city" => $request->input('mesto'),
-            "address" => $request->input('adresa'),
-            "email" => $request->input('mail'),
-            "phone" => $request->input('tel_num'),
-            "phone2" => $request->input('tel_num2'),
-            "privilege" => 0,
-            "updated_at" => $timestamp]);
-
-        return redirect()->action('UserController@showAllAction');
-    }
-    public function updateUserProfile( Request $request){
-        $help =  $request['city'];
+    public function updateUserProfile(Request $request)
+    {
+        $help = $request['city'];
         $village = Village_model::where("fullname", "=", $help)->first();
-        $vil_id = $village->id;
+
         $timestamp = Carbon::now()->toDateTimeString();
-        $id=Auth::id();
-        $user = User::find( $id);
+        $id = Auth::id();
+        $user = User::find($id);
         $user->update(["name" => $request->input('name'),
             "surname" => $request->input('surname'),
-            "village_id" => $vil_id,
+            "village_id" => $village->id,
             "address" => $request->input('street'),
             "email" => $request->input('email'),
             "phone" => $request->input('phone_prim'),
@@ -140,23 +150,5 @@ class UserController extends Controller
         return redirect()->action('UserController@getMe');
     }
 
-    //mazanie pouzivatelov
-    public function deleteUser($id) {
-        $user = User::find($id);
-        $user->delete();
 
-        return redirect()->action('UserController@showAllAction');
-    }
-
-    //vypis pouzivatelov
-    public function showAllAction(){
-        $users = User::all();
-        return view("users", ['users' => $users]);
-    }
-
-    //vypis kancelarii
-    public function showKancelarie(){
-        $kancle = Kancelaria::all();
-        return view("kancelarie", ['kancelarie' => $kancle]);
-    }
 }

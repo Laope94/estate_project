@@ -20,6 +20,33 @@ Route::get('/home', function (){
     return redirect('/');
 });
 
+// ---------------------------------------ADMIN-----------------------------------------------------
+//users
+Route::view('/add-user', "");
+Route::post('/addUser', 'AdminController@addUser');
+Route::get('showUsers', 'AdminController@showUsers');
+Route::get('showUsersOfPrivilege/{privilege}', 'AdminController@showUsersOfPrivilege');
+Route::get('showUsersOfAgency/{UUID}', 'AdminController@showUsersOfAgency');
+
+Route::get('updateUsr/{UUID}', 'AdminController@showUser');
+Route::get('updateUser/{UUID}', "AdminController@updateUser");
+Route::get('deleteUser/{UUID}', "AdminController@deleteUser");
+
+//estates
+Route::get('showEstates', 'AdminController@showEstates');
+Route::get('showEstatesOfUser/{UUID}', 'AdminController@showEstatesOfUser');
+Route::get('showEstatesOfAgency/{UUID}', 'AdminController@showEstatesOfAgency');
+
+Route::get('updateEstt/{UUID}', 'AdminController@showEstate');
+Route::get('updateEstate/{UUID}', "AdminController@updateEstate");
+Route::get('deleteEstate{UUID}', "AdminController@deleteEstate");
+
+//agencies
+Route::get('showAgencies', 'AdminController@showAgencies');
+Route::get('updateAgnc/{UUID}', 'AdminController@showAgency');
+Route::get('updateAgency/{UUID}', "AdminController@updateAgency");
+Route::get('deleteAgency/{UUID}', "AdminController@deleteAgency");
+
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
 Route::get('/registracia-kancelarie', function (){
@@ -30,12 +57,8 @@ Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 //pouzivatelia vypis
 Route::get('/pouzivatelia', "UserController@showAllAction");
 
-//mazanie pouzivatela
-Route::get('delete-user/{id}','UserController@deleteUser');
 
 //editovanie pozuivatela
-Route::get('updateUser/{id}', "UserController@showAction");
-Route::get('update/{id}', "UserController@updateUser");
 Route::get('updateUserP', "UserController@updateUserProfile");
 
 //môj profil
@@ -80,12 +103,6 @@ Route::get('/najnovsie', 'InzeratController@mostRecentEstates');
 Route::view('/prihlasenie', "/auth/login");
 Route::post('/prihlaseny', 'AuthController@login');
 
-Route::post('pridajAdmina',['uses' => 'AdminController@pridajAdmina']);
-Route::get('adminform',['as'=> 'Insert','uses' => 'AdminController@adminForm']);
-Route::get('zobrazadminov',['as'=> 'Update','uses' => 'AdminController@zobrazAdminov']);
-Route::get('zobrazadmina/{id}',['as'=> 'Update','uses' => 'AdminController@zobrazAdmina']);
-Route::post('editujadmina/{id}',['as'=> 'Update','uses' => 'AdminController@upravAdmina']);
-Route::get('vymazadmina/{id}',['as'=> 'Delete','uses' => 'AdminController@vymazAdmina']);
 
 Route::get('/',['as'=> 'HOME','uses' => 'InzeratController@mostRecentEstates']);
 

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'surname' => "Priezvisko".uniqid(),
             'address' => "adresa".uniqid(),
             'email' => str_random(10).'@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
             'privilege'=>1,
