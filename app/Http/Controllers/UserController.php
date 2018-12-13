@@ -27,7 +27,11 @@ class UserController extends Controller
         $id = Auth::id();
         $user = Usersvillageview::find($id);
         $inzeraty = Eetvview::where('users_id', $id)->orderBy('id', 'desc')->get();
-        return view("user/profile", ['user' => $user],['inzeraty'=>$inzeraty]);
+        if(Auth::user() == null){
+            return redirect('/home');
+        } else {
+            return view("user/profile", ['user' => $user],['inzeraty'=>$inzeraty]);
+        }
     }
 
     //registracia kancelarie
