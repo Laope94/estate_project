@@ -25,7 +25,6 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
-    'App\\Models\\Admin_model' => $baseDir . '/app/Models/Admin_model.php',
     'App\\Models\\District_model' => $baseDir . '/app/Models/District_model.php',
     'App\\Models\\Eetvview' => $baseDir . '/app/Models/Eetvview.php',
     'App\\Models\\Inzerat' => $baseDir . '/app/Models/Inzerat.php',

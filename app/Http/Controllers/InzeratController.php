@@ -189,7 +189,6 @@ class InzeratController extends Controller
             "price" => $request->input('cena'),
             "room_number" => $request->input('pocet_izieb'),
             "floors" => $request->input('poschodie'),
-            "pictures" => "sample", //$request->input('foto'),
             "description" => $request->input('popis'),
             "issale" => $request->input('ponuka'),
             "estate_type_id" => $request->input('typ_nehnutelnosti'),

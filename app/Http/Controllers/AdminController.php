@@ -146,7 +146,6 @@ class AdminController
             "room_number" => $request->input('pocet_izieb'),
             "floors" => $request->input('poschodie'),
             "issale" => $request->input('ponuka'),
-            "pictures" => "sample", //$request->input('foto'),
             "description" => $request->input('popis'),
             "estate_type_id" => $request->input('typ_nehnutelnosti'),
             "users_id" => $request->input('users_id'),

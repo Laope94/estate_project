@@ -21,7 +21,6 @@ class CreateEstatesTable extends Migration
             $table->integer('room_number')->nullable();
             $table->integer('floors')->nullable();
             $table->string('issale');
-            $table->string('pictures')->nullable();
             $table->longText('description');
             $table->unsignedInteger('estate_type_id');
             $table->unsignedInteger('users_id');
