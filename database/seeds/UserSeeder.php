@@ -11,7 +11,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
         for ($a=0;$a<5;$a++){
         DB::table('users')->insert([
             'name' => "Meno".uniqid(),
