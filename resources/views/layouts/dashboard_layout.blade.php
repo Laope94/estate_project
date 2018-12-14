@@ -15,14 +15,6 @@
     <div>
         <div id="dash" class="dash">
             <div class="dash-title-container">
-                <div class="dash-title-row">
-                    <a class="dash-to-home" href="/home" title="Návrat na hlavnú stránku">
-                    <span>
-                         <i class="fas fa-arrow-left"></i> Hlavná stránka
-                    </span>
-                    </a>
-                    <i id="hide-dash" class="far fa-times-circle dash-awesome" title="Skryť panel"></i>
-                </div>
                 <h1>
                     @if(Auth::user()->privilege>3)
                         Admin Tools
@@ -31,40 +23,91 @@
                     @endif
                 </h1>
             </div>
-            Prihlásený: {{Auth::user()->name.' '.Auth::user()->surname}},
-            @if(Auth::user()->privilege==2)
-                zamestnanec kancelárie
-                @elseif(Auth::user()->privilege==3)
-                administrátor kancelárie
-                @elseif(Auth::user()->privilege==4)
+            <div class="dash-title-row">
+                <a class="dash-to-home" href="/home" title="Návrat na hlavnú stránku">
+                    <span>
+                         <i class="fas fa-arrow-left"></i> Hlavná stránka
+                    </span>
+                </a>
+                <i id="hide-dash" class="far fa-times-circle dash-awesome" title="Skryť panel"></i>
+            </div>
+            <div class="dash-user-details">
+            Prihlásený: {{Auth::user()->name.' '.Auth::user()->surname}}<br>
+            Úroveň oprávnení: @if(Auth::user()->privilege==2)
+                zamestnanec kancelárie<br>
+                Kancelária: {{Auth::user()->agency_id}} <!--TODO: namiesto ID názov kancelárie -->
+            @elseif(Auth::user()->privilege==3)
+                administrátor kancelárie<br>
+                Kancelária: <!--TODO: namiesto ID názov kancelárie -->
+            @elseif(Auth::user()->privilege==4)
                 admin
-                @elseif(Auth::user()->privilege==5)
+            @elseif(Auth::user()->privilege==5)
                 superadmin
-                @endif
+            @endif
+            </div>
             <nav>
-                <a href=""><div class="dash-link-container">Pridať inzerát</div></a>
-                <a href=""><div class="dash-link-container">Správa inzerátov</div></a>
-                <a href=""><div class="dash-link-container">Správa zamestnancov</div></a>
-                <a href=""><div class="dash-link-container">Správa kancelárie</div></a>
-                <a href=""><div class="dash-link-container">Štatistiky</div></a>
-                <a href=""><div class="dash-link-container">Správa užívateľov</div></a>
-                <a href=""><div class="dash-link-container">Správa adminov</div></a>
-                <a href=""><div class="dash-link-container">Odhlásiť sa</div></a>
+                @if(Auth::user()->privilege==2 || Auth::user()->privilege==3)
+                    <a href="">
+                        <div class="dash-link-container">Pridať inzerát</div>
+                    </a>
+                    <hr>
+                    <a href="">
+                        <div class="dash-link-container">Správa inzerátov</div>
+                    </a>
+                    <hr>
+                @endif
+                @if(Auth::user()->privilege==3)
+                    <a href="">
+                        <div class="dash-link-container">Správa zamestnancov</div>
+                    </a>
+                    <hr>
+                    <a href="">
+                        <div class="dash-link-container">Správa kancelárie</div>
+                    </a>
+                    <hr>
+                    <a href="">
+                        <div class="dash-link-container">Štatistiky</div>
+                    </a>
+                    <hr>
+                @endif
+                @if(Auth::user()->privilege==4 || Auth::user()->privilege==5)
+                    <a href="">
+                        <div class="dash-link-container">Správa užívateľov</div>
+                    </a>
+                    <hr>
+                    <a href="">
+                        <div class="dash-link-container">Správa inzerátov</div>
+                    </a>
+                    <hr>
+                    <a href="">
+                        <div class="dash-link-container">Správa kancelárií</div>
+                    </a>
+                    <hr>
+                @endif
+                @if(Auth::user()->privilege==3)
+                    <a href="">
+                        <div class="dash-link-container">Správa adminov</div>
+                    </a>
+                    <hr>
+                @endif
+                <a href="">
+                    <div class="dash-link-container">Odhlásiť sa</div>
+                </a>
                 @section('menu')
                 @show
             </nav>
         </div>
-        <div id="dash-display" class="dash-display" hidden>
+        <div id="dash-display" class="dash-display">
             <i class="fas fa-arrow-right"></i>
         </div>
     </div>
-    <div style="width: 100%;">
+    <div class="dash-content-container">
         <div class="dash-content">
+            <h2>@yield('title')</h2>
+            <div class="dash-table-container">
             @section('content')
             @show
-            @php
-                echo Auth::user()->privilege;
-            @endphp
+            </div>
         </div>
         <footer>
             <div>bytvdome.sk | created by unicorn software house</div>
@@ -72,19 +115,6 @@
     </div>
 
 </div>
-<script>
-    $(document).ready(function () {
-        $('#hide-dash').on('click', function () {
-            $("#dash").hide("slow", function () {
-                $("#dash-display").show("slow");
-            });
-
-        });
-        $('#dash-display').on('click', function () {
-            $("#dash-display").hide("slow", function () {
-                $("#dash").show("slow");
-            })
-        })
-    });
+<script src="{{asset('js/dash.js')}}">
 </script>
 </body>

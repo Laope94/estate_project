@@ -42,9 +42,13 @@
         <nav>
             <div id="close-nav"><i class="far fa-times-circle"></i></div>
             <a class="nav-mobile-link" href="/" title="Domov">Domov</a>
+            <hr>
             <a class="nav-mobile-link" href="/inzeraty" title="Hľadať nehnutelnosť">Hľadať nehnutelnost</a>
+            <hr>
             <a class="nav-mobile-link" href="/pridat-inzerat" title="Pridať inzerát">Pridať inzerát</a>
+            <hr>
             <a class="nav-mobile-link" href="" title="Kontakt">Kontakt</a>
+            <hr>
             @if (Auth::check())
                 @if(Auth::user()->privilege==1)
                     <a class="nav-mobile-link" href="/profil" title="Môj profil">Môj profil</a>
@@ -53,6 +57,7 @@
                 @elseif(Auth::user()->privilege>=4)
                     <a class="nav-mobile-link" href="/admin-tools" title="Admin">Admin</a>
                 @endif
+            <hr>
                 <a class="nav-mobile-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    title="Odhlásiť sa">Odhlásiť sa</a>
@@ -66,30 +71,7 @@
     <div class="intro-page-container"></div>
     @show
 </div>
-<script>
-        $(document).ready(function () {
-            $('#mobile-icon').on('click', function () {
-                $("#mobile-icon").hide("fast", function () {
-                    $("#mobile-menu").show("fast");
-                });
-            });
-        });
-        $('#close-nav').on('click', function () {
-            $("#mobile-menu").hide("fast", function () {
-                $("#mobile-icon").show("fast");
-            });
-        })
-        $(window).resize(function(){
-            if($(this).width() <= 999){
-                $('#mobile-icon').show();
-                $('#mobile-menu').hide();
-            }
-            else{
-                $('#mobile-icon').hide();
-                $('#mobile-menu').hide();
-            }
-        });
-</script>
+<script src="{{ asset('js/master-queries.js') }}"></script>
 @yield('skripty')
 <footer>
     <div class="upper-footer">
