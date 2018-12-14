@@ -20,6 +20,11 @@ Route::get('/home', function (){
     return redirect('/');
 });
 
+Route::get('/estate-cms', function(){
+    return view('kancelaria.dash_inzeraty');
+}
+);
+
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
 Route::get('/registracia-kancelarie', function (){

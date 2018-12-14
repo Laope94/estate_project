@@ -1,5 +1,9 @@
 @extends('layouts.master_layout')
 @section('title', 'Domov')
+@section('includes')
+    @parent
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    @endsection
 @section('menu')
     @parent
     <div class="content-container">

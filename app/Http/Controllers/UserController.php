@@ -23,11 +23,14 @@ class UserController extends Controller
 {
 
     public function getMe(){
-        //TODO: pridať ineráty usera
-        $id = Auth::id();
-        $user = Usersvillageview::find($id);
-        $inzeraty = Eetvview::where('users_id', $id)->orderBy('id', 'desc')->get();
-        return view("user/profile", ['user' => $user],['inzeraty'=>$inzeraty]);
+        if(Auth::user() == null){
+            return redirect('/');
+        } else {
+            $id = Auth::id();
+            $user = Usersvillageview::find($id);
+            $inzeraty = Eetvview::where('users_id', $id)->orderBy('id', 'desc')->get();
+            return view("user/profile", ['user' => $user],['inzeraty'=>$inzeraty]);
+        }
     }
 
     //registracia kancelarie
