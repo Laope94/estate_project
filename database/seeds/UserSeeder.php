@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             'surname' => "Mrkvièka",
             'address' => "Medžajova",
             'email' => 'j.mrkvicka@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -53,7 +53,7 @@ class UserSeeder extends Seeder
             'surname' => "Horná",
             'address' => "Hviezdoslavova",
             'email' => 'm.horna@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -71,7 +71,7 @@ class UserSeeder extends Seeder
             'surname' => "Zelená",
             'address' => "Hlavná",
             'email' => 'e.zelena@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -89,7 +89,7 @@ class UserSeeder extends Seeder
             'surname' => "Rukavica",
             'address' => "Hlinková",
             'email' => 'b.rukavica@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -107,7 +107,7 @@ class UserSeeder extends Seeder
             'surname' => "Capek",
             'address' => "A. Dubèeka",
             'email' => 'm.capek@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -125,7 +125,7 @@ class UserSeeder extends Seeder
             'surname' => "Debnár",
             'address' => "Moyzesova",
             'email' => 'r.debnar@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -142,7 +142,7 @@ class UserSeeder extends Seeder
             'surname' => "Borik",
             'address' => "Pribinova",
             'email' => 'a.borik@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -158,7 +158,7 @@ class UserSeeder extends Seeder
             'surname' => "Uher",
             'address' => "Nitrianska",
             'email' => 's.uher@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
@@ -174,7 +174,7 @@ class UserSeeder extends Seeder
             'surname' => "Zajac",
             'address' => "Mojmírová",
             'email' => 'd.zajac@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
