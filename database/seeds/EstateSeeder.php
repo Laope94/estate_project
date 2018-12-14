@@ -243,8 +243,8 @@ class EstateSeeder extends Seeder
 
 
             'estate_type_id' => 3, //1-gars.,  2-byt, 3-dom, 4-nebyt., 5-pozemok, 6-ine
-            'users_id' => $a + 1,
-            'village_id' => $a + 1,
+            'users_id' => 4,
+            'village_id' => 666,
 
             'UUID' => '6ebc420a-fbb1-11e8-8eb2-f2801f1b9fd1'
 
@@ -775,7 +775,7 @@ class EstateSeeder extends Seeder
 
             'estate_type_id' => 2, //1-gars.,  2-byt, 3-dom, 4-nebyt., 5-pozemok, 6-ine
             'users_id' => 3,
-            'village_id' => $a + 3000,
+            'village_id' => 333,
 
             'UUID' => '6ebc5f10-fbb1-11e8-8eb2-f2801f1b9fd1'
 
