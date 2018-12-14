@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "John",
             'surname' => "Doe",
-            'address' => "PalÃ¡rikova",
+            'address' => "Palárikova",
             'email' => 'j.doe@gmail.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
             'phone' => "123456789",
             'phone2' => "987654321",
 
             'privilege'=>1, //0-5 (realitka - 2,3)
             'agency_id'=> 1, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 208, //v databÃ¡ze
+            'village_id'=> 208, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -32,8 +32,8 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => "Jozef",
-            'surname' => "MrkviÄka",
-            'address' => "MedÅ¾ajova",
+            'surname' => "Mrkvièka",
+            'address' => "Medajova",
             'email' => 'j.mrkvicka@gmail.com',
             'password' => '123456',
             'phone' => "123456789",
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>1, //0-5 (realitka - 2,3)
             'agency_id'=> 1, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 208, //v databÃ¡ze
+            'village_id'=> 208, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => "Milada",
-            'surname' => "HornÃ¡",
+            'surname' => "Horná",
             'address' => "Hviezdoslavova",
             'email' => 'm.horna@gmail.com',
             'password' => '123456',
@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>2, //0-5 (realitka - 2,3)
             'agency_id'=> 2, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 504, //v databÃ¡ze
+            'village_id'=> 504, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -68,8 +68,8 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => "Elena",
-            'surname' => "ZelenÃ¡",
-            'address' => "HlavnÃ¡",
+            'surname' => "Zelená",
+            'address' => "Hlavná",
             'email' => 'e.zelena@gmail.com',
             'password' => '123456',
             'phone' => "123456789",
@@ -77,7 +77,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>2, //0-5 (realitka - 2,3)
             'agency_id'=> 3, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 722, //v databÃ¡ze
+            'village_id'=> 722, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -87,15 +87,15 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Boris",
             'surname' => "Rukavica",
-            'address' => "HlinkovÃ¡",
+            'address' => "Hlinková",
             'email' => 'b.rukavica@gmail.com',
             'password' => '123456',
             'phone' => "123456789",
             'phone2' => "987654321",
 
-            'privilege'=>3, //0-5 (realitka - 2,3) 0-neregistrovanÃ½, 1 -registrovanÃ½, 2 - zamestannec kancelÃ¡rie, 3 - admin kancelÃ¡rie, 4 - admin systemovÃ½, 5 superadmin
-            'agency_id'=> 2, //1 - ked neni zamestanec realitky, 2+ zamestnanec reality (podla poÄtu realitiek)
-            'village_id'=> 247, //v databÃ¡ze
+            'privilege'=>3, //0-5 (realitka - 2,3) 0-neregistrovanı, 1 -registrovanı, 2 - zamestannec kancelárie, 3 - admin kancelárie, 4 - admin systemovı, 5 superadmin
+            'agency_id'=> 2, //1 - ked neni zamestanec realitky, 2+ zamestnanec reality (podla poètu realitiek)
+            'village_id'=> 247, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -105,7 +105,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Milan",
             'surname' => "Capek",
-            'address' => "A. DubÄeka",
+            'address' => "A. Dubèeka",
             'email' => 'm.capek@gmail.com',
             'password' => '123456',
             'phone' => "123456789",
@@ -113,7 +113,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>3, //0-5 (realitka - 2,3)
             'agency_id'=> 3, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 2018, //v databÃ¡ze
+            'village_id'=> 2018, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -122,7 +122,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => "Roman",
-            'surname' => "DebnÃ¡r",
+            'surname' => "Debnár",
             'address' => "Moyzesova",
             'email' => 'r.debnar@gmail.com',
             'password' => '123456',
@@ -131,7 +131,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>4, //0-5 (realitka - 2,3)
             'agency_id'=> 1, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 3246, //v databÃ¡ze
+            'village_id'=> 3246, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -148,7 +148,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>5, //0-5 (realitka - 2,3)
             'agency_id'=> 1, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 5, //v databÃ¡ze
+            'village_id'=> 5, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -164,7 +164,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>2, //0-5 (realitka - 2,3)
             'agency_id'=> 2, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 16, //v databÃ¡ze
+            'village_id'=> 16, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 
@@ -172,7 +172,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Dominik",
             'surname' => "Zajac",
-            'address' => "MojmÃ­rovÃ¡",
+            'address' => "Mojmírová",
             'email' => 'd.zajac@gmail.com',
             'password' => '123456',
             'phone' => "123456789",
@@ -180,7 +180,7 @@ class UserSeeder extends Seeder
 
             'privilege'=>2, //0-5 (realitka - 2,3)
             'agency_id'=> 3, //1 - ked neni zamestanec realitky, 2 zamestnanec
-            'village_id'=> 4207, //v databÃ¡ze
+            'village_id'=> 4207, //v databáze
             'UUID'=>Uuid::generate()
         ]);
 

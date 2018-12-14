@@ -2,26 +2,27 @@
     <details>
         <summary class="register-small-flex peek-sum">
                 <div class="peek-title peek-half">
-                    <?php
-                    if(($issale)=== 1){$sale="Predaj";}else{$sale="Prenájom";}
-                    if(($type)=== "Rodinný dom" || ($type) === "Byt" ){
-                        echo $sale.': '.$room_number.'-izbový '.strtolower($type).', '.$village;
-                    }
-                    else{
-                        echo $sale.': '.strtolower($type).', '.$area.'m2 '.', '.$village;
-                    }?>
+                    @php
+                        if(($issale)=== 1){$sale="Predaj";}else{$sale="Prenájom";}
+                        if(($type)=== "Rodinný dom" || ($type) === "Byt" ){
+                            echo $sale.': '.$room_number.'-izbový '.mb_strtolower($type).', '.$village;
+                        }
+                        else{
+                            echo $sale.': '.mb_strtolower($type).', '.$area.'m2 '.', '.$village;
+                        }
+                    @endphp
+                    </div>
+                <div>
+                    <div class="peek-half"></div>
                 </div>
-            <div>
-                <div class="peek-half"></div>
-            </div>
-        </summary>
-        <div class="peek-more-container">
-        <div class="register-small-flex">
-            <div class="peek-half">
-                @php
-                    $images_list = array();
-                    $images_list = glob('images/foundation/'.$uuid.'/*');
-                    $images_count = count($images_list);
+            </summary>
+            <div class="peek-more-container">
+            <div class="register-small-flex">
+                <div class="peek-half">
+                    @php
+                        $images_list = array();
+                        $images_list = glob('images/foundation/'.$uuid.'/*');
+                        $images_count = count($images_list);
                 @endphp
                 @if($images_count>0)
                     @php
@@ -46,7 +47,7 @@
                     <span class="peek-label">Typ inzerátu:  {{$sale}} </span> <br>
                     <span class="peek-label">Typ nehnuteľnosti: {{$type}} </span> <br>
                     <span class="peek-label">Počet izieb:{{$room_number}}</span> <br>
-                    <span class="peek-label">Kraj:<?php echo str_replace("kraj", "", $region);?> </span> <br>
+                    <span class="peek-label">Kraj:@php  echo str_replace("kraj", "", $region);@endphp </span> <br>
                     <span class="peek-label">Okres: {{$district}}</span> <br>
                     <span class="peek-label">Mesto: {{$village}}</span> <br>
                     <span class="peek-label">Ulica: {{$street}}</span> <br>

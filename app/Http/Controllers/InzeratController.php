@@ -27,6 +27,36 @@ class InzeratController extends Controller
     //pridavanie inzeratov
     public function pridajInzerat(Request $request){
 
+        if(!auth::check()){
+            //ak pridáva neprihlásený
+            $uuid = Uuid::generate();
+            $meno = $request->input('name');
+            $priezvisko = $request->input('surname');
+            $mail = $request->input('email');
+            $telefon = $request->input('phone');
+            $timestamp = Carbon::now()->toDateTimeString();
+            $token = $request->input('_token');
+
+
+            $user = new User();
+            $user->name = $meno;
+            $user->surname = $priezvisko;
+            $user->phone = $telefon;
+            $user->email = $mail;
+            $user->agency_id = 1;
+            $user->privilege = 0;
+            $user->UUID=$uuid;
+            $user->remember_token = $token;
+            $user->created_at = $timestamp;
+            $user->updated_at = $timestamp;
+            $user->save();
+            $pouz=User::where('email',$mail)->first();
+            $id_pouz=$pouz->id;
+            $redirect='InzeratController@mostRecentEstates';
+        }else{
+            $id_pouz=Auth::id();
+            $redirect='UserController@getMe';
+        }
     $help =  $request['city'];
     $village = Village_model::where("fullname", "=", $help)->first();
     $vil_id = $village->id;
@@ -40,11 +70,10 @@ class InzeratController extends Controller
         $fotografie = $this->foto($request);
         $popis = $request->input('popis');
         $typ_nehnutelnosti_id = $request->input('typ_nehnutelnosti');
-        $village_id = $vil_id;
         $timestamp = Carbon::now()->toDateTimeString();
         $token = $request->input('_token');
         $issale = $request->input('ponuka');
-        $pouzivatel = Auth::id();
+
 
 
     $inzerat = new Inzerat();
@@ -54,19 +83,19 @@ class InzeratController extends Controller
     $inzerat->room_number = $izby;
     $inzerat->floors = $poschodie;
     $inzerat->issale = $issale;
-    $inzerat->pictures = $fotografie;
+    $inzerat->pictures = 'sample';
     $inzerat->description = $popis;
     $inzerat->estate_type_id = $typ_nehnutelnosti_id;
-    $inzerat->users_id = $pouzivatel;
-    $inzerat->village_id = $village_id;
-    $inzerat->agency_id = null;
+    $inzerat->users_id = $id_pouz;
+    $inzerat->village_id = $vil_id;
     $inzerat->UUID = $uuid;
     $inzerat->remember_token = $token;
     $inzerat->created_at = $timestamp;
     $inzerat->updated_at = $timestamp;
+       // dd($ulica,$plocha,$cena,$izby,$poschodie,$issale,$popis,$typ_nehnutelnosti_id,$id_pouz,$vil_id,$token,$timestamp);
     $inzerat->save();
 
-    return redirect()->action('InzeratController@showAllAction');
+    return redirect()->action($redirect);
 }
 
 
@@ -89,7 +118,7 @@ class InzeratController extends Controller
         //všetky detaily inzerátu   ------funguje
         $inzerat = Eetvview::where('UUID',$UUID)->first();
 
-         $pouzivatel= Usersvillageview::find($inzerat->users_id);
+         $pouzivatel= User::find($inzerat->users_id);
 
         return view("inzerat/inzerat_detail", ['inzerat' => $inzerat],['pouzivatel'=>$pouzivatel]);
     }

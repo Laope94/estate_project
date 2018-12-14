@@ -36,6 +36,7 @@ class AgencySeeder extends Seeder
                 'IBAN' => "IBAN".uniqid(),
                 'ICO' => "ICO".uniqid(),
                 'DIC' => "DIC".uniqid(),
+                'village_id'=> 6*$a+1,
                 'UUID'=>Uuid::generate()
 
 

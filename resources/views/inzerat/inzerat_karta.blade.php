@@ -23,7 +23,7 @@
                 <div class="card-round-button">
                     <i class="fas fa-building card-awesome"></i>
                 </div>
-                <span><?php  if($typ=='Byt'||$typ=='Dom' ){echo $izby.'-izbový '.$typ; }else{echo $typ;} ?></span></div>
+                <span>@php if($typ=='Byt'||$typ=='Dom' ){echo $izby.'-izbový '.$typ; }else{echo $typ;} @endphp</span></div>
             <div class="card-round-wrapper">
                 <div class="card-round-button">
                     <i class="fas fa-ruler card-awesome"></i>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="card-price-tag">
-        <i class="fas fa-hand-holding-usd card-awesome"></i><span class="card-price"><?php  if($predaj==1){echo $cena , ' € ';}else{echo $cena, ' € / mesiac' ;} ?></span>
+        <i class="fas fa-hand-holding-usd card-awesome"></i><span class="card-price">@php   if($predaj==1){echo $cena , ' € ';}else{echo $cena, ' € / mesiac' ;} @endphp</span>
     </div>
     <form class="" action="{{ action('InzeratController@estateDetail', ['UUID' => $uuid]) }}" method="get">
         <div class="card-button-container">

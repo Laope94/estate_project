@@ -25,8 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('UUID');
             $table->integer('privilege');
             $table->unsignedInteger('agency_id')->nullable();
-            $table->unsignedInteger('village_id');
+            $table->unsignedInteger('village_id')->nullable();
             $table->foreign('village_id')->references('id')->on('villages');
+            $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
