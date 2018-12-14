@@ -69,15 +69,10 @@ Route::get('updateUserP', "UserController@updateUserProfile");
 //môj profil
 Route::get('/profil', "UserController@getMe");
 
-
-
 //------------------------------------------INZERATY-----------------------------------------------------
 //pridanie inzeratu
 Route::view('/pridat-inzerat', "/inzerat/add_inzerat");
 Route::post('/pridajInzerat', 'InzeratController@pridajInzerat');
-
-//vypis inzeratov
-Route::get('/inzeraty', 'InzeratController@showAllAction');
 
 //detail inzerátu
 Route::get('inzerat/{UUID}', 'InzeratController@estateDetail');
@@ -104,8 +99,6 @@ Route::get('distFilter', 'InzeratController@filter');
 // 6 najnovsich inzeratov
 Route::get('/najnovsie', 'InzeratController@mostRecentEstates');
 
-
-
 //--------------------------------------------AUTH-------------------------------------------------------
 //login
 Route::view('/prihlasenie', "/auth/login");
@@ -116,4 +109,5 @@ Route::get('/',['as'=> 'HOME','uses' => 'InzeratController@mostRecentEstates']);
 
 Auth::routes();
 
+//charts
 Route::get('/charts', 'ChartController@index');
