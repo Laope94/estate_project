@@ -27,6 +27,7 @@
                                     <div class="login-field-container">
                                         <label for="type"><strong>Druh nehnuteľnosti</strong></label><br>
                                         <select id="type" class="small-field" name="type[]">
+                                            <option name="type[]" value="All">----------</option>
                                             <option name="type[]" value="Garsónka">Garsónka</option>
                                             <option name="type[]" value="Byt">Byt</option>
                                             <option name="type[]" value="Rodinný dom">Rodinný dom</option>
