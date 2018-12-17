@@ -363,7 +363,6 @@ class ComposerStaticInite3f8ed6f240bbf317ac96a68619c8cbb
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Models\\Admin_model' => __DIR__ . '/../..' . '/app/Models/Admin_model.php',
         'App\\Models\\District_model' => __DIR__ . '/../..' . '/app/Models/District_model.php',
         'App\\Models\\Eetvview' => __DIR__ . '/../..' . '/app/Models/Eetvview.php',
         'App\\Models\\Inzerat' => __DIR__ . '/../..' . '/app/Models/Inzerat.php',

@@ -14,7 +14,7 @@ class CreateEstateVillageTypeView extends Migration
     public function up()
     {
         DB::statement("CREATE VIEW eetvView AS SELECT e.id, a.name as agency, e.street, e.area, 
-        e.price, e.room_number, e.floors, e.issale, e.pictures, e.description, et.type,
+        e.price, e.room_number, e.floors, e.issale, e.description, et.type,
           e.UUID, v.fullname as village, d.name as district, r.name as region, u.id as users_id, e.created_at, e.updated_at 
           FROM estates e, estate_types et, villages v, 
           districts d, regions r, agencies a, users u
