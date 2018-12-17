@@ -652,10 +652,12 @@ textarea {
 
 .peek-card-container {
     margin-bottom: 2px;
-    min-width: 400px;
+    width: 400px;
 }
 
 .peek-sum {
+    justify-content: left;
+    width: 400px;
     padding: 5px 10px 5px 10px;
 }
 
@@ -669,7 +671,6 @@ textarea {
 }
 
 .peek-title {
-    text-align: left;
     font-size: 20px;
     font-weight: bold;
 }
@@ -806,6 +807,13 @@ textarea {
     .menu-mobile-awesome{
         display: none;
     }
+
+    .peek-sum{
+        width: 800px;
+    }
+    .peek-card-container {
+        width: 800px;
+    }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1499px) {
@@ -833,6 +841,12 @@ textarea {
     .menu-mobile-awesome{
         display: none;
     }
+    .peek-sum{
+        width: 800px;
+    }
+    .peek-card-container {
+        width: 800px;
+    }
 }
 
 @media only screen and (min-width: 1500px) {
@@ -858,5 +872,11 @@ textarea {
     }
     .menu-mobile-awesome{
         display: none;
+    }
+    .peek-sum{
+        width: 800px;
+    }
+    .peek-card-container {
+        width: 800px;
     }
 }

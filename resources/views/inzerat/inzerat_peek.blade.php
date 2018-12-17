@@ -1,7 +1,7 @@
 <div class="peek-card-container">
     <details>
         <summary class="register-small-flex peek-sum">
-                <div class="peek-title peek-half">
+                <div class="peek-title">
                     @php
                         if(($issale)=== 1){$sale="Predaj";}else{$sale="Prenájom";}
                         if(($type)=== "Rodinný dom" || ($type) === "Byt" ){
@@ -13,7 +13,6 @@
                     @endphp
                     </div>
                 <div>
-                    <div class="peek-half"></div>
                 </div>
             </summary>
             <div class="peek-more-container">

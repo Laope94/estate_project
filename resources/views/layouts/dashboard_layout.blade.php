@@ -1,5 +1,9 @@
 <head>
-    <title>Estate CMS</title>
+    <title>@if(Auth::user()->privilege>3)
+            Admin Tools
+        @else
+            Estate CMS
+        @endif</title>
     <link href="{{asset('/css/dashboard.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -38,7 +42,7 @@
                 Kancelária: {{Auth::user()->agency_id}} <!--TODO: namiesto ID názov kancelárie -->
             @elseif(Auth::user()->privilege==3)
                 administrátor kancelárie<br>
-                Kancelária: <!--TODO: namiesto ID názov kancelárie -->
+                Kancelária: {{Auth::user()->agency_id}} <!--TODO: namiesto ID názov kancelárie -->
             @elseif(Auth::user()->privilege==4)
                 admin
             @elseif(Auth::user()->privilege==5)
@@ -47,51 +51,51 @@
             </div>
             <nav>
                 @if(Auth::user()->privilege==2 || Auth::user()->privilege==3)
-                    <a href="">
-                        <div class="dash-link-container">Pridať inzerát</div>
-                    </a>
-                    <hr>
-                    <a href="">
+                    <a href="/estate-cms/inzeraty">
                         <div class="dash-link-container">Správa inzerátov</div>
                     </a>
                     <hr>
                 @endif
                 @if(Auth::user()->privilege==3)
-                    <a href="">
+                    <a href="/estate-cms/zamestnanci">
                         <div class="dash-link-container">Správa zamestnancov</div>
                     </a>
                     <hr>
-                    <a href="">
+                    <a href=""> <!-- TODO: update kancelárie, upraviť view na pridávanie -->
                         <div class="dash-link-container">Správa kancelárie</div>
                     </a>
                     <hr>
-                    <a href="">
+                    <a href=""> <!-- TODO: napojiť view s grafmi -->
                         <div class="dash-link-container">Štatistiky</div>
                     </a>
                     <hr>
                 @endif
                 @if(Auth::user()->privilege==4 || Auth::user()->privilege==5)
-                    <a href="">
+                    <a href=""> <!-- TODO: zobrazí sa na view dash_users, všetci useri bez adminov -->
                         <div class="dash-link-container">Správa užívateľov</div>
                     </a>
                     <hr>
-                    <a href="">
+                    <a href=""> <!-- TODO: zobrazí sa na view dash_inzeráty, všetky inzeráty -->
                         <div class="dash-link-container">Správa inzerátov</div>
                     </a>
                     <hr>
-                    <a href="">
+                    <a href="/admin-tools/kancelarie">
                         <div class="dash-link-container">Správa kancelárií</div>
                     </a>
                     <hr>
                 @endif
-                @if(Auth::user()->privilege==3)
-                    <a href="">
+                @if(Auth::user()->privilege==5)
+                    <a href=""> <!-- TODO: zobrazí sa na view dash_users, ale iba admini -->
                         <div class="dash-link-container">Správa adminov</div>
                     </a>
                     <hr>
                 @endif
                 <a href="">
-                    <div class="dash-link-container">Odhlásiť sa</div>
+                    <a class="dash-link-container" href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       title="Odhlásiť sa">Odhlásiť sa</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          hidden>{{ csrf_field() }}</form>
                 </a>
                 @section('menu')
                 @show
@@ -103,11 +107,10 @@
     </div>
     <div class="dash-content-container">
         <div class="dash-content">
-            <h2>@yield('title')</h2>
-            <div class="dash-table-container">
+            <h2 class="dash-content-title">@yield('title')</h2>
+
             @section('content')
             @show
-            </div>
         </div>
         <footer>
             <div>bytvdome.sk | created by unicorn software house</div>

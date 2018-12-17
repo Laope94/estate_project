@@ -64,7 +64,7 @@
         </div>
 
         <div class="newest-container">
-
+            <h2 class="l-second-title title-dark">Najnovšie inzeráty</h2>
             <div class="flex-container">
                 @foreach($inzeraty as $inzerat)
                 <div class="newest-card">@include('inzerat/inzerat_karta', ['uuid'=>$inzerat->UUID,'typ'=>$inzerat->type,'cena'=>$inzerat->price,

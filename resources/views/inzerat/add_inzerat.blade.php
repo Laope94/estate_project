@@ -218,4 +218,7 @@
     </div>
     <script src="{{ asset('js/room-lock.js') }}"></script>
     <script src="{{ asset('js/load-locations.js') }}"></script>
+    <script>$(document).ready(function () {
+            loadLocation();
+        })</script>
 @endsection

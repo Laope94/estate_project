@@ -20,13 +20,8 @@
                                                                 class="login-field-required">*</span></label>
                                                     <div>
                                                         <select id="ponuka" name="ponuka" required class="login-field">
-                                                            @if ($inzerat->issale==1)
-                                                                <option value="1">Predaj</option>
-                                                                <option value="2">Prenájom</option>
-                                                            @else
-                                                                <option value="2">Prenájom</option>
-                                                                <option value="1">Predaj</option>
-                                                            @endif
+                                                                <option @if ($inzerat->issale==1) selected @endif value="1">Predaj</option>
+                                                                <option @if ($inzerat->issale==0) selected @endif value="2">Prenájom</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -46,44 +41,12 @@
                                                     <div>
                                                         <select id="typ" name="typ_nehnutelnosti" required
                                                                 class="login-field">
-                                                            @if ($inzerat->type=='Garsónka')
-                                                                <option value="1">Garsónka</option>
-                                                                <option value="2">Byt</option>
-                                                                <option value="3">Rodinný dom</option>
-                                                                <option value="4">Nebytový priestor</option>
-                                                                <option value="5">Pozemok</option>
-                                                                <option value="6">Iné</option>
-                                                            @elseif ($inzerat->type=='Byt')
-                                                                <option value="2">Byt</option>
-                                                                <option value="1">Garsónka</option>
-                                                                <option value="3">Rodinný dom</option>
-                                                                <option value="4">Nebytový priestor</option>
-                                                                <option value="5">Pozemok</option>
-                                                                <option value="6">Iné</option>
-                                                            @elseif ($inzerat->type=='Rodinný dom')
-                                                                <option value="3">Rodinný dom</option>
-                                                                <option value="1">Garsónka</option>
-                                                                <option value="2">Byt</option>
-                                                                <option value="4">Nebytový priestor</option>
-                                                                <option value="5">Pozemok</option>
-                                                                <option value="6">Iné</option>
-                                                            @elseif ($inzerat->type=='Pozemok')
-                                                                <option value="5">Pozemok</option>
-                                                                <option value="1">Garsónka</option>
-                                                                <option value="2">Byt</option>
-                                                                <option value="3">Rodinný dom</option>
-                                                                <option value="4">Nebytový priestor</option>
-                                                                <option value="6">Iné</option>
-                                                            @else
-                                                                <option value="6">Iné</option>
-                                                                <option value="1">Garsónka</option>
-                                                                <option value="2">Byt</option>
-                                                                <option value="3">Rodinný dom</option>
-                                                                <option value="4">Nebytový priestor</option>
-                                                                <option value="5">Pozemok</option>
-                                                            @endif
-
-
+                                                                <option value="1"  @if ($inzerat->type=='Garsónka') selected @endif>Garsónka</option>
+                                                                <option value="2"  @if ($inzerat->type=='Byt') selected @endif>Byt</option>
+                                                                <option value="3"  @if ($inzerat->type=='Rodinný dom') selected @endif>Rodinný dom</option>
+                                                                <option value="4"  @if ($inzerat->type=='Nebytový priestor') selected @endif>Nebytový priestor</option>
+                                                                <option value="5"  @if ($inzerat->type=='Pozemok') selected @endif>Pozemok</option>
+                                                                <option value="6"  @if ($inzerat->type=='Iné') selected @endif>Iné</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -122,11 +85,9 @@
                                                 <div class="login-field-container">
                                                     <label for="kraj">Kraj: <span class="login-field-required">*</span></label>
                                                     <div>
+                                                        <span id="h_kraj" hidden>{{$inzerat->region}}</span>
                                                         <select id="kraj" class="login-field" type="" name="kraj"
                                                                 value="{{ old('kraj') }}" required autofocus>
-                                                            <option disabled selected value>
-                                                                {{ $inzerat->region }}
-                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -134,11 +95,9 @@
                                                     <label for="okres">Okres: <span
                                                                 class="login-field-required">*</span></label>
                                                     <div>
+                                                        <span id="h_okres" hidden>{{$inzerat->district}}</span>
                                                         <select id="okres" class="login-field" type="" name="okres"
-                                                                value="{{ old('okres') }}" required autofocus disabled>
-                                                            <option disabled selected value>
-                                                                {{ $inzerat->district }}
-                                                            </option>
+                                                                value="{{ old('okres') }}" required autofocus>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -148,11 +107,9 @@
                                                 <div class="login-field-container">
                                                     <label for="city">Mesto: <span class="login-field-required">*</span></label>
                                                     <div>
+                                                        <span id="h_mesto" hidden>{{$inzerat->village}}</span>
                                                         <select id="city" class="login-field" type="" name="city"
-                                                                value="{{ old('city') }}" required autofocus disabled>
-                                                            <option disabled selected value>
-                                                                {{ $inzerat->village }}
-                                                            </option>
+                                                                value="{{ old('city') }}" required autofocus>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -207,5 +164,10 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/jquery-custom.js') }}"></script>
+    <script src="{{ asset('js/room-lock.js') }}"></script>
+    <script src="{{ asset('js/fill-location.js') }}"></script>
+    <script src="{{ asset('js/change-location.js') }}"></script>
+    <script>$(window).on("load", function () {
+            fillLocation();
+        });</script>
 @endsection

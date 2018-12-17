@@ -15,6 +15,8 @@ use App\Models\User;
 use App\Models\Usersvillageview;
 use App\Models\Eetvview;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class AdminController
 {
     public function adminForm(){
@@ -121,7 +123,15 @@ class AdminController
 
             return view("",['users' =>$users]);
         }
+    }
 
+    public function getCurrentAgencyUsers(){
+        $agency=Kancelaria::where('id', Auth::user()->agency_id)->first();
+        $agency_name=$agency->name;
+        if($agency_name!="0") {
+            $users = Usersvillageview::where("agency", $agency_name)->get();
+            return view("/dashboard/dash_users", ['users' =>$users]);
+        }
     }
 
 
@@ -135,11 +145,16 @@ class AdminController
         return view("", ['estates'=>$estates]);
     }
 
+    public function getEstate($uuid){
+        $inzerat = Inzerat::where('UUID',$uuid)->first();
+        return view('dashboard/dash_inzerat', ['inzerat'=>$inzerat]);
+    }
+
     public function updateEstate(Request $request, $UUID){
 
         $timestamp = Carbon::now()->toDateTimeString();
 
-        $inzerat = Inzerat::where('UUID',$UUID)->first();;
+        $inzerat = Inzerat::where('UUID',$UUID)->first();
         $inzerat->update(["street" => $request->input('street'),
             "area"=> $request->input('plocha'),
             "price" => $request->input('cena'),
@@ -173,10 +188,17 @@ class AdminController
 
     public function showEstatesOfAgency($uuid){
         //načíta inzeráty zvolenej agentúry
-        $agency=Kancelaria::where('UUID',$uuid)->first();
-        $agencyname=$agency->name;
-        $estates=Eetvview::where('agency',$agencyname)->get();
-        return view("", ['estates'=>$estates]);
+            $agency = Kancelaria::where('UUID', $uuid)->first();
+            $agencyname = $agency->name;
+            $estates = Eetvview::where('agency', $agencyname)->get();
+        return view("", ['estates' => $estates]);
+    }
+
+    public function getCurrentAgencyEstates(){
+        $agency = Kancelaria::where('id', Auth::user()->agency_id)->first();
+        $agencyname = $agency->name;
+        $estates = Eetvview::where('agency', $agencyname)->get();
+        return view("dashboard/dash_inzeraty", ['estates' => $estates]);
     }
 
 
@@ -185,9 +207,16 @@ class AdminController
 
 
     public function showAgencies(){
+        //TODO: vynechať kanceláriu 0
         //načíta všetky kancelárie
         $agencies=Kancelaria::all();
-        return view("",['agencies' =>$agencies]);
+        return view("dashboard/dash_kancelarie",['agencies' =>$agencies]);
+    }
+
+    public function getAgencyList(){
+        //kancelárie + kancelária 0
+        $agencies=Kancelaria::all();
+        return view("dashboard/dash_add_user",['agencies' =>$agencies]);
     }
 
     public function updateAgency($uuid, Request $request){

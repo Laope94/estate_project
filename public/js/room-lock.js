@@ -6,6 +6,7 @@ $(document).ready(function () {
             $("#izby").show();
         }
         else {
+            $("#pocet_izieb").attr("value", "");
             $("#pocet_izieb").prop('disabled', true);
             $("#izby").hide();
         }

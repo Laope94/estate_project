@@ -48,21 +48,21 @@
                                                            class="profile-field dis-field">
                                                 </div>
                                                 <div class="profile-field-container">
-                                                    <span id="user_kraj" hidden>{{$user->region}}</span>
+                                                    <span id="h_kraj" hidden>{{$user->region}}</span>
                                                     <label class="profile-label" for="kraj">Kraj: </label>
                                                     <select id="kraj" name="kraj" required autofocus
                                                             class="profile-field dis-field profile-dropdown" disabled>
                                                     </select>
                                                 </div>
                                                 <div class="profile-field-container">
-                                                    <span id="user_okres" hidden>{{$user->district}}</span>
+                                                    <span id="h_okres" hidden>{{$user->district}}</span>
                                                     <label class="profile-label" for="okres">Okres: </label>
                                                     <select id="okres" name="okres" required autofocus
                                                             class="profile-field dis-field profile-dropdown" disabled>
                                                     </select>
                                                 </div>
                                                 <div class="profile-field-container">
-                                                    <span id="user_mesto" hidden>{{$user->village}}</span>
+                                                    <span id="h_mesto" hidden>{{$user->village}}</span>
                                                     <label class="profile-label" for="city">Mesto: </label>
                                                     <select id="city" name="city" required autofocus
                                                             class="profile-field dis-field profile-dropdown" disabled>
@@ -122,4 +122,6 @@
         </div>
     </div>
     <script src="{{ asset('js/profile-queries.js') }}"></script>
+    <script src="{{ asset('js/change-location.js') }}"></script>
+    <script src="{{ asset('js/fill-location.js') }}"></script>
 @endsection

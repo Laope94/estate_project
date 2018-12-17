@@ -1,13 +1,4 @@
-function loadLocation() {
-    $.getJSON(('/json/regions.json'), function (data) {
-        $.each(data, function (index, value) {
-            var option = $("<option />");
-            option.val(value.id);
-            option.html(value.name);
-            $("#kraj").append(option);
-        });
-    });
-
+$(document).ready(function () {
     $("#kraj").change(function () {
         var selectedKraj = $("#kraj").val();
         $("#okres").find('option').remove().end().append('<option disabled selected value>----------------------------------</option>');
@@ -41,4 +32,4 @@ function loadLocation() {
             });
         });
     });
-}
+});
