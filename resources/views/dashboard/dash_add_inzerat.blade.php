@@ -8,7 +8,7 @@
 @section('title', 'Pridať inzerát')
 @section('content')
     @parent
-    <form action="{{URL::to('/pridajInzerat')}}" method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
         <div class="dash-flex">
             <div>
                 <h3>Informácie o nehnuteľnosti</h3>

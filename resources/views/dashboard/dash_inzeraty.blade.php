@@ -60,8 +60,7 @@
                     <div class="table-cell">{{$estate->region}}</div>
                     <div class="table-cell">{{$estate->district}}</div>
                     <div class="table-cell">{{$estate->village}}</div>
-                    <div class="table-cell">{{$estate->users_id}}</div>
-                    <!-- TODO: namiesto ID meno usera a k tomu prelinkovanie <a href> na inzeráty usera -->
+                    <div class="table-cell">{{$estate->users_id}}</div>   <!-- TODO: namiesto ID meno usera -->
                     <div class="table-cell">{{$estate->created_at}}</div>
                     <div class="table-cell">{{$estate->updated_at}}</div>
                 </div>

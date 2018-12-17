@@ -12,7 +12,7 @@
 @endif
 @section('content')
     @parent
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST">
         <div class="dash-flex">
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -112,6 +112,7 @@
                        required>
             </div>
 
+        <!-- TODO: HESLO - neviem ako to spravíme, najlepšie by bolo tieto fieldy dať preč a heslo iba generovať a posielať mailom, ale nefunguje mail... -->
             <div class="dash-input-container">
                 <label for="password">Heslo: <span class="dash-field-required">*</span></label>
                 <input id="password" class="dash-input" type="password"

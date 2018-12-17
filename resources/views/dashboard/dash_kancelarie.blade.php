@@ -32,6 +32,7 @@
                 <div class="table-row">
                     <div class="table-cell">
                         <div style="width: max-content;">
+                            <i class="far fa-eye table-awesome"></i> <!-- TODO: po kliknutí zobrazí iba inzeráty tejto kancelárie -->
                             <i class="fas fa-pencil-alt table-awesome"></i>
                             <i class="fas fa-trash table-awesome"></i>
                         </div>

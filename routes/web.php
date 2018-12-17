@@ -21,6 +21,7 @@ Route::get('/home', function (){
 });
 
 // ---------------------------------------ADMIN-----------------------------------------------------
+//TODO: linky pre správu admina vždy začínajú /admin-tools (obdoba /estate-cms - pozri nižšie)
 //users
 Route::view('/add-user', "");
 Route::post('/addUser', 'AdminController@addUser');
