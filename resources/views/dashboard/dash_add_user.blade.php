@@ -5,14 +5,14 @@
 @section('menu')
     @parent
 @endsection
-@if(Auth::user()->privilege>=4)
+@if($user->privilege>=4)
     @section('title', 'Pridať užívateľa')
 @else
     @section('title', 'Pridať zamestnanca')
 @endif
 @section('content')
     @parent
-    <form method="POST">
+    <form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data">
         <div class="dash-flex">
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -30,25 +30,25 @@
 
             <div class="dash-input-container">
                 <label for="privilege">Oprávnenia: <span class="dash-field-required">*</span></label>
-                <select id="privilege" class="dash-input" required>
+                <select id="privilege" name="privilege" class="dash-input" required>
                     <option disabled selected value>----------------------------------</option>
-                    @if(Auth::user()->privilege>=4)
-                        <option value="1">Užívateľ</option>
+                    @if($user->privilege>=4)
+                        <option value="1">Používateľ</option>
                     @endif
-                    @if(Auth::user()->privilege>=3)
+                    @if($user->privilege>=3)
                         <option value="2">Zamestanec kancelárie</option>
                         <option value="3">Administrátor kancelárie</option>
                     @endif
-                    @if(Auth::user()->privilege==5)
+                    @if($user->privilege==5)
                         <option value="4">Administrátor</option>
                         <option value="5">Superadministrátor</option>
                     @endif
                 </select>
             </div>
-            @if(Auth::user()->privilege>=4)
+            @if($user->privilege>=4)
                 <div class="dash-input-container">
                     <label for="agency">Kancelária: <span class="dash-field-required">*</span></label>
-                    <select id="agency" class="dash-input" required disabled>
+                    <select id="agency" name="agency" class="dash-input" required disabled >
                         @foreach($agencies as $agency)
                             <option id="agency-{{$agency->id}}" value="{{$agency->id}}">
                                 @if($agency->name=="0") Bez kancelárie @else {{$agency->name}} @endif
@@ -57,10 +57,10 @@
                     </select>
                 </div>
                 @else
-                <input type="hidden" id="agency" value="{{Auth::user()->agency_id}}">
+                <input type="hidden" id="agency" value="{{$user->agency_id}}">
             @endif
 
-            @if(Auth::user()->privilege>=4)
+            @if($user->privilege>=4)
                 <div class="dash-input-container">
                     <label for="kraj">Kraj: <span class="dash-field-required">*</span></label>
                     <select id="kraj" class="dash-input" name="kraj"
@@ -141,7 +141,7 @@
                 <div><span class="dash-field-required">*</span> Takto označené pole je povinné.</div>
                 <div>
                     <button type="submit" class="register-button">
-                        Pridať užívateľa
+                        Pridať používateľa
                     </button>
                 </div>
             </div>

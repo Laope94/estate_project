@@ -71,11 +71,11 @@
                     <hr>
                 @endif
                 @if(Auth::user()->privilege==4 || Auth::user()->privilege==5)
-                    <a href=""> <!-- TODO: zobrazí sa na view dash_users, všetci useri bez adminov -->
-                        <div class="dash-link-container">Správa užívateľov</div>
+                    <a href="/admin-tools/showUsers"> <
+                        <div class="dash-link-container">Správa používateľov</div>
                     </a>
                     <hr>
-                    <a href=""> <!-- TODO: zobrazí sa na view dash_inzeráty, všetky inzeráty -->
+                    <a href="/admin-tools/showEstates">
                         <div class="dash-link-container">Správa inzerátov</div>
                     </a>
                     <hr>
@@ -85,7 +85,7 @@
                     <hr>
                 @endif
                 @if(Auth::user()->privilege==5)
-                    <a href=""> <!-- TODO: zobrazí sa na view dash_users, ale iba admini -->
+                    <a href="/admin-tools/showUsersOfPrivilege/{{ '4' }}">
                         <div class="dash-link-container">Správa adminov</div>
                     </a>
                     <hr>

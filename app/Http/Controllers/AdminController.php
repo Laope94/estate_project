@@ -12,10 +12,12 @@ namespace App\Http\Controllers;
 use App\Models\Inzerat;
 use App\Models\Kancelaria;
 use App\Models\User;
+use App\Models\Village_model;
 use App\Models\Usersvillageview;
 use App\Models\Eetvview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Webpatser\Uuid\Uuid;
 
 class AdminController
 {
@@ -24,27 +26,35 @@ class AdminController
         return view('');
     }
 
+
     public function showUsers(){
         //načíta všetkých userov okrem neregistrovaných
-        $users=Usersvillageview::all();
-        return view("",['users' =>$users]);
+        $users=Usersvillageview::where('privilege','<','4')->get();
+        return view("dashboard/dash_users",['users' =>$users]);
     }
 
+    public function addusr(){
+        $agencies=Kancelaria::all();
+        $privilege=Auth::user()->privilege;
+        return view("dashboard/dash_add_user",['agencies' =>$agencies],['privilege' =>$privilege]);
+    }
     public function addUser(Request $request){
         //pridá usera so zvoleným oprávnením
+
+
         $help = $request['city'];
         $village = Village_model::where("fullname", "=", $help)->first();
 
         $uuid = Uuid::generate();
-        $meno = $request ->input('meno');
-        $priezvisko = $request ->input('priezvisko');
-        $adresa=$request ->input('adresa');
-        $email = $request ->input('mail');
-        $heslo = $request ->input('heslo');
-        $telefon=$request ->input('telefon');
-        $telefon2=$request ->input('telefon2');
-        $opravnenie=$request ->input('opravnenie');
-        $kancelaria_id=$request ->input('kancelaria_id');
+        $meno = $request ->input('name');
+        $priezvisko = $request ->input('surname');
+        $adresa=$request ->input('street');
+        $email = $request ->input('email');
+        $heslo = $request ->input('password');
+        $telefon=$request ->input('phone_prim');
+        $telefon2=$request ->input('phone_sec');
+        $opravnenie=$request ->input('privilege');
+        $kancelaria_id=$request ->input('agency');
 
 
         $admin = new User();
@@ -64,6 +74,7 @@ class AdminController
         return redirect()->action('AdminController@showUsers');
 
     }
+
 
     public function updateUser($uuid, Request $request){
         $help = $request['city'];
@@ -103,15 +114,15 @@ class AdminController
     }
 
     public function showUsersOfPrivilege($privilege){
+
     if($privilege==0){
         //načíta neregistrovaných userov ...možno sa to zíde na štatistiku
         $users=User::where("privillege",0 )->get();
     }else{
         //načíta userov so zvoleným oprávnením až na neregistrovaných
-        $users=Usersvillageview::where("privillege",$privilege )->get();
+        $users=Usersvillageview::where("privilege",$privilege )->get();
     }
-
-    return view("",['users' =>$users]);
+        return view("/dashboard/dash_users",['users' =>$users]);
 }
 
     public function showUsersOfAgency($uuid){
@@ -142,7 +153,7 @@ class AdminController
     public function showEstates(){
         //načíta všetky inzeráty
         $estates=Eetvview::all();
-        return view("", ['estates'=>$estates]);
+        return view("/dashboard/dash_inzeraty", ['estates'=>$estates]);
     }
 
     public function getEstate($uuid){
@@ -170,10 +181,28 @@ class AdminController
         return redirect()->action('AdminController@showEstates');
     }
 
-    public function deleteEstate($uuid){
-        $inzerat=Inzerat::where('UUID',$uuid)->first();
+    public function deleteEstate($UUID){
+
+        $inzerat=Inzerat::where('UUID',$UUID)->first();
         $inzerat->delete();
-        return redirect()->action('AdminController@showEstates');
+        //return redirect()->action('AdminController@showEstates');
+        return back();
+    }
+    public function deleteEstateDetail($UUID){
+
+        $inzerat=Inzerat::where('UUID',$UUID)->first();
+        $inzerat->delete();
+        //return redirect()->action('AdminController@showEstates');
+        return redirect()->action('AdminController@showUsers');
+    }
+    public function deleteEstateOfUser($uuid){
+        $inzerat=Inzerat::where('UUID',$uuid)->first();
+        $pouzid=$inzerat->users_id;
+        $inzerat->delete();
+        $estates=Eetvview::where('users_id',$pouzid)->get();
+        return view("dashboard/dash_inzeraty", ['estates'=>$estates]);
+
+
 
     }
 
@@ -182,15 +211,18 @@ class AdminController
         $useru=User::where('UUID',$uuid)->first();
         $userid=$useru->id;
         $estates=Eetvview::where('users_id',$userid)->get();
-        return view("", ['estates'=>$estates]);
+
+        return view("dashboard/dash_inzeraty", ['estates'=>$estates]);
     }
 
     public function showEstatesOfAgency($uuid){
         //načíta inzeráty zvolenej agentúry
             $agency = Kancelaria::where('UUID', $uuid)->first();
+
             $agencyname = $agency->name;
+
             $estates = Eetvview::where('agency', $agencyname)->get();
-        return view("", ['estates' => $estates]);
+        return view("dashboard/dash_inzeraty", ['estates' => $estates]);
     }
 
     public function getCurrentAgencyEstates(){
@@ -206,16 +238,17 @@ class AdminController
 
 
     public function showAgencies(){
-        //TODO: vynechať kanceláriu 0
+
         //načíta všetky kancelárie
-        $agencies=Kancelaria::all();
+        $agencies=Kancelaria::where('id','>','1')->get();
         return view("dashboard/dash_kancelarie",['agencies' =>$agencies]);
     }
 
     public function getAgencyList(){
         //kancelárie + kancelária 0
+        $user=Auth::user();
         $agencies=Kancelaria::all();
-        return view("dashboard/dash_add_user",['agencies' =>$agencies]);
+        return view("dashboard/dash_add_user",['agencies' =>$agencies],['user' =>$user]);
     }
 
     public function updateAgency($uuid, Request $request){

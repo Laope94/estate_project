@@ -32,12 +32,15 @@
                 <div class="table-row">
                     <div class="table-cell">
                         <div style="width: max-content;">
-                            <i class="far fa-eye table-awesome"></i> <!-- TODO: po kliknutí zobrazí iba inzeráty pridané týmto userom -->
-                            <i class="fas fa-pencil-alt table-awesome"></i>
-                            <i class="fas fa-trash table-awesome"></i>
+
+                            <a href='/admin-tools/showEstatesOfUser/{{ $user->uuid }}' title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
+                            <!-- TODO: po kliknutí zobrazí iba inzeráty pridané týmto userom -->
+                            <a href='/admin-tools/updateUsr/{{ $user->uuid }}' title="Zobraziťk inzerát"><i class="fas fa-pencil-alt table-awesome"></i></a>
+                            <a href='/admin-tools/deleteUser/{{ $user->uuid }}' title="Zobraziťhh inzerát"><i class="fas fa-trash table-awesome"></i></a>
+
                         </div>
                     </div>
-                    <div class="table-cell">@if($user->privilege==1) Užívateľ
+                    <div class="table-cell">@if($user->privilege==1) Používateľ
                         @elseif ($user->privilege==2) Zamestnanec kancelárie
                         @elseif ($user->privilege==3) Administrátor kancelárie
                         @elseif ($user->privilege==4) Administrátor

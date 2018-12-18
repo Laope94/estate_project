@@ -25,7 +25,7 @@
                         @elseif(Auth::user()->privilege>1 && Auth::user()->privilege<4)
                         <a class="nav-link" href="/estate-cms" title="Estate CMS">Estate CMS</a>
                         @elseif(Auth::user()->privilege>=4)
-                        <a class="nav-link" href="/admin-tools" title="Admin">Admin</a>
+                        <a class="nav-link" href="/admin-tools/showUsers" title="Admin">Admin</a>
                     @endif
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -53,7 +53,7 @@
                 @if(Auth::user()->privilege==1)
                     <a class="nav-mobile-link" href="/profil" title="Môj profil">Môj profil</a>
                 @elseif(Auth::user()->privilege>1 && Auth::user()->privilege<4)
-                    <a class="nav-mobile-link" href="/estate-cms" title="Estate CMS">Estate CMS</a>
+                    <a class="nav-mobile-link" href="/estate-c" title="Estate CMS">Estate CMS</a>
                 @elseif(Auth::user()->privilege>=4)
                     <a class="nav-mobile-link" href="/admin-tools" title="Admin">Admin</a>
                 @endif
