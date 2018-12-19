@@ -29,8 +29,6 @@ class InzeratController extends Controller
     //pridavanie inzeratov
     public function pridajInzerat(Request $request)
     {
-
-
         if(!auth::check()){
             //ak pridáva neprihlásený
             $uuid = Uuid::generate();
@@ -61,9 +59,9 @@ class InzeratController extends Controller
             $id_pouz=Auth::id();
             $redirect='UserController@getMe';
         }
-    $help =  $request['city'];
-    $village = Village_model::where("fullname", "=", $help)->first();
-    $vil_id = $village->id;
+        $help =  $request['city'];
+        $village = Village_model::where("fullname", "=", $help)->first();
+        $vil_id = $village->id;
 
         $uuid = Uuid::generate();
         $ulica = $request->input('street');
@@ -79,23 +77,24 @@ class InzeratController extends Controller
 
 
 
-    $inzerat = new Inzerat();
-    $inzerat->street = $ulica;
-    $inzerat->area = $plocha;
-    $inzerat->price = $cena;
-    $inzerat->room_number = $izby;
-    $inzerat->floors = $poschodie;
-    $inzerat->issale = $issale;
-    $inzerat->description = $popis;
-    $inzerat->estate_type_id = $typ_nehnutelnosti_id;
-    $inzerat->users_id = $id_pouz;
-    $inzerat->village_id = $vil_id;
-    $inzerat->UUID = $uuid;
-    $inzerat->remember_token = $token;
-    $inzerat->created_at = $timestamp;
-    $inzerat->updated_at = $timestamp;
-       // dd($ulica,$plocha,$cena,$izby,$poschodie,$issale,$popis,$typ_nehnutelnosti_id,$id_pouz,$vil_id,$token,$timestamp);
-    $inzerat->save();
+        $inzerat = new Inzerat();
+        $inzerat->street = $ulica;
+        $inzerat->area = $plocha;
+        $inzerat->price = $cena;
+        $inzerat->room_number = $izby;
+        $inzerat->floors = $poschodie;
+        $inzerat->issale = $issale;
+        $inzerat->description = $popis;
+        $inzerat->estate_type_id = $typ_nehnutelnosti_id;
+        $inzerat->users_id = $id_pouz;
+        $inzerat->village_id = $vil_id;
+        $inzerat->UUID = $uuid;
+        $inzerat->remember_token = $token;
+        $inzerat->created_at = $timestamp;
+        $inzerat->updated_at = $timestamp;
+           // dd($ulica,$plocha,$cena,$izby,$poschodie,$issale,$popis,$typ_nehnutelnosti_id,$id_pouz,$vil_id,$token,$timestamp);
+        $inzerat->save();
+        $this->foto($request, $uuid);
         return redirect()->action($redirect);
     }
 
@@ -154,6 +153,7 @@ class InzeratController extends Controller
             "estate_type_id" => $request->input('typ_nehnutelnosti'),
             "village_id" => $vil_id,
             "updated_at" => $timestamp]);
+        $this->foto($request, $UUID);
 
         return redirect()->action('InzeratController@showAllAction');
     }
@@ -179,7 +179,6 @@ class InzeratController extends Controller
         $this->foto($request, $request->uuid);
         return redirect()->action('UserController@getMe');
     }
-
 
     //mazanie inzeratov
     public function deleteAdv($UUID)
@@ -209,6 +208,7 @@ class InzeratController extends Controller
     public function foto(Request $request, $uuid)
     {
 
+        if ($request->hasFile('obrazok')) {
         $destinationPath = public_path('images/foundation/' . $uuid);
 
         foreach ($request->file('obrazok') as $foto) {
@@ -218,6 +218,7 @@ class InzeratController extends Controller
             $input = Uuid::generate() . '.' . $extension;
             $foto->move($destinationPath, $input);
         }
+}
 
     }
 

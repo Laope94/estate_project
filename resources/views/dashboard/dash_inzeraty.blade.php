@@ -36,7 +36,7 @@
                             @if(Auth::user()->privilege<=3)
                                 <a href="/estate-cms/inzerat/{{$estate->UUID}}"><i class="far fa-eye table-awesome"></i></a>
                                 <i class="fas fa-pencil-alt table-awesome"></i>
-                                <a href="/estate-cms/deleteEstate/{{$estate->UUID}}"><i class="far fa-trash table-awesome"></i></a>
+                                <a href="/estate-cms/deleteEstate/{{$estate->UUID}}"><i class="fas fa-trash table-awesome"></i></a>
 
                             @else
                                 <a href="/admin-tools/inzerat/{{$estate->UUID}}"><i class="far fa-eye table-awesome"></i></a>

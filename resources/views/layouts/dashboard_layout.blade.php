@@ -71,7 +71,7 @@
                     <hr>
                 @endif
                 @if(Auth::user()->privilege==4 || Auth::user()->privilege==5)
-                    <a href="/admin-tools/showUsers"> <
+                    <a href="/admin-tools/showUsers">
                         <div class="dash-link-container">Správa používateľov</div>
                     </a>
                     <hr>
@@ -91,9 +91,9 @@
                     <hr>
                 @endif
                 <a href="">
-                    <a class="dash-link-container" href="{{ route('logout') }}"
+                    <a href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                       title="Odhlásiť sa">Odhlásiť sa</a>
+                       title="Odhlásiť sa"><div class="dash-link-container">Odhlásiť sa</div></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                           hidden>{{ csrf_field() }}</form>
                 </a>
