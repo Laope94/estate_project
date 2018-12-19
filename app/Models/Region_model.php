@@ -19,7 +19,7 @@ class Region_model extends Model
         'name', 'shortcut'
     ];
 
-    public function regions(){
+    public function districts(){
 
         return $this->hasMany('App\Models\District_model','region_id');
     }

@@ -35,7 +35,7 @@ Route::get('/admin-tools/showUsersOfPrivilege/{privilege}', 'AdminController@sho
 Route::get('/admin-tools/showUsersOfAgency/{UUID}', 'AdminController@showUsersOfAgency');
 
 Route::get('/admin-tools/updateUsr/{UUID}', 'AdminController@showUser');
-Route::get('/admin-tools/updateUser/{UUID}', "AdminController@updateUser");
+Route::post('/admin-tools/updateUser', "AdminController@updateUser");
 Route::get('/admin-tools/deleteUser/{UUID}', "AdminController@deleteUser");
 
 //estates
@@ -61,7 +61,7 @@ Route::get('/admin-tools/kancelarie', 'AdminController@showAgencies');
 Route::view('/admin-tools/pridat-kancelariu', 'dashboard/dash_add_kancelaria');
 Route::post('/admin-tools/addAgency', 'AdminController@addAgency');
 Route::get('/admin-tools/updateAgnc/{UUID}', 'AdminController@showAgency');
-Route::get('/admin-tools/updateAgency/{UUID}', "AdminController@updateAgency");
+Route::post('/admin-tools/updateAgency', "AdminController@updateAgency");
 Route::get('/admin-tools/deleteAgency/{UUID}', "AdminController@deleteAgency");
 
 

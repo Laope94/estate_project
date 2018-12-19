@@ -8,7 +8,7 @@
 @section('title', 'Upraviť inzerát')
 @section('content')
     @parent
-    <form action="{{URL::to('/estate-cms/addEstate')}}" method="post" enctype="multipart/form-data">
+    <form action="{{URL::to('/admin-tools/updateEstate')}}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="uuid" value="{{$inzerat->UUID}}">
         <div class="dash-flex">
             <div>

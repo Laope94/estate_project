@@ -24,4 +24,9 @@ class Village_model extends Model
 
         return $this->hasMany('App\Models\Inzerat','village_id');
     }
+
+    public function district(){
+
+        return $this->belongsTo('App\Models\District_model','district_id');
+    }
 }
