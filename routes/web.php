@@ -68,7 +68,8 @@ Route::get('/estate-cms/inzeraty/', 'AdminController@getCurrentAgencyEstates'); 
 Route::post('/estate-cms/addEstate', 'AdminController@addEstate');
 Route::get('/estate-cms/zamestnanci', 'AdminController@getCurrentAgencyUsers'); //pristup iba pre kancelariu a zamestnanca -> hotovo
 Route::get('/estate-cms/inzerat/{UUID}', 'AdminController@getEstate');
-Route::get('/estate-cms/pridat-zamestnanca', 'AdminController@getAgencyList'); //pristup iba pre kancelariu -> hotovo
+Route::get('/estate-cms/pridat-zamestnanca', 'AdminController@getAgencyList');
+Route::post('/estate-cms/addUser', 'AdminController@addUser');
 Route::get('/estate-cms/deleteEstate{UUID}', "AdminController@deleteEstate");
 //charts
 Route::get('estate-cms/charts', 'ChartController@index');

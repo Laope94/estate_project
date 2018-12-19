@@ -12,10 +12,12 @@
 @endif
 @section('content')
     @parent
-    <form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data">
-        <div class="dash-flex">
+    @if(Auth::user()->privilege>3)<form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data">
+        @else<form action="{{URL::to('/estate-cms/addUser')}}" method="post" enctype="multipart/form-data">
+          @endif  <div class="dash-flex">
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
             <div class="dash-input-container">
                 <label for="name">Meno: <span class="dash-field-required">*</span></label>
@@ -57,7 +59,7 @@
                     </select>
                 </div>
                 @else
-                <input type="hidden" id="agency" value="{{$user->agency_id}}">
+                <input type="hidden" id="agency" name="agency" value="{{$user->agency_id}}">
             @endif
 
             @if($user->privilege>=4)
