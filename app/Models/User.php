@@ -24,6 +24,6 @@ class User extends Model implements Authenticatable
 
     public function agency()
     {
-        return $this->belongsTo('Kancelaria');
+        return $this->belongsTo('App\Models\Kancelaria','agency_id');
     }
 }

@@ -8,8 +8,9 @@
 @section('title', 'Upraviť kanceláriu')
 @section('content')
     @parent
-    {{$village->district->region->name}}
-    <form action="{{URL::to('/admin-tools/updateAgency')}}" method="post">
+    @if(Auth::user()->privilege>3) <form action="{{URL::to('/admin-tools/updateAgency')}}" method="post">
+        @else<form action="{{URL::to('/estate-cms/updateAgency')}}" method="post">
+            @endif
         <input type="hidden" name="uuid" value="{{$agency->UUID}}">
         <h3>Informácie o kancelárii</h3>
         <div class="dash-flex">

@@ -8,8 +8,9 @@
 @section('title', 'Upraviť inzerát')
 @section('content')
     @parent
-    <form action="{{URL::to('/admin-tools/updateEstate')}}" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="uuid" value="{{$inzerat->UUID}}">
+    @if(Auth::user()->privilege>3)<form action="{{URL::to('/admin-tools/updateEstate')}}" method="post" enctype="multipart/form-data">
+        @else<form action="{{URL::to('/estate-cms/updateEstate')}}" method="post" enctype="multipart/form-data">
+       @endif <input type="hidden" name="uuid" value="{{$inzerat->UUID}}">
         <div class="dash-flex">
             <div>
                 <h3>Informácie o nehnuteľnosti</h3>

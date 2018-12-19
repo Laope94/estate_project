@@ -10,8 +10,11 @@
 @section('content')
     @parent
     <div class="dash-button-group">
-       <a href=""><button class="dash-round-button"><i class="fas fa-pencil-alt"></i></button></a>
+        @if(Auth::user()->privilege>3) <a href="/admin-tools/updateEstt/{{ $inzerat->UUID }}"><button class="dash-round-button"><i class="fas fa-pencil-alt"></i></button></a>
         <a href='/admin-tools/deleteEstateDetail/{{ $inzerat->UUID }}'><button class="dash-round-button delete-element"><i class="fas fa-trash"></i></button></a>
+        @else<a href="/estate-cms/updateEstt/{{ $inzerat->UUID }}"><button class="dash-round-button"><i class="fas fa-pencil-alt"></i></button></a>
+        <a href='/estate-cms/deleteEstateDetail/{{ $inzerat->UUID }}'><button class="dash-round-button"><i class="fas fa-trash"></i></button></a>
+            @endif
     </div>
 <div class="dash-flex">
     <div class="dash-detail-column">

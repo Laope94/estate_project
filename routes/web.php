@@ -47,6 +47,7 @@ Route::get('/admin-tools/inzerat/{UUID}', 'AdminController@getEstate');
 
 Route::get('/admin-tools/updateEstt/{UUID}', 'AdminController@showEstate');
 Route::post('/admin-tools/updateEstate', "AdminController@updateEstate");
+
 Route::get('/admin-tools/deleteEstate/{UUID}', "AdminController@deleteEstate");
 Route::get('/admin-tools/deleteEstateDetail/{UUID}', "AdminController@deleteEstateDetail");
 
@@ -72,6 +73,16 @@ Route::get('/estate-cms/deleteEstate{UUID}', "AdminController@deleteEstate");
 //charts
 Route::get('estate-cms/charts', 'ChartController@index');
 
+
+Route::get('/estate-cms/showEstatesOfUser/{UUID}', 'AdminController@showEstatesOfUser');
+
+Route::get('/estate-cms/deleteEstateDetail/{UUID}', "AdminController@deleteEstateDetail");
+Route::get('/estate-cms/deleteEstate/{UUID}', "AdminController@deleteEstate");
+Route::get('/estate-cms/updateEstt/{UUID}', 'AdminController@showEstate');
+Route::get('/estate-cms/updateAgnc/{id}', 'AdminController@showAgencyid');
+Route::post('/estate-cms/updateAgency', "AdminController@updateAgency");
+Route::post('/estate-cms/updateEstate', "AdminController@updateEstate");
+Route::get('/estate-cms/showEstatesOfAgenc/', 'AdminController@showEstatesOfAgenc');
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
 Route::get('/registracia-kancelarie', function (){
