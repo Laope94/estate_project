@@ -32,9 +32,10 @@
                 <div class="table-row">
                     <div class="table-cell">
                         <div style="width: max-content;">
-                            <i class="far fa-eye table-awesome"></i> <!-- TODO: po kliknutí zobrazí iba inzeráty tejto kancelárie -->
+                            <a href='/admin-tools/showEstatesOfAgency/{{ $agency->UUID }}' ><span><i class="far fa-eye peek-awesome"></i></span></a> <!-- TODO: po kliknutí zobrazí iba inzeráty tejto kancelárie -->
                             <i class="fas fa-pencil-alt table-awesome"></i>
-                            <i class="fas fa-trash table-awesome"></i>
+                            <a href='/admin-tools/deleteAgency/{{ $agency->UUID }}'><span><i class="fas fa-trash table-awesome"></i></span></a>
+
                         </div>
                     </div>
                     <div class="table-cell">{{$agency->name}}</div>

@@ -11,7 +11,7 @@
     @parent
     <div class="dash-button-group">
        <a href=""><button class="dash-round-button"><i class="fas fa-pencil-alt"></i></button></a>
-        <a href=""><button class="dash-round-button"><i class="fas fa-trash"></i></button></a>
+        <a href='/admin-tools/deleteEstateDetail/{{ $inzerat->UUID }}'><button class="dash-round-button"><i class="fas fa-trash"></i></button></a>
     </div>
 <div class="dash-flex">
     <div class="dash-detail-column">
