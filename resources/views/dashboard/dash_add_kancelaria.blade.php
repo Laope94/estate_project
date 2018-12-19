@@ -8,7 +8,7 @@
 @section('title', 'Pridať kanceláriu')
 @section('content')
     @parent
-    <form method="post">
+    <form action="{{URL::to('/admin-tools/addAgency')}}" method="post">
         <h3>Informácie o kancelárii</h3>
         <div class="dash-flex">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
