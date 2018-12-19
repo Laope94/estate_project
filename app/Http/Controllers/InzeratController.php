@@ -21,7 +21,6 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rules\In;
 use Webpatser\Uuid\Uuid;
 
 class InzeratController extends Controller
@@ -207,7 +206,6 @@ class InzeratController extends Controller
     //pridavanie fotiek
     public function foto(Request $request, $uuid)
     {
-
         if ($request->hasFile('obrazok')) {
         $destinationPath = public_path('images/foundation/' . $uuid);
 

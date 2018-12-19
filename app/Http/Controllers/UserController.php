@@ -25,6 +25,9 @@ class UserController extends Controller
     public function getMe(){
         if(Auth::user() == null){
             return redirect('/');
+        }
+        if(Auth::user()->privilege != 1){
+            return redirect('/');
         } else {
             $id = Auth::id();
             $user = Usersvillageview::find($id);
