@@ -118,10 +118,9 @@ class InzeratController extends Controller
 
     public function estateDetail($UUID)
     {
-        //všetky detaily inzerátu   ------funguje
         $inzerat = Eetvview::where('UUID', $UUID)->first();
 
-        $pouzivatel = Usersvillageview::find($inzerat->users_id);
+        $pouzivatel = User::find($inzerat->users_id);
 
         return view("inzerat/inzerat_detail", ['inzerat' => $inzerat], ['pouzivatel' => $pouzivatel]);
     }

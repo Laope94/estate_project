@@ -61,8 +61,8 @@
                         <div class="dash-link-container">Správa zamestnancov</div>
                     </a>
                     <hr>
-                    <a href=""> <!-- TODO: update kancelárie, upraviť view na pridávanie -->
-                        <div class="dash-link-container">Správa kancelárie</div>
+                    <a href="/estate-cms/updateAgnc/{{ Auth::user()->agency_id}}"> <!-- TODO: update kancelárie, upraviť view na pridávanie -->
+                        <div class="dash-link-container"> Úprava kancelárie</div>
                     </a>
                     <hr>
                     <a href=""> <!-- TODO: napojiť view s grafmi -->

@@ -8,8 +8,9 @@
 @section('title', 'Upraviť inzerát')
 @section('content')
     @parent
-    <form action="{{URL::to('/admin-tools/updateEstate')}}" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="uuid" value="{{$inzerat->UUID}}">
+    @if(Auth::user()->privilege>3)<form action="{{URL::to('/admin-tools/updateEstate')}}" method="post" enctype="multipart/form-data">
+        @else<form action="{{URL::to('/estate-cms/updateEstate')}}" method="post" enctype="multipart/form-data">
+       @endif <input type="hidden" name="uuid" value="{{$inzerat->UUID}}">
         <div class="dash-flex">
             <div>
                 <h3>Informácie o nehnuteľnosti</h3>
@@ -18,7 +19,7 @@
                         <label for="ponuka">Ponuka: <span class="dash-field-required">*</span></label>
                         <select class="dash-input" id="ponuka" name="ponuka" required class="login-field">
                             <option @if ($inzerat->issale==1) selected @endif value="1">Predaj</option>
-                            <option @if ($inzerat->issale==0) selected @endif value="2">Prenájom</option>
+                            <option @if ($inzerat->issale==0) selected @endif value="0">Prenájom</option>
                         </select>
                     </div>
                     <div class="dash-input-container">

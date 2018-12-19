@@ -198,6 +198,14 @@ class AdminController
         }
 
     }
+    public function showEstatesOfUser($uuid){
+        //načíta inzeráty zvoleného usera
+        $useru=User::where('UUID',$uuid)->first();
+        $userid=$useru->id;
+        $estates=Eetvview::where('users_id',$userid)->get();
+
+        return view("dashboard/dash_inzeraty", ['estates'=>$estates]);
+    }
 
     public function getEstate($uuid){
         $inzerat = Inzerat::where('UUID',$uuid)->first();
@@ -282,13 +290,36 @@ class AdminController
             "village_id" => $vil_id,
             "updated_at" => $timestamp]);
         $this->foto($request, $UUID);
+        $auth=Auth::user();
+       // $user=User::find($auth->id);
+
+        if($auth->privilege<4){
+           // $c='ifide';
+           // dd($c);
+            //$this->showEstatesOfAgency($user->agency->UUID );
+            return redirect()->action('AdminController@showEstatesOfAgenc');
+        }else{
+            return redirect()->action('AdminController@showEstates');
+        }
+
+    }
 
 
-        return redirect()->action('AdminController@showEstates');
+
+    public function showEstatesOfAgenc(){
+        //načíta inzeráty zvolenej agentúry
+
+        $auth=Auth::user();
+        $user=User::find($auth->id);
+        $agency = Kancelaria::where('UUID', $user->agency->UUID)->first();
+        $agencyname = $agency->name;
+        $estates = Eetvview::where('agency', $agencyname)->get();
+        return view("dashboard/dash_inzeraty", ['estates' => $estates]);
     }
 
     public function deleteEstate($UUID){
-
+       //$c='ciao';
+       // dd($c);
         $inzerat=Inzerat::where('UUID',$UUID)->first();
         $inzerat->delete();
         //return redirect()->action('AdminController@showEstates');
@@ -299,7 +330,19 @@ class AdminController
         $inzerat=Inzerat::where('UUID',$UUID)->first();
         $inzerat->delete();
         //return redirect()->action('AdminController@showEstates');
-        return redirect()->action('AdminController@showUsers');
+        $auth=Auth::user();
+        // $user=User::find($auth->id);
+
+        if($auth->privilege<4){
+            // $c='ifide';
+            // dd($c);
+            //$this->showEstatesOfAgency($user->agency->UUID );
+            return redirect()->action('AdminController@showEstatesOfAgenc');
+        }else{
+            return redirect()->action('AdminController@showEstates');
+        }
+
+
     }
     public function deleteEstateOfUser($uuid){
         $inzerat=Inzerat::where('UUID',$uuid)->first();
@@ -312,14 +355,7 @@ class AdminController
 
     }
 
-    public function showEstatesOfUser($uuid){
-        //načíta inzeráty zvoleného usera
-        $useru=User::where('UUID',$uuid)->first();
-        $userid=$useru->id;
-        $estates=Eetvview::where('users_id',$userid)->get();
 
-        return view("dashboard/dash_inzeraty", ['estates'=>$estates]);
-    }
 
     public function showEstatesOfAgency($uuid){
         //načíta inzeráty zvolenej agentúry
@@ -352,9 +388,20 @@ class AdminController
         $agency=Kancelaria::where('UUID',$uuid)->first();
 
         $village=Village_model::where('id',$agency->village_id)->first();
-        $district=District_model::where('id',$village->district_id)->first();
-        $region=Village_model::find($agency->village_id)->district();
+
        // dd($region);
+
+        return view("dashboard/dash_edit_kancelaria",['agency' =>$agency],['village'=>$village]);
+    }
+
+    public function showAgencyid($id){
+
+        //načíta všetky kancelárie
+        $agency=Kancelaria::where('id',$id)->first();
+
+        $village=Village_model::where('id',$agency->village_id)->first();
+
+        // dd($region);
 
         return view("dashboard/dash_edit_kancelaria",['agency' =>$agency],['village'=>$village]);
     }
@@ -448,8 +495,18 @@ class AdminController
             "village_id" => $village->id,
             "updated_at" => $timestamp]);
 
+        $auth=Auth::user();
+        // $user=User::find($auth->id);
 
-        return redirect()->action('AdminController@showAgencies');
+        if($auth->privilege<4){
+            // $c='ifide';
+            // dd($c);
+            //$this->showEstatesOfAgency($user->agency->UUID );
+            return redirect()->action('AdminController@showEstatesOfAgenc');
+        }else{
+            return redirect()->action('AdminController@showAgencies');
+        }
+
     }
     public function deleteAgency($uuid){
 

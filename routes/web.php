@@ -47,6 +47,7 @@ Route::get('/admin-tools/inzerat/{UUID}', 'AdminController@getEstate');
 
 Route::get('/admin-tools/updateEstt/{UUID}', 'AdminController@showEstate');
 Route::post('/admin-tools/updateEstate', "AdminController@updateEstate");
+
 Route::get('/admin-tools/deleteEstate/{UUID}', "AdminController@deleteEstate");
 Route::get('/admin-tools/deleteEstateDetail/{UUID}', "AdminController@deleteEstateDetail");
 
@@ -68,8 +69,17 @@ Route::post('/estate-cms/addEstate', 'AdminController@addEstate');
 Route::get('/estate-cms/zamestnanci', 'AdminController@getCurrentAgencyUsers'); //pristup iba pre kancelariu a zamestnanca -> hotovo
 Route::get('/estate-cms/inzerat/{UUID}', 'AdminController@getEstate');
 Route::get('/estate-cms/pridat-zamestnanca', 'AdminController@getAgencyList'); //pristup iba pre kancelariu -> hotovo
-Route::get('/estate_cms/deleteEstate{UUID}', "AdminController@deleteEstate");
 
+
+Route::get('/estate-cms/showEstatesOfUser/{UUID}', 'AdminController@showEstatesOfUser');
+
+Route::get('/estate-cms/deleteEstateDetail/{UUID}', "AdminController@deleteEstateDetail");
+Route::get('/estate-cms/deleteEstate/{UUID}', "AdminController@deleteEstate");
+Route::get('/estate-cms/updateEstt/{UUID}', 'AdminController@showEstate');
+Route::get('/estate-cms/updateAgnc/{id}', 'AdminController@showAgencyid');
+Route::post('/estate-cms/updateAgency', "AdminController@updateAgency");
+Route::post('/estate-cms/updateEstate', "AdminController@updateEstate");
+Route::get('/estate-cms/showEstatesOfAgenc/', 'AdminController@showEstatesOfAgenc');
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
 Route::get('/registracia-kancelarie', function (){
