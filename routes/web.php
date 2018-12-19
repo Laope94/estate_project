@@ -22,6 +22,8 @@ Route::get('/home', function (){
     return redirect('/');
 });
 
+Route::view('/kontakt', 'kontakt');
+
 // ---------------------------------------ADMIN-----------------------------------------------------
 //TODO: linky pre správu admina vždy začínajú /admin-tools (obdoba /estate-cms - pozri nižšie)
 //users

@@ -18,7 +18,7 @@
                 <a class="nav-link" href="/" title="Domov">Domov</a>
                 <a class="nav-link" href="/inzeraty" title="Hľadať nehnutelnosť">Hľadať nehnutelnost</a>
                 <a class="nav-link" href="/pridat-inzerat" title="Pridať inzerát">Pridať inzerát</a>
-                <a class="nav-link" href="" title="Kontakt">Kontakt</a>
+                <a class="nav-link" href="/kontakt" title="Kontakt">Kontakt</a>
                 @if (Auth::check())
                     @if(Auth::user()->privilege==1)
                     <a class="nav-link" href="/profil" title="Môj profil">Môj profil</a>
