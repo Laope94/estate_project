@@ -40,7 +40,7 @@
                 <div class="peek-group">
                     <a href='/inzerat/{{ $inzerat->UUID }}' title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
                     <a href='updateAdv/{{ $inzerat->UUID }}' title="Upraviť inzerát"> <i class="fas fa-pencil-alt peek peek-awesome"></i></a>
-                        <a href='deletep/{{ $inzerat->UUID }}' title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
+                        <a href='deletep/{{ $inzerat->UUID }}' title="Vymazať inzerát" class="delete-element"><i class="fas fa-trash peek-awesome"></i></a>
                 </div>
                 <div class="peek-detail-container">
                     <span class="peek-label">Typ inzerátu:</span>  {{$sale}}  <br>

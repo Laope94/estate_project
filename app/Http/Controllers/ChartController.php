@@ -58,7 +58,12 @@ class ChartController extends Controller
         $issale_array[] = ['Issale', 'Number'];
         foreach($issale as $key => $value)
         {
-            $issale_array[++$key] = [$value->issale, $value->number];
+            $rewritten = "";
+            if($value->issale==0)
+                $rewritten = "Prenájom";
+            else
+                $rewritten = "Predaj";
+            $issale_array[++$key] = [$rewritten, $value->number];
         }
 
         //na predaj/prenajom graf v globale
@@ -71,7 +76,12 @@ class ChartController extends Controller
         $issale_glob_array[] = ['Issale', 'Number'];
         foreach($issale_glob as $key => $value)
         {
-            $issale_glob_array[++$key] = [$value->issale, $value->number];
+            $rewritten = "";
+            if($value->issale==0)
+                $rewritten = "Prenájom";
+            else
+                $rewritten = "Predaj";
+            $issale_glob_array[++$key] = [$rewritten, $value->number];
         }
 
         return view('charts')->with('type', json_encode($type_array))

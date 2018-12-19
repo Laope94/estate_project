@@ -33,10 +33,10 @@
                     <div class="table-cell">
                         <div style="width: max-content;">
 
-                            <a href='/admin-tools/showEstatesOfUser/{{ $user->uuid }}' title="Zobraziť inzerát"><span><i class="far fa-eye peek-awesome"></i></span></a>
+                            <a href='/admin-tools/showEstatesOfUser/{{ $user->uuid }}' title="Zobraziť inzeráty užívateľa"><span><i class="far fa-eye table-awesome"></i></span></a>
                             <!-- TODO: po kliknutí zobrazí iba inzeráty pridané týmto userom -->
-                            <a href='/admin-tools/updateUsr/{{ $user->uuid }}' title="Zobraziťk inzerát"><i class="fas fa-pencil-alt table-awesome"></i></a>
-                            <a href='/admin-tools/deleteUser/{{ $user->uuid }}' title="Zobraziťhh inzerát"><i class="fas fa-trash table-awesome"></i></a>
+                            <a href='/admin-tools/updateUsr/{{ $user->uuid }}' title="Upraviť užívateľa"><i class="fas fa-pencil-alt table-awesome"></i></a>
+                            <a href='/admin-tools/deleteUser/{{ $user->uuid }}' title="Vymazať užívateľa" class="delete-element"><i class="fas fa-trash table-awesome"></i></a>
 
                         </div>
                     </div>
@@ -60,4 +60,5 @@
             @endforeach
         </div>
     </div>
+    <script src="{{ asset('js/remove-check.js') }}"> </script>
 @endsection

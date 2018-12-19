@@ -767,6 +767,16 @@ textarea {
     vertical-align: middle;
 }
 
+.contact-container{
+    width: 400px;
+    text-align: center;
+    margin: 20px;
+}
+
+.contact-container img{
+    max-width: 380px;
+}
+
 @media only screen and (min-width: 700px) and (max-width: 999px) {
     .intro-title-wrapper {
         top: 30%;

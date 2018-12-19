@@ -328,6 +328,18 @@ label {
     margin-top: 40px;
 }
 
+.chart-flex{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+
+.chart{
+    width: 500px;
+    height: 380px;
+}
+
 @media only screen and (min-width: 1000px) {
     label{
         text-align: right;

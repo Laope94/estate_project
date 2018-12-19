@@ -124,4 +124,5 @@
     <script src="{{ asset('js/profile-queries.js') }}"></script>
     <script src="{{ asset('js/change-location.js') }}"></script>
     <script src="{{ asset('js/fill-location.js') }}"></script>
+    <script src="{{ asset('js/remove-check.js') }}"> </script>
 @endsection
