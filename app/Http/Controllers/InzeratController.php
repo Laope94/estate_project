@@ -158,14 +158,14 @@ class InzeratController extends Controller
         return redirect()->action('InzeratController@showAllAction');
     }
 
-    public function updateAdvProfile(Request $request, $UUID)
+    public function updateAdvProfile(Request $request)
     {
         //funguje ale do viewu treba opakovane zadávať do comboboxov ( option disabled)
         $timestamp = Carbon::now()->toDateTimeString();
         $help =  $request['city'];
         $village = Village_model::where("fullname", "=", $help)->first();
         $vil_id = $village->id;
-        $inzerat = Inzerat::where('UUID', $UUID)->first();;
+        $inzerat = Inzerat::where('UUID', $request->uuid)->first();;
         $inzerat->update(["street" => $request->input('street'),
             "area" => $request->input('plocha'),
             "price" => $request->input('cena'),
@@ -176,7 +176,7 @@ class InzeratController extends Controller
             "estate_type_id" => $request->input('typ_nehnutelnosti'),
             "village_id" => $vil_id,
             "updated_at" => $timestamp]);
-
+        $this->foto($request, $request->uuid);
         return redirect()->action('UserController@getMe');
     }
 
@@ -206,23 +206,19 @@ class InzeratController extends Controller
     }
 
     //pridavanie fotiek
-    public function foto(Request $request)
+    public function foto(Request $request, $uuid)
     {
-        $input1 = Uuid::generate();
-        $destinationPath = public_path('images/foundation/' . $input1);
 
-        if ($request->hasFile('obrazok')) {
+        $destinationPath = public_path('images/foundation/' . $uuid);
 
-            foreach ($request->file('obrazok') as $foto) {
-                //ziskanie koncovky suboru
-                $extension = $foto->getClientOriginalExtension();
-                //nazov suboru
-                $input = Uuid::generate() . '.' . $extension;
-                $foto->move($destinationPath, $input);
-            }
+        foreach ($request->file('obrazok') as $foto) {
+            //ziskanie koncovky suboru
+            $extension = $foto->getClientOriginalExtension();
+            //nazov suboru
+            $input = Uuid::generate() . '.' . $extension;
+            $foto->move($destinationPath, $input);
         }
 
-        return $input1;
     }
 
     //-------------------------------Filtre--------------------------------------

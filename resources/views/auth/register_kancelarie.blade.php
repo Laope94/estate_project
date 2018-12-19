@@ -21,7 +21,7 @@
                                             <label for="estate_name">Názov: <span class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="estate_name" class="login-field" type="text"
-                                                       name="estate_name" value="{{old('estate_name')}}" required>
+                                                       name="estate_name" value="{{old('estate_name')}}" required maxlength="40">
                                             </div>
                                         </div>
                                         <div class="login-field-container">
@@ -29,7 +29,7 @@
                                                         class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="konatel" class="login-field" type="text" name="konatel"
-                                                       value="{{old('konatel')}}" required></div>
+                                                       value="{{old('konatel')}}" required maxlength="60"></div>
                                         </div>
                                     </div>
                                     <div class="register-small-flex">
@@ -97,14 +97,14 @@
                                             <label for="tel_1">Telefónne číslo 1: <span
                                                         class="login-field-required">*</span></label>
                                             <div>
-                                                <input id="tel_1" class="login-field" type="text" pattern="[0-9]{9,}"
+                                                <input id="tel_1" class="login-field" type="text" pattern="[0-9]{9,12}"
                                                        name="tel_1" required value="{{old('tel_1')}}">
                                             </div>
                                         </div>
                                         <div class="login-field-container">
                                             <label for="tel_2">Telefónne číslo 2: </label>
                                             <div>
-                                                <input id=tel_2 class="login-field" type="text" pattern="[0-9]{9,}"
+                                                <input id=tel_2 class="login-field" type="text" pattern="[0-9]{9,12}"
                                                        name="tel_cislo" value="{{old('tel_2')}}">
                                             </div>
                                         </div>
@@ -115,14 +115,14 @@
                                                         class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="email" class="login-field" type="email" name="email" required
-                                                       value="{{old('email')}}">
+                                                       value="{{old('email')}}" maxlength="40">
                                             </div>
                                         </div>
                                         <div class="login-field-container">
                                             <label for="iban">IBAN: </label>
                                             <div>
                                                 <input id="iban" class="login-field" type="text" name="iban"
-                                                       value="{{old('iban')}}">
+                                                       value="{{old('iban')}}" maxlength="60">
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                                                             class="login-field-required">*</span></label>
                                                 <div>
                                                     <input id="name" class="login-field" type="text" name="name"
-                                                           value="{{ old('name') }}" required autofocus>
+                                                           value="{{ old('name') }}" required autofocus maxlength="40">
                                                 </div>
                                             </div>
                                             <div class="login-field-container">
@@ -145,14 +145,14 @@
                                                             class="login-field-required">*</span></label>
                                                 <div>
                                                     <input id="surname" class="login-field" type="text" name="surname"
-                                                           value="{{ old('surname') }}" required autofocus>
+                                                           value="{{ old('surname') }}" required autofocus maxlength="40">
                                                 </div>
                                             </div>
                                             <div class="login-field-container">
                                                 <label for="tel_a">Telefónne číslo: <span
                                                             class="login-field-required">*</span></label>
                                                 <div>
-                                                    <input id="tel_a" class="login-field" type="text" pattern="[0-9]{9,}" name="tel_a"
+                                                    <input id="tel_a" class="login-field" type="text" pattern="[0-9]{9,12}" name="tel_a"
                                                            required value="{{old('tel_a')}}">
                                                 </div>
                                             </div>
@@ -163,7 +163,7 @@
                                                 <div>
                                                     <input id="email_a" type="email" class="login-field" name="email_a"
                                                            value="{{ old('email_a') }}"
-                                                           required>
+                                                           required maxlength="40">
                                                 </div>
                                             </div>
 
@@ -173,7 +173,7 @@
                                                 <div>
                                                     <input id="password" type="password" class="login-field"
                                                            name="password"
-                                                           required>
+                                                           required maxlength="40">
                                                 </div>
                                             </div>
 
@@ -182,7 +182,7 @@
                                                             class="login-field-required">*</span></label>
                                                 <div>
                                                     <input id="password-confirm" type="password" class="login-field"
-                                                           name="password_confirmation" required>
+                                                           name="password_confirmation" required maxlength="40">
                                                 </div>
                                             </div>
                                             <div class="login-error">

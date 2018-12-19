@@ -21,7 +21,7 @@
                                                                     class="login-field-required">*</span></label>
                                                         <div>
                                                             <input id="name" type="text" class="login-field" name="name"
-                                                                   value="{{old('name')}}" required autofocus>
+                                                                   value="{{old('name')}}" required autofocus maxlength="40">
                                                         </div>
                                                     </div>
                                                     <div class="login-field-container">
@@ -29,7 +29,7 @@
                                                                     class="login-field-required">*</span></label>
                                                         <div>
                                                             <input id="surname" type="text" class="login-field" name="surname"
-                                                                   value="{{old('surname')}}" required autofocus>
+                                                                   value="{{old('surname')}}" required autofocus maxlength="40">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -39,14 +39,14 @@
                                                                     class="login-field-required">*</span></label>
                                                         <div>
                                                             <input id="email" type="email" class="login-field" name="email"
-                                                                   value="{{old('email')}}" required autofocus>
+                                                                   value="{{old('email')}}" required autofocus maxlength="40">
                                                         </div>
                                                     </div>
                                                     <div class="login-field-container">
                                                         <label for="phone">Telefón: <span
                                                                     class="login-field-required">*</span></label>
                                                         <div>
-                                                            <input id="phone" type="tel"  pattern="[0-9]{9,}" class="login-field" name="phone"
+                                                            <input id="phone" type="tel"  pattern="[0-9]{9,12}" class="login-field" name="phone"
                                                                    value="{{old('phone')}}" required autofocus >
                                                         </div>
                                                     </div>
@@ -72,7 +72,7 @@
                                                 <div class="login-field-container">
                                                     <label for="cena">Cena: <span class="login-field-required">*</span></label>
                                                     <div>
-                                                        <input id="cena" class="login-field" min="0" type="number"
+                                                        <input id="cena" class="login-field" min="0" max="999999999" type="number"
                                                                name="cena" required
                                                                value="">
                                                     </div>
@@ -100,7 +100,7 @@
                                                 <div class="login-field-container">
                                                     <label for="plocha">Plocha (m2): <span class="login-field-required">*</span></label>
                                                     <div>
-                                                        <input id="plocha" class="login-field" type="number" min="1"
+                                                        <input id="plocha" class="login-field" type="number" min="1" max="999999"
                                                                name="plocha" required
                                                                value="">
                                                     </div>
@@ -114,7 +114,7 @@
                                                     </label>
                                                     <div>
                                                         <input id="pocet_izieb" class="login-field" type="number"
-                                                               min="0"
+                                                               min="0" max="999"
                                                                name="pocet_izieb" disabled required value="">
                                                     </div>
                                                 </div>
@@ -123,7 +123,7 @@
                                                     <div>
                                                         <input id="poschodie" class="login-field" type="number"
                                                                name="poschodie"
-                                                               value="">
+                                                               value="" min="0" max="999">
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@
                                                     <label for="street">Ulica:</label>
                                                     <div>
                                                         <input id="street" type="text" class="login-field" name="street"
-                                                               value="{{ old('street') }}" autofocus>
+                                                               value="{{ old('street') }}" maxlength="40" autofocus>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,7 +193,7 @@
                                                             class="login-field-required">*</span></label>
                                                 <div>
                                             <textarea class="advert-desc" id="popis" rows="3" type="text" name="popis"
-                                                      required
+                                                      required maxlength="3000"
                                                       value=""></textarea>
                                                 </div>
                                             </div>

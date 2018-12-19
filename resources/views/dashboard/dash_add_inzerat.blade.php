@@ -25,7 +25,7 @@
                     </div>
                     <div class="dash-input-container">
                         <label for="cena">Cena: <span class="dash-field-required">*</span></label>
-                        <input id="cena" class="dash-input" min="0" type="number"
+                        <input id="cena" class="dash-input" min="0" max="999999999" type="number"
                                name="cena" required>
                     </div>
 
@@ -45,21 +45,21 @@
                     </div>
                     <div class="dash-input-container">
                         <label for="plocha">Plocha (m<sup>2</sup>): <span class="dash-field-required">*</span></label>
-                        <input id="plocha" class="dash-input" type="number" min="1" name="plocha" required value="">
+                        <input id="plocha" class="dash-input" type="number" min="1" name="plocha" max="999999" required value="">
                     </div>
                     <div class="dash-input-container">
 
                         <label for="pocet_izieb">Počet izieb:
                             <span id="izby" class="dash-field-required">*</span>
                         </label>
-                        <input id="pocet_izieb" class="dash-input" type="number" min="0" name="pocet_izieb" disabled
+                        <input id="pocet_izieb" class="dash-input" type="number" min="0" max="999" name="pocet_izieb" disabled
                                required
                                value="">
 
                     </div>
                     <div class="dash-input-container">
                         <label for="poschodie">Poschodie: </label>
-                        <input id="poschodie" class="dash-input" type="number" name="poschodie" value="">
+                        <input id="poschodie" class="dash-input" type="number" min="0" max="999" name="poschodie" value="">
                     </div>
                     <div class="dash-input-container">
                         <label for="kraj">Kraj: <span class="dash-field-required">*</span></label>

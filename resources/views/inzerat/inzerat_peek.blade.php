@@ -43,16 +43,16 @@
                         <a href='deletep/{{ $inzerat->UUID }}' title="Vymazať inzerát"><i class="fas fa-trash peek-awesome"></i></a>
                 </div>
                 <div class="peek-detail-container">
-                    <span class="peek-label">Typ inzerátu:  {{$sale}} </span> <br>
-                    <span class="peek-label">Typ nehnuteľnosti: {{$type}} </span> <br>
-                    <span class="peek-label">Počet izieb:{{$room_number}}</span> <br>
-                    <span class="peek-label">Kraj:@php  echo str_replace("kraj", "", $region);@endphp </span> <br>
-                    <span class="peek-label">Okres: {{$district}}</span> <br>
-                    <span class="peek-label">Mesto: {{$village}}</span> <br>
-                    <span class="peek-label">Ulica: {{$street}}</span> <br>
-                    <span class="peek-label">Cena: {{$price}}</span> <br>
-                    <span class="peek-label">Pridaný: {{$created_at}}</span> <br>
-                    <span class="peek-label">Naposledy upravený:{{$updated_at}} </span> <br>
+                    <span class="peek-label">Typ inzerátu:</span>  {{$sale}}  <br>
+                    <span class="peek-label">Typ nehnuteľnosti:</span> {{$type}}<br>
+                    <span class="peek-label">Počet izieb:</span> {{$room_number}} <br>
+                    <span class="peek-label">Kraj:</span> @php  echo str_replace("kraj", "", $region);@endphp <br>
+                    <span class="peek-label">Okres:</span> {{$district}} <br>
+                    <span class="peek-label">Mesto:</span> {{$village}}<br>
+                    <span class="peek-label">Ulica:</span> {{$street}} <br>
+                    <span class="peek-label">Cena:</span> {{$price}}<br>
+                    <span class="peek-label">Pridaný:</span> {{$created_at}} <br>
+                    <span class="peek-label">Naposledy upravený:</span> {{$updated_at}} <br>
                 </div>
             </div>
         </div>

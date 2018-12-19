@@ -15,12 +15,12 @@
 
             <div class="dash-input-container">
                 <label for="estate_name">Názov: <span class="dash-field-required">*</span></label>
-                <input id="estate_name" class="dash-input" type="text" name="estate_name" value="{{old('estate_name')}}" required>
+                <input id="estate_name" class="dash-input" type="text" name="estate_name" value="{{old('estate_name')}}" maxlength="40" required>
             </div>
 
             <div class="dash-input-container">
                 <label for="konatel">Konateľ: <span class="dash-field-required">*</span></label>
-                <input id="konatel" class="dash-input" type="text" name="konatel"
+                <input id="konatel" class="dash-input" type="text" maxlength="60" name="konatel"
                        value="{{old('konatel')}}" required>
             </div>
 
@@ -66,30 +66,30 @@
             <div class="dash-input-container">
                 <label for="street">Ulica: <span class="dash-field-required">*</span></label>
                 <input id="street" class="dash-input" type="text" name="street"
-                       value="{{ old('street') }}" required autofocus>
+                       value="{{ old('street') }}" required maxlength="40" autofocus>
             </div>
 
             <div class="dash-input-container">
                 <label for="tel_1">Telefónne číslo 1: <span class="dash-field-required">*</span></label>
-                <input id="tel_1" class="dash-input" type="text" pattern="[0-9]{9,}"
+                <input id="tel_1" class="dash-input" type="text" pattern="[0-9]{9,12}"
                        name="tel_1" required value="{{old('tel_1')}}">
             </div>
 
             <div class="dash-input-container">
                 <label for="tel_2">Telefónne číslo 2: </label>
-                <input id=tel_2 class="dash-input" type="text" pattern="[0-9]{9,}"
+                <input id=tel_2 class="dash-input" type="text" pattern="[0-9]{9,12}"
                        name="tel_cislo" value="{{old('tel_2')}}">
             </div>
 
             <div class="dash-input-container" {{ $errors->has('email') ? ' has-error' : '' }}>
                 <label for="email">Email: <span class="dash-field-required">*</span></label>
                 <input id="email" class="dash-input" type="email" name="email" required
-                       value="{{old('email')}}">
+                       value="{{old('email')}}" maxlength="40">
             </div>
 
             <div class="dash-input-container">
                 <label for="iban">IBAN: </label>
-                <input id="iban" class="dash-input" class="login-field" type="text" name="iban" value="{{old('iban')}}">
+                <input id="iban" class="dash-input" class="login-field" type="text" name="iban" value="{{old('iban')}}" maxlength="60">
             </div>
 
             <div class="dash-button-wrapper">

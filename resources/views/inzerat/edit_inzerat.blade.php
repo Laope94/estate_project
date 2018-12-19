@@ -7,7 +7,8 @@
             <div class="login-register-container">
                 <div class="flex-container">
                     <div class="register-card">
-                        <form action="{{ action('InzeratController@updateAdvProfile',['UUID'=>$inzerat->UUID]) }}" method="get" enctype="multipart/form-data">
+                        <form action="{{ action('InzeratController@updateAdvProfile') }}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="uuid" value="{{$inzerat->UUID}}">
                             <h2 class="register-title">Inzerát</h2>
                             <div>
                                 <div class="register-inner-flex">
@@ -28,7 +29,7 @@
                                                 <div class="login-field-container">
                                                     <label for="cena">Cena: <span class="login-field-required">*</span></label>
                                                     <div>
-                                                        <input id="cena" class="login-field" min="0" type="number"
+                                                        <input id="cena" class="login-field" min="0" max="999999999" type="number"
                                                                name="cena" required
                                                                value="{{ $inzerat->price }}">
                                                     </div>
@@ -53,7 +54,7 @@
                                                 <div class="login-field-container">
                                                     <label for="plocha">Plocha (m2): <span class="login-field-required">*</span></label>
                                                     <div>
-                                                        <input id="plocha" class="login-field" type="number" min="1"
+                                                        <input id="plocha" class="login-field" type="number" min="1" max="999999"
                                                                name="plocha" required
                                                                value="{{ $inzerat->area }}">
                                                     </div>
@@ -67,7 +68,7 @@
                                                     </label>
                                                     <div>
                                                         <input id="pocet_izieb" class="login-field" type="number"
-                                                               min="0"
+                                                               min="0" max="999"
                                                                name="pocet_izieb"  value="{{ $inzerat->room_number }}">
                                                     </div>
                                                 </div>
@@ -75,7 +76,7 @@
                                                     <label for="poschodie">Poschodie: </label>
                                                     <div>
                                                         <input id="poschodie" class="login-field" type="number"
-                                                               name="poschodie"
+                                                               name="poschodie" min="0" max="999"
                                                                value="{{$inzerat->floors}}">
                                                     </div>
                                                 </div>
@@ -117,7 +118,7 @@
                                                     <label for="street">Ulica:</label>
                                                     <div>
                                                         <input id="street" type="text" class="login-field" name="street"
-                                                               value="{{ $inzerat->street }}" autofocus>
+                                                               value="{{ $inzerat->street }}" autofocus maxlength="40">
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,7 +142,7 @@
                                                             class="login-field-required">*</span></label>
                                                 <div>
                                             <textarea class="advert-desc" id="popis" rows="3" type="text" name="popis"
-                                                      required
+                                                      required maxlength="3000"
                                                     >{{ $inzerat->description }}</textarea>
                                                 </div>
                                             </div>

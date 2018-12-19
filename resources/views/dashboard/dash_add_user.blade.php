@@ -20,12 +20,12 @@
             <div class="dash-input-container">
                 <label for="name">Meno: <span class="dash-field-required">*</span></label>
                 <input id="name" class="dash-input" type="text" name="name"
-                       value="{{ old('name') }}" required autofocus>
+                       value="{{ old('name') }}" required autofocus maxlength="40">
             </div>
             <div class="dash-input-container">
                 <label for="surname">Priezvisko: <span class="dash-field-required">*</span></label>
                 <input id="surname" class="dash-input" type="text" name="surname"
-                       value="{{ old('surname') }}" required autofocus>
+                       value="{{ old('surname') }}" required autofocus maxlength="40">
             </div>
 
             <div class="dash-input-container">
@@ -89,12 +89,12 @@
                 <div class="dash-input-container">
                     <label for="street">Ulica:</label>
                     <input id="street" class="dash-input" type="text" name="street"
-                           value="{{ old('street') }}" autofocus>
+                           value="{{ old('street') }}" autofocus maxlength="40">
                 </div>
             @endif
             <div class="dash-input-container">
                 <label for="phone_prim">Telefón 1: <span class="dash-field-required">*</span></label>
-                <input id="phone_prim" class="dash-input" type="text" pattern="[0-9]{9,}" name="phone_prim"
+                <input id="phone_prim" class="dash-input" type="text" pattern="[0-9]{9,12}" name="phone_prim"
                        value="{{ old('phone_prim') }}"
                        required autofocus>
             </div>
@@ -102,14 +102,14 @@
             <div class="dash-input-container">
                 <label for="phone_sec">Telefón 2:</label>
                 <input id="phone_sec" class="dash-input" type="tel" name="phone_sec"
-                       value="{{ old('phone_sec') }}" autofocus>
+                       value="{{ old('phone_sec') }}" pattern="[0-9]{9,12}" autofocus>
             </div>
 
             <div class="dash-input-container">
                 <label for="email">E-Mail: <span class="dash-field-required">*</span></label>
                 <input id="email" class="dash-input" type="email" name="email"
                        value="{{ old('email') }}"
-                       required>
+                       required maxlength="40">
             </div>
 
         <!-- TODO: HESLO - neviem ako to spravíme, najlepšie by bolo tieto fieldy dať preč a heslo iba generovať a posielať mailom, ale nefunguje mail... -->
@@ -117,12 +117,12 @@
                 <label for="password">Heslo: <span class="dash-field-required">*</span></label>
                 <input id="password" class="dash-input" type="password"
                        name="password"
-                       required>
+                       required maxlength="40">
             </div>
 
             <div class="dash-input-container">
                 <label for="password-confirm">Potvrdiť heslo: <span class="dash-field-required">*</span></label>
-                <input id="password-confirm" class="dash-input" type="password" name="password_confirmation" required>
+                <input id="password-confirm" class="dash-input" type="password" name="password_confirmation" required maxlength="40">
             </div>
 
             <div class="login-error">

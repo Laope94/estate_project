@@ -26,15 +26,27 @@ function getUrlParameters() {
         }
         if(sParameterName[0]=="min_price"){
             $("#min_price").val(sParameterName[1]);
+            if (sParameterName[1] > 0) {
+                $("#max_price").attr({"required": true, "min": sParameterName[1]});
+            }
         }
         if(sParameterName[0]=="max_price"){
             $("#max_price").val(sParameterName[1]);
+            if (sParameterName[1] > 0) {
+                $("#min_price").attr({"required": true, "max": sParameterName[1]});
+            }
         }
         if(sParameterName[0]=="min_area"){
             $("#min_area").val(sParameterName[1]);
+            if (sParameterName[1] > 0) {
+                $("#max_area").attr({"required": true, "min": sParameterName[1]});
+            }
         }
         if(sParameterName[0]=="max_area"){
             $("#max_area").val(sParameterName[1]);
+            if (sParameterName[1] > 0) {
+                $("#min_area").attr({"required": true, "max": sParameterName[1]});
+            }
         }
         if(sParameterName[0]=="kraj"){
             $("#hidden-data").append("<span id='h_kraj'>"+getRegion(sParameterName[1])+"</span>");

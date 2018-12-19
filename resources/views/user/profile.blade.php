@@ -21,30 +21,30 @@
                                                     <label class="profile-label" for="name">Meno: </label>
                                                     <input id="name" name="name" type="text" value="{{$user->name}}"
                                                            disabled
-                                                           required class="profile-field dis-field">
+                                                           required class="profile-field dis-field" maxlength="40">
                                                 </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="surname">Priezvisko: </label>
                                                     <input id="surname" name="surname" type="text"
                                                            value="{{$user->surname}}" disabled
-                                                           required class="profile-field dis-field">
+                                                           required class="profile-field dis-field" maxlength="40">
                                                 </div>
                                                     <div class="profile-field-container">
                                                         <label class="profile-label" for="email">Email: </label>
                                                         <input id="email" name="email" type="text" value="{{$user->email}}" disabled
-                                                               required class="profile-field dis-field">
+                                                               required class="profile-field dis-field" maxlength="40">
                                                     </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="phone_prim">Tel. č. 1:</label>
                                                     <input id="phone_prim" name="phone_prim" type="text"
-                                                           pattern="[0-9]{9,}" value="{{$user->phone}}" disabled
+                                                           pattern="[0-9]{9,12}" value="{{$user->phone}}" disabled
                                                            required
                                                            class="profile-field dis-field">
                                                 </div>
                                                 <div class="profile-field-container">
                                                     <label class="profile-label" for="phone_sec">Tel. č. 2:</label>
                                                     <input id="phone_sec" name="phone_sec" type="text"
-                                                           pattern="[0-9]{9,}" value="{{$user->phone2}}" disabled
+                                                           pattern="[0-9]{9,12}" value="{{$user->phone2}}" disabled
                                                            class="profile-field dis-field">
                                                 </div>
                                                 <div class="profile-field-container">
@@ -72,7 +72,7 @@
                                                     <label class="profile-label" for="street">Ulica: </label>
                                                     <input id="street" name="street" type="text"
                                                            value="{{$user->address}}"
-                                                           disabled class="profile-field dis-field">
+                                                           disabled class="profile-field dis-field" maxlength="40">
                                                 </div>
                                                 <div class="button-wrapper">
                                                     <button type="submit" id="save-changes" class="register-button"

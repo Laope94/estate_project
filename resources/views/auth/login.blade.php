@@ -50,10 +50,6 @@
                                 <button type="submit" class="register-button">
                                     Prihlásiť
                                 </button>
-                                <br>
-                                <a href="{{ route('password.request') }}">
-                                    Zabudli ste heslo?
-                                </a>
                             </div>
                         </div>
                     </form>

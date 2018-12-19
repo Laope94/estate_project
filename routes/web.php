@@ -96,7 +96,7 @@ Route::get('updateAdvert/{UUID}', "InzeratController@updateAdv");
 Route::get('/byt-v-dome', function (){
     return view('bytvdome/bytvdome');
 });
-Route::get('updateAdvProfile/{UUID}', "InzeratController@updateAdvProfile");
+Route::post('updateAdvProfile/', "InzeratController@updateAdvProfile");
 
 //filter inzeratov
 Route::get('/inzeraty', 'InzeratController@megaFilter');

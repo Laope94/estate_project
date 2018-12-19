@@ -19,14 +19,14 @@
                                             <label for="name">Meno: <span class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="name" class="login-field" type="text" name="name"
-                                                       value="{{ old('name') }}" required autofocus>
+                                                       value="{{ old('name') }}" maxlength="40" required autofocus>
                                             </div>
                                         </div>
                                         <div class="login-field-container">
                                             <label for="surname">Priezvisko: <span class="login-field-required">*</span></label>
                                             <div>
                                                 <input id="surname" class="login-field" type="text" name="surname"
-                                                       value="{{ old('surname') }}" required autofocus>
+                                                       value="{{ old('surname') }}" maxlength="40" required autofocus>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                             <label for="street">Ulica:</label>
                                             <div>
                                                 <input id="street" type="text" class="login-field" name="street"
-                                                       value="{{ old('street') }}" autofocus>
+                                                       value="{{ old('street') }}" maxlength="40" autofocus>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                         <div class="login-field-container">
                                             <label for="phone_prim">Telefón 1: <span class="login-field-required">*</span></label>
                                             <div>
-                                                <input id="phone_prim" type="text" pattern="[0-9]{9,}" class="login-field" name="phone_prim"
+                                                <input id="phone_prim" type="text" pattern="[0-9]{9,12}" class="login-field" name="phone_prim"
                                                        value="{{ old('phone_prim') }}"
                                                        required autofocus>
                                             </div>
@@ -84,7 +84,7 @@
                                             <label for="phone_sec">Telefón 2:</label>
                                             <div>
                                                 <input id="phone_sec" type="tel" class="login-field" name="phone_sec"
-                                                       value="{{ old('phone_sec') }}" autofocus>
+                                                       value="{{ old('phone_sec') }}" pattern="[0-9]{9,12}" autofocus>
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                                     <div>
                                                         <input id="email" type="email" class="login-field" name="email"
                                                                value="{{ old('email') }}"
-                                                               required>
+                                                               required maxlength="40">
                                                     </div>
                                                 </div>
 
@@ -111,7 +111,7 @@
                                                     <div>
                                                         <input id="password" type="password" class="login-field"
                                                                name="password"
-                                                               required>
+                                                               required maxlength="40">
                                                     </div>
                                                 </div>
 
@@ -119,7 +119,7 @@
                                                     <label for="password-confirm">Potvrdiť heslo: <span class="login-field-required">*</span></label>
                                                     <div>
                                                         <input id="password-confirm" type="password" class="login-field"
-                                                               name="password_confirmation" required>
+                                                               name="password_confirmation" required maxlength="40">
                                                     </div>
                                                 </div>
                                             </div>

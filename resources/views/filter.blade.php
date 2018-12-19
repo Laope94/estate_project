@@ -28,11 +28,15 @@
                                     <div class="login-field-container">
                                         <label for="type"><strong>Druh nehnuteľnosti</strong></label><br>
                                         <select id="type" class="small-field" name="type[]">
-                                            <option id="type-all" name="type[]" value="All">----------------------------------</option>
+                                            <option id="type-all" name="type[]" value="All">
+                                                ----------------------------------
+                                            </option>
                                             <option id="type-garsonka" name="type[]" value="Garsónka">Garsónka</option>
                                             <option id="type-byt" name="type[]" value="Byt">Byt</option>
                                             <option id="type-dom" name="type[]" value="Rodinný dom">Rodinný dom</option>
-                                            <option id="type-nebytovy" name="type[]" value="Nebytový priestor">Nebytový priestor</option>
+                                            <option id="type-nebytovy" name="type[]" value="Nebytový priestor">Nebytový
+                                                priestor
+                                            </option>
                                             <option id="type-pozemok" name="type[]" value="Pozemok">Pozemok</option>
                                             <option id="type-ine" name="type[]" value="Iné">Iné</option>
                                         </select>
@@ -40,7 +44,8 @@
                                     <div class="login-field-container">
                                         <label for="rooms"><strong>Počet izieb</strong></label><br>
                                         <input id="rooms" class="small-field" type="number" name="room_number"
-                                               value="{{\Illuminate\Support\Facades\Input::get('room_number')}}" min="0">
+                                               value="{{\Illuminate\Support\Facades\Input::get('room_number')}}"
+                                               min="0">
                                     </div>
                                 </div>
                                 <div>
@@ -83,12 +88,18 @@
                                         <strong>Cena</strong><br>
                                         <div class="register-small-flex">
                                             <div><span class="small-field-label">od: </span><input id="min_price"
-                                                        class="small-field-range" type="number" name="min_price" min="0"
-                                                        value="{{\Illuminate\Support\Facades\Input::get('min_price')}}">
+                                                                                                   class="small-field-range"
+                                                                                                   type="number"
+                                                                                                   name="min_price"
+                                                                                                   min="0"
+                                                                                                   value="{{\Illuminate\Support\Facades\Input::get('min_price')}}">
                                             </div>
                                             <div><span class="small-field-label">do: </span><input id="max_price"
-                                                        class="small-field-range" type="number" name="max_price" min="0"
-                                                        value="{{\Illuminate\Support\Facades\Input::get('max_price')}}">
+                                                                                                   class="small-field-range"
+                                                                                                   type="number"
+                                                                                                   name="max_price"
+                                                                                                   min="0"
+                                                                                                   value="{{\Illuminate\Support\Facades\Input::get('max_price')}}">
                                             </div>
                                         </div>
                                     </div>
@@ -96,17 +107,24 @@
                                         <strong>Rozloha (m<sup style="font-size: 10px">2</sup>)</strong><br>
                                         <div class="register-small-flex">
                                             <div><span class="small-field-label">od: </span><input id="min_area"
-                                                        class="small-field-range" type="number" name="min_area" min="0"
-                                                        value="{{\Illuminate\Support\Facades\Input::get('min_area')}}">
+                                                                                                   class="small-field-range"
+                                                                                                   type="number"
+                                                                                                   name="min_area"
+                                                                                                   min="0"
+                                                                                                   value="{{\Illuminate\Support\Facades\Input::get('min_area')}}">
                                             </div>
                                             <div><span class="small-field-label">do: </span><input id="max_area"
-                                                        class="small-field-range" type="number" name="max_area" min="0"
-                                                        value="{{\Illuminate\Support\Facades\Input::get('max_area')}}">
+                                                                                                   class="small-field-range"
+                                                                                                   type="number"
+                                                                                                   name="max_area"
+                                                                                                   min="0"
+                                                                                                   value="{{\Illuminate\Support\Facades\Input::get('max_area')}}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="search-button-container login-field-container">
-                                        <button id="fake-button" type="button" class="add-button" title="Resetovať formulár">
+                                        <button id="fake-button" type="button" class="add-button"
+                                                title="Resetovať formulár">
                                             <i class="fas fa-broom user-edit-awesome"></i></button>
                                         <button class="add-button" type="submit" name="find" title="Hľadať"><i
                                                     class="fas fa-search user-edit-awesome"></i></button>
@@ -124,7 +142,7 @@
                                 @endforeach
                                 @if(count($estates)==0)
                                     <strong>Vybraným kritériam nevyhovuje žiadny inzerát.</strong>
-                                    @endif
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -137,4 +155,5 @@
     <script src="{{ asset('js/filter-fill.js') }}"></script>
     <script src="{{ asset('js/fill-location.js') }}"></script>
     <script src="{{ asset('js/location-getters.js') }}"></script>
+    <script src="{{ asset('js/min-max-check.js') }}"></script>
 @endsection
