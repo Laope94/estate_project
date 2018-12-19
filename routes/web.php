@@ -68,7 +68,9 @@ Route::post('/estate-cms/addEstate', 'AdminController@addEstate');
 Route::get('/estate-cms/zamestnanci', 'AdminController@getCurrentAgencyUsers'); //pristup iba pre kancelariu a zamestnanca -> hotovo
 Route::get('/estate-cms/inzerat/{UUID}', 'AdminController@getEstate');
 Route::get('/estate-cms/pridat-zamestnanca', 'AdminController@getAgencyList'); //pristup iba pre kancelariu -> hotovo
-Route::get('/estate_cms/deleteEstate{UUID}', "AdminController@deleteEstate");
+Route::get('/estate-cms/deleteEstate{UUID}', "AdminController@deleteEstate");
+//charts
+Route::get('estate-cms/charts', 'ChartController@index');
 
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
 //registracia kancelarie
@@ -76,7 +78,7 @@ Route::get('/registracia-kancelarie', function (){
     return view('/auth/register_kancelarie');
 });
 
-//Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
+Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 //pouzivatelia vypis
 //Route::get('/pouzivatelia', "UserController@showAllAction");
 
@@ -125,6 +127,3 @@ Route::post('/prihlaseny', 'AuthController@login');
 Route::get('/',['as'=> 'HOME','uses' => 'InzeratController@mostRecentEstates']);
 
 Auth::routes();
-
-//charts
-Route::get('/charts', 'ChartController@index');

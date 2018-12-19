@@ -65,7 +65,7 @@
                         <div class="dash-link-container">Správa kancelárie</div>
                     </a>
                     <hr>
-                    <a href=""> <!-- TODO: napojiť view s grafmi -->
+                    <a href="/estate-cms/charts">
                         <div class="dash-link-container">Štatistiky</div>
                     </a>
                     <hr>
