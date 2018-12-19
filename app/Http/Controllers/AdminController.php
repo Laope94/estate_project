@@ -29,8 +29,15 @@ class AdminController
 
     public function showUsers(){
         //načíta všetkých userov okrem neregistrovaných
-        $users=Usersvillageview::where('privilege','<','4')->get();
-        return view("dashboard/dash_users",['users' =>$users]);
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege < 4){
+            return redirect('/');
+        } else {
+            $users=Usersvillageview::where('privilege','<','4')->get();
+            return view("dashboard/dash_users",['users' =>$users]);
+        }
     }
 
     public function addusr(){
@@ -38,10 +45,9 @@ class AdminController
         $privilege=Auth::user()->privilege;
         return view("dashboard/dash_add_user",['agencies' =>$agencies],['privilege' =>$privilege]);
     }
+
     public function addUser(Request $request){
         //pridá usera so zvoleným oprávnením
-
-
         $help = $request['city'];
         $village = Village_model::where("fullname", "=", $help)->first();
 
@@ -115,15 +121,22 @@ class AdminController
 
     public function showUsersOfPrivilege($privilege){
 
-    if($privilege==0){
-        //načíta neregistrovaných userov ...možno sa to zíde na štatistiku
-        $users=User::where("privillege",0 )->get();
-    }else{
-        //načíta userov so zvoleným oprávnením až na neregistrovaných
-        $users=Usersvillageview::where("privilege",$privilege )->get();
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege != 5){
+            return redirect('/');
+        } else {
+            if($privilege==0){
+                //načíta neregistrovaných userov ...možno sa to zíde na štatistiku
+                $users=User::where("privillege",0 )->get();
+            }else{
+                //načíta userov so zvoleným oprávnením až na neregistrovaných
+                $users=Usersvillageview::where("privilege",$privilege )->get();
+            }
+            return view("/dashboard/dash_users",['users' =>$users]);
+        }
     }
-        return view("/dashboard/dash_users",['users' =>$users]);
-}
 
     public function showUsersOfAgency($uuid){
         //pokiaľ sa id agentúry nerovná 1 (agentúra pridaná len aby nemali users null agency_id kvôli db viewu) načíta userov agentúry
@@ -137,11 +150,18 @@ class AdminController
     }
 
     public function getCurrentAgencyUsers(){
-        $agency=Kancelaria::where('id', Auth::user()->agency_id)->first();
-        $agency_name=$agency->name;
-        if($agency_name!="0") {
-            $users = Usersvillageview::where("agency", $agency_name)->get();
-            return view("/dashboard/dash_users", ['users' =>$users]);
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege > 3 || Auth::user()->privilege < 2 ){
+            return redirect('/');
+        } else {
+            $agency=Kancelaria::where('id', Auth::user()->agency_id)->first();
+            $agency_name=$agency->name;
+            if($agency_name!="0") {
+                $users = Usersvillageview::where("agency", $agency_name)->get();
+                return view("/dashboard/dash_users", ['users' =>$users]);
+            }
         }
     }
 
@@ -152,8 +172,16 @@ class AdminController
 
     public function showEstates(){
         //načíta všetky inzeráty
-        $estates=Eetvview::all();
-        return view("/dashboard/dash_inzeraty", ['estates'=>$estates]);
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege < 4){
+            return redirect('/');
+        } else {
+            $estates=Eetvview::all();
+            return view("/dashboard/dash_inzeraty", ['estates'=>$estates]);
+        }
+
     }
 
     public function getEstate($uuid){
@@ -226,10 +254,17 @@ class AdminController
     }
 
     public function getCurrentAgencyEstates(){
-        $agency = Kancelaria::where('id', Auth::user()->agency_id)->first();
-        $agencyname = $agency->name;
-        $estates = Eetvview::where('agency', $agencyname)->get();
-        return view("dashboard/dash_inzeraty", ['estates' => $estates]);
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege > 3 || Auth::user()->privilege < 2 ){
+            return redirect('/');
+        } else {
+            $agency = Kancelaria::where('id', Auth::user()->agency_id)->first();
+            $agencyname = $agency->name;
+            $estates = Eetvview::where('agency', $agencyname)->get();
+            return view("dashboard/dash_inzeraty", ['estates' => $estates]);
+        }
     }
 
 
@@ -238,17 +273,30 @@ class AdminController
 
 
     public function showAgencies(){
-
         //načíta všetky kancelárie
-        $agencies=Kancelaria::where('id','>','1')->get();
-        return view("dashboard/dash_kancelarie",['agencies' =>$agencies]);
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege < 4){
+            return redirect('/');
+        } else {
+            $agencies=Kancelaria::where('id','>','1')->get();
+            return view("dashboard/dash_kancelarie",['agencies' =>$agencies]);
+        }
     }
 
     public function getAgencyList(){
         //kancelárie + kancelária 0
-        $user=Auth::user();
-        $agencies=Kancelaria::all();
-        return view("dashboard/dash_add_user",['agencies' =>$agencies],['user' =>$user]);
+        if(Auth::user() == null){
+            return redirect('/');
+        }
+        if(Auth::user()->privilege != 3){
+            return redirect('/');
+        } else {
+            $user=Auth::user();
+            $agencies=Kancelaria::all();
+            return view("dashboard/dash_add_user",['agencies' =>$agencies],['user' =>$user]);
+        }
     }
 
     public function updateAgency($uuid, Request $request){

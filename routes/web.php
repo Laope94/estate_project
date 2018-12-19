@@ -30,10 +30,9 @@ Route::view('/kontakt', 'kontakt');
 Route::view('/add-user', "");
 Route::post('/admin-tools/addusr', 'AdminController@addusr');
 Route::post('/admin-tools/addUser', 'AdminController@addUser');
-Route::get('/admin-tools/showUsers', 'AdminController@showUsers');
+Route::get('/admin-tools/showUsers', 'AdminController@showUsers'); //pristup iba pre admina -> hotovo
 
-Route::get('/admin-tools/showUsers', 'AdminController@showUsers');
-Route::get('/admin-tools/showUsersOfPrivilege/{privilege}', 'AdminController@showUsersOfPrivilege');
+Route::get('/admin-tools/showUsersOfPrivilege/{privilege}', 'AdminController@showUsersOfPrivilege'); //pristup iba pre admina -> hotovo
 Route::get('/admin-tools/showUsersOfAgency/{UUID}', 'AdminController@showUsersOfAgency');
 
 Route::get('/admin-tools/updateUsr/{UUID}', 'AdminController@showUser');
@@ -41,7 +40,7 @@ Route::get('/admin-tools/updateUser/{UUID}', "AdminController@updateUser");
 Route::get('/admin-tools/deleteUser/{UUID}', "AdminController@deleteUser");
 
 //estates
-Route::get('/admin-tools/showEstates', 'AdminController@showEstates');
+Route::get('/admin-tools/showEstates', 'AdminController@showEstates'); //pristup iba pre admina -> hotovo
 Route::get('/admin-tools/showEstatesOfUser/{UUID}', 'AdminController@showEstatesOfUser');
 Route::get('/admin-tools/showEstatesOfAgency/{UUID}', 'AdminController@showEstatesOfAgency');
 Route::get('/admin-tools/inzerat/{UUID}', 'AdminController@getEstate');
@@ -52,33 +51,21 @@ Route::get('/admin-tools/deleteEstate/{UUID}', "AdminController@deleteEstate");
 Route::get('/admin-tools/deleteEstateDetail/{UUID}', "AdminController@deleteEstateDetail");
 
 //admins
-Route::get('/admin-tools', function (){
-    if (\Illuminate\Support\Facades\Auth::user() == null) {
-        return redirect('/');
-    } else {
-        return redirect()->action('AdminController@showAgencies');
-    }
-});
-Route::get('/admin-tools/kancelarie', 'AdminController@showAgencies');
-Route::view('/admin-tools/pridat-kancelariu', 'dashboard/dash_add_kancelaria');
+Route::get('/admin-tools', 'AdminController@showAgencies'); //pristup iba pre admina -> hotovo
+Route::get('/admin-tools/kancelarie', 'AdminController@showAgencies'); //pristup iba pre admina -> hotovo
+Route::view('/admin-tools/pridat-kancelariu', 'dashboard/dash_add_kancelaria'); //-> pozriet este
 Route::get('/admin-tools/updateAgnc/{UUID}', 'AdminController@showAgency');
 Route::get('/admin-tools/updateAgency/{UUID}', "AdminController@updateAgency");
 Route::get('/admin-tools/deleteAgency/{UUID}', "AdminController@deleteAgency");
 
 
 // ---------------------------------------KANCELARIA-----------------------------------------------------
-Route::get('/estate-cms', function (){
-     if (\Illuminate\Support\Facades\Auth::user() == null) {
-         return redirect('/');
-    } elseif(Auth::user()->privilege!=3) {
-         return redirect()->action('AdminController@getCurrentAgencyEstates');
-    }
-});
+Route::get('/estate-cms', 'AdminController@getCurrentAgencyEstates'); //pristup iba pre kancelariu a zamestnanca -> hotovo
 Route::view('/estate-cms/pridat-inzerat', 'dashboard/dash_add_inzerat');
-Route::get('/estate-cms/inzeraty/', 'AdminController@getCurrentAgencyEstates');
-Route::get('/estate-cms/zamestnanci', 'AdminController@getCurrentAgencyUsers');
+Route::get('/estate-cms/inzeraty/', 'AdminController@getCurrentAgencyEstates'); //pristup iba pre kancelariu a zamestnanca -> hotovo
+Route::get('/estate-cms/zamestnanci', 'AdminController@getCurrentAgencyUsers'); //pristup iba pre kancelariu a zamestnanca -> hotovo
 Route::get('/estate-cms/inzerat/{UUID}', 'AdminController@getEstate');
-Route::get('/estate-cms/pridat-zamestnanca', 'AdminController@getAgencyList');
+Route::get('/estate-cms/pridat-zamestnanca', 'AdminController@getAgencyList'); //pristup iba pre kancelariu -> hotovo
 Route::get('/estate_cms/deleteEstate{UUID}', "AdminController@deleteEstate");
 
 // ---------------------------------------POUZIVATELIA-----------------------------------------------------
@@ -86,16 +73,16 @@ Route::get('/estate_cms/deleteEstate{UUID}', "AdminController@deleteEstate");
 Route::get('/registracia-kancelarie', function (){
     return view('/auth/register_kancelarie');
 });
-Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 
+//Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 //pouzivatelia vypis
-Route::get('/pouzivatelia', "UserController@showAllAction");
+//Route::get('/pouzivatelia', "UserController@showAllAction");
 
 //editovanie pozuivatela
 Route::get('updateUserP', "UserController@updateUserProfile");
 
 //môj profil
-Route::get('/profil', "UserController@getMe");
+Route::get('/profil', "UserController@getMe"); //pristup iba pre regist. pouzivatela -> hotovo
 
 //------------------------------------------INZERATY-----------------------------------------------------
 //pridanie inzeratu
