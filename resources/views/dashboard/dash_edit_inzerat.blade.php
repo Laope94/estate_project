@@ -5,7 +5,7 @@
 @section('menu')
     @parent
 @endsection
-@section('title', 'Pridať inzerát')
+@section('title', 'Upraviť inzerát')
 @section('content')
     @parent
     <form action="{{URL::to('/estate-cms/addEstate')}}" method="post" enctype="multipart/form-data">
@@ -57,6 +57,7 @@
                         <input id="poschodie" class="dash-input" type="number" min="0" max="999" name="poschodie" value="{{ $inzerat->floors }}">
                     </div>
                     <div class="dash-input-container">
+                        <span id="h_kraj" hidden>{{$inzerat->region}}</span>
                         <label for="kraj">Kraj: <span class="dash-field-required">*</span></label>
 
                             <span id="h_kraj" hidden>{{$inzerat->region}}</span>
@@ -66,6 +67,7 @@
 
                     </div>
                     <div class="dash-input-container">
+                        <span id="h_okres" hidden>{{$inzerat->district}}</span>
                         <label for="okres">Okres: <span
                                     class="dash-field-required">*</span></label>
 
@@ -78,9 +80,9 @@
 
                     <div class="dash-input-container">
                         <label for="city">Mesto: <span class="dash-field-required">*</span></label>
-
+                        <span id="h_mesto" hidden>{{$inzerat->village}}</span>
                             <span id="h_mesto" hidden>{{$inzerat->village}}</span>
-                            <select id="city" class="dash-field" type="" name="city"
+                            <select id="city" class="dash-input" type="" name="city"
                                     value="{{ old('city') }}" required autofocus>
                             </select>
 
@@ -117,8 +119,9 @@
         </div>
     </form>
     <script src="{{ asset('js/room-lock.js') }}"></script>
-    <script src="{{ asset('js/load-locations.js') }}"></script>
-    <script>$(document).ready(function () {
-            loadLocation();
-        })</script>
+    <script src="{{ asset('js/fill-location.js') }}"></script>
+    <script src="{{ asset('js/change-location.js') }}"></script>
+    <script>$(window).on("load", function () {
+            fillLocation();
+        });</script>
 @endsection
