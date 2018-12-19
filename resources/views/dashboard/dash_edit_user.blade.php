@@ -12,12 +12,11 @@
 @endif
 @section('content')
     @parent
-    <form action="{{URL::to('/admin-tools/updateUser')}}" method="post" enctype="multipart/form-data">
+    <form action="{{URL::to('/admin-tools/updateUser')}}" method="post" enctype="multipart/form-data" id="edit-form">
         <input type="hidden" name="uuid" value="{{$users->uuid}}">
         <div class="dash-flex">
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
             <div class="dash-input-container">
                 <label for="name">Meno: <span class="dash-field-required">*</span></label>
                 <input id="name" class="dash-input" type="text" name="name"
@@ -42,8 +41,9 @@
             </div>
             @if(Auth::user()->privilege>=4)
                 <div class="dash-input-container">
+                    <input hidden id="h_agency" name="h_agency" value="{{$users->agency}}">
                     <label for="agency">Kancelária: <span class="dash-field-required">*</span></label>
-                    <select id="agency" name="agency" class="dash-input" required @if(Auth::user()->agency_id==1) disabled @endif >
+                    <select id="agency" name="agency" class="dash-input" required @if($users->agency=="0") disabled @endif >
                         @foreach($agencies as $agency)
                             <option id="agency-{{$agency->id}}" value="{{$agency->name}}"
                             @if($agency->id==Auth::user()->agency_id) selected @endif
@@ -118,19 +118,6 @@
                        required maxlength="40">
             </div>
 
-            <!-- TODO: HESLO - neviem ako to spravíme, najlepšie by bolo tieto fieldy dať preč a heslo iba generovať a posielať mailom, ale nefunguje mail... -->
-            <div class="dash-input-container">
-                <label for="password">Heslo: <span class="dash-field-required">*</span></label>
-                <input id="password" class="dash-input" type="password"
-                       name="password"
-                       required maxlength="40">
-            </div>
-
-            <div class="dash-input-container">
-                <label for="password-confirm">Potvrdiť heslo: <span class="dash-field-required">*</span></label>
-                <input id="password-confirm" class="dash-input" type="password" name="password_confirmation" required maxlength="40">
-            </div>
-
             <div class="login-error">
                 @if ($errors->has('name'))
                     <span><strong>{{ $errors->first('name') }}</strong></span>
@@ -157,6 +144,7 @@
     <script src="{{ asset('js/fill-location.js') }}"></script>
     <script src="{{ asset('js/change-location.js') }}"></script>
     <script src="{{ asset('js/agency-lock.js') }}"></script>
+    <script src="{{ asset('js/fill-agency.js') }}"></script>
     <script>$(window).on("load", function () {
             fillLocation();
         });</script>

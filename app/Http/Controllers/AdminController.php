@@ -92,9 +92,7 @@ class AdminController
         $uuid=$request->input('uuid');
         $admin=User::where('UUID',$uuid)->first();
         $help2 = $request['agency'];
-        dd($help2);
         $agency=Kancelaria::where('name',$help2)->first();
-
         $admin ->update (["name"=>$request->input('name'),
             "surname"=>$request->input('surname'),
             "email"=>$request->input('email'),
@@ -421,7 +419,7 @@ class AdminController
         if(Auth::user() == null){
             return redirect('/');
         }
-        if(Auth::user()->privilege != 3){
+        if(Auth::user()->privilege < 2){
             return redirect('/');
         } else {
             $user=Auth::user();

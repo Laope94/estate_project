@@ -22,7 +22,7 @@
                                                     <div>
                                                         <select id="ponuka" name="ponuka" required class="login-field">
                                                                 <option @if ($inzerat->issale==1) selected @endif value="1">Predaj</option>
-                                                                <option @if ($inzerat->issale==0) selected @endif value="2">Prenájom</option>
+                                                                <option @if ($inzerat->issale==0) selected @endif value="0">Prenájom</option>
                                                         </select>
                                                     </div>
                                                 </div>

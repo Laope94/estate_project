@@ -112,6 +112,7 @@
                        required maxlength="40">
             </div>
 
+
         <!-- TODO: HESLO - neviem ako to spravíme, najlepšie by bolo tieto fieldy dať preč a heslo iba generovať a posielať mailom, ale nefunguje mail... -->
             <div class="dash-input-container">
                 <label for="password">Heslo: <span class="dash-field-required">*</span></label>

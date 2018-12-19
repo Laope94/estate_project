@@ -18,7 +18,7 @@
                         <label for="ponuka">Ponuka: <span class="dash-field-required">*</span></label>
                         <select class="dash-input" id="ponuka" name="ponuka" required class="login-field">
                             <option @if ($inzerat->issale==1) selected @endif value="1">Predaj</option>
-                            <option @if ($inzerat->issale==0) selected @endif value="2">Prenájom</option>
+                            <option @if ($inzerat->issale==0) selected @endif value="0">Prenájom</option>
                         </select>
                     </div>
                     <div class="dash-input-container">

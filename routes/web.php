@@ -27,7 +27,7 @@ Route::view('/kontakt', 'kontakt');
 // ---------------------------------------ADMIN-----------------------------------------------------
 //TODO: linky pre správu admina vždy začínajú /admin-tools (obdoba /estate-cms - pozri nižšie)
 //users
-Route::view('/add-user', "");
+Route::get('/admin-tools/add-user',  'AdminController@getAgencyList');
 Route::post('/admin-tools/addusr', 'AdminController@addusr');
 Route::post('/admin-tools/addUser', 'AdminController@addUser');
 Route::get('/admin-tools/showUsers', 'AdminController@showUsers'); //pristup iba pre admina -> hotovo
@@ -76,7 +76,7 @@ Route::get('/registracia-kancelarie', function (){
     return view('/auth/register_kancelarie');
 });
 
-//Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
+Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 //pouzivatelia vypis
 //Route::get('/pouzivatelia', "UserController@showAllAction");
 

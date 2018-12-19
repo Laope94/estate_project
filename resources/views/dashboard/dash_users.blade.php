@@ -6,12 +6,23 @@
     @parent
 
 @endsection
-@section('title', 'Správa zamestnancov')
+@if(Auth::user()->privilege>=4)
+@section('title', 'Správa užívatelov')
+@else
+    @section('title', 'Správa zamestnancov')
+    @endif
 @section('content')
     @parent
-    <a href="/estate-cms/pridat-zamestnanca">
-        <button class="dash-round-button"><i class="fas fa-plus" style="font-size: 30px;"></i></button>
-    </a>
+    @if(Auth::user()->privilege>=4)
+        <a href="/admin-tools/add-user">
+            <button class="dash-round-button"><i class="fas fa-plus" style="font-size: 30px;"></i></button>
+        </a>
+        @else
+        <a href="/estate-cms/pridat-zamestnanca">
+            <button class="dash-round-button"><i class="fas fa-plus" style="font-size: 30px;"></i></button>
+        </a>
+        @endif
+
     <div class="dash-table-container">
         <div class="table-faker">
             <div class="table-row">
