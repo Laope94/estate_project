@@ -25,22 +25,98 @@ class AgencySeeder extends Seeder
 
     ]);
 
-        for ($a=0;$a<5;$a++){
+
             DB::table('agencies')->insert([
-                'name' => "Nazov".uniqid(),
-                'director' => "Konatel".uniqid(),
-                'address' => "adresa".uniqid(),
+                'name' => "BeMi",
+                'director' => "Adrián Ďurko",
+                'address' => "Nitrianska",
                 'phone' => "123456789",
                 'phone2' => "987654321",
-                'email' => str_random(10).'@gmail.com',
-                'IBAN' => "IBAN".uniqid(),
-                'ICO' => "ICO".uniqid(),
-                'DIC' => "DIC".uniqid(),
-                'village_id'=> 6*$a+1,
+                'email' =>'A.Durko@gmail.com',
+                'IBAN' => "SK0809000000000123123123",
+                'ICO' => "46492721",
+                'DIC' => "2820011755",
+                'village_id'=> 1879,
                 'UUID'=>Uuid::generate()
 
 
-            ]);}
+            ]);
+
+
+
+            DB::table('agencies')->insert([
+                'name' => "L&P",
+                'director' => "Juraj Čiernik",
+                'address' => "Trnavksého",
+                'phone' => "123456789",
+                'phone2' => "987654321",
+                'email' =>'J.Ciernik@gmail.com',
+                'IBAN' => "SK0809000000000123456789",
+                'ICO' => "64671897",
+                'DIC' => "2630055481",
+                'village_id'=> 186,
+                'UUID'=>Uuid::generate()
+
+
+            ]);
+
+
+
+
+        DB::table('agencies')->insert([
+            'name' => "DMG",
+            'director' => "Mária Bukovská",
+            'address' => "Hlavná",
+            'phone' => "123456789",
+            'phone2' => "987654321",
+            'email' =>'M.Bukovská@gmail.com',
+            'IBAN' => "SK0809000000000987654321",
+            'ICO' => "64324467",
+            'DIC' => "2630073974",
+            'village_id'=> 2017,
+            'UUID'=>Uuid::generate()
+
+
+        ]);
+
+
+        DB::table('agencies')->insert([
+            'name' => "MG real",
+            'director' => "Marián Hagara",
+            'address' => "Zelená 6",
+            'phone' => "123456789",
+            'phone2' => "987654321",
+            'email' =>'M.Hagara@gmail.com',
+            'IBAN' => "SK0809000000000987321456",
+            'ICO' => "64123481",
+            'DIC' => "2830071234",
+            'village_id'=> 478,
+            'UUID'=>Uuid::generate()
+
+
+        ]);
+
+
+
+        DB::table('agencies')->insert([
+            'name' => "SUPER reality",
+            'director' => "Petra Grznárová",
+            'address' => "Lomnického",
+            'phone' => "123456789",
+            'phone2' => "987654321",
+            'email' =>'P.Grznarova@gmail.com',
+            'IBAN' => "SK0809000000000123654987",
+            'ICO' => "73544769",
+            'DIC' => "2047657641",
+            'village_id'=> 907,
+            'UUID'=>Uuid::generate()
+
+
+        ]);
+
+
+
+
     }
 }
 
