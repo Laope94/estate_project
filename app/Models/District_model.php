@@ -23,4 +23,8 @@ class District_model extends Model
 
         return $this->hasMany('App\Models\Village_model','district_id');
     }
+    public function region(){
+
+        return $this->belongsTo('App\Models\Region_model');
+    }
 }

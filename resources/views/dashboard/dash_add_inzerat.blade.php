@@ -8,7 +8,7 @@
 @section('title', 'Pridať inzerát')
 @section('content')
     @parent
-    <form method="post" enctype="multipart/form-data">
+    <form action="{{URL::to('/estate-cms/addEstate')}}" method="post" enctype="multipart/form-data">
         <div class="dash-flex">
             <div>
                 <h3>Informácie o nehnuteľnosti</h3>

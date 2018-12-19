@@ -9,9 +9,11 @@
 @section('title', 'Správa inzerátov')
 @section('content')
     @parent
+    @if(Auth::user()->privilege<=3)
     <a href="/estate-cms/pridat-inzerat">
         <button class="dash-round-button"><i class="fas fa-plus" style="font-size: 30px;"></i></button>
     </a>
+    @endif
     <div class="dash-table-container">
         <div class="table-faker">
             <div class="table-row">
@@ -40,7 +42,7 @@
 
                             @else
                                 <a href="/admin-tools/inzerat/{{$estate->UUID}}"><i class="far fa-eye table-awesome"></i></a>
-                                <i class="fas fa-pencil-alt table-awesome"></i>
+                                <a href="/admin-tools/updateEstt/{{$estate->UUID}}"><i class="fas fa-pencil-alt table-awesome"></i></a>
                                 <a href="/admin-tools/deleteEstate/{{$estate->UUID}}" class="delete-element"><i class="fas fa-trash table-awesome"></i></a>
                             @endif
                         </div>
