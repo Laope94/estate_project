@@ -53,7 +53,7 @@ class AdminController
         //pridá usera so zvoleným oprávnením
         $help = $request['city'];
         $village = Village_model::where("fullname", "=", $help)->first();
-
+        $auth=Auth::user();
         $uuid = Uuid::generate();
         $meno = $request ->input('name');
         $priezvisko = $request ->input('surname');
@@ -75,12 +75,25 @@ class AdminController
         $admin -> phone = $telefon;
         $admin -> phone2 = $telefon2;
         $admin->UUID=$uuid;
+
         $admin -> privilege = $opravnenie;
         $admin -> agency_id = $kancelaria_id;
-        $admin -> village_id = $village->id;
+        if($auth->privilege>=4){
+            
+            $admin -> village_id = $village->id;
+        }
+
         $admin ->save();
 
-        return redirect()->action('AdminController@showUsers');
+
+        if($auth->privilege<4){
+            // $c='ifide';
+            // dd($c);
+            //$this->showEstatesOfAgency($user->agency->UUID );
+            return redirect()->action('AdminController@showEstatesOfAgenc');
+        }else{
+            return redirect()->action('AdminController@showEstates');
+        }
 
     }
 

@@ -12,10 +12,12 @@
 @endif
 @section('content')
     @parent
-    <form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data" id="edit-form">
-        <div class="dash-flex">
+    @if(Auth::user()->privilege>3)<form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data" id="edit-form">
+        @else<form action="{{URL::to('/estate-cms/addUser')}}" method="post" enctype="multipart/form-data">
+          @endif  <div class="dash-flex">
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
             <div class="dash-input-container">
                 <label for="name">Meno: <span class="dash-field-required">*</span></label>
