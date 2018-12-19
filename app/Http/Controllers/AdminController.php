@@ -64,7 +64,7 @@ class AdminController
         $telefon2=$request ->input('phone_sec');
         $opravnenie=$request ->input('privilege');
         $kancelaria_id=$request ->input('agency');
-
+  dd($kancelaria_id);
 
         $admin = new User();
         $admin -> name = $meno;

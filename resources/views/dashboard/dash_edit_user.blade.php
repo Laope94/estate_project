@@ -32,11 +32,17 @@
                 <label for="privilege">Oprávnenia: <span class="dash-field-required">*</span></label>
                 <select id="privilege" name="privilege" class="dash-input" required>
                     <option disabled selected value>----------------------------------</option>
+                    @if(Auth::user()->privilege>=4)
                     <option @if ($users->privilege==1) selected @endif  value="1">Používateľ</option>
+                    @endif
+                    @if(Auth::user()->privilege>=3)
                     <option @if ($users->privilege==2) selected @endif  value="2">Zamestnanec kancelárie</option>
                     <option @if ($users->privilege==3) selected @endif  value="3">Admin kancelárie</option>
+                    @endif
+                    @if(Auth::user()->privilege==5)
                     <option @if ($users->privilege==4) selected @endif  value="4">Admin </option>
                     <option @if ($users->privilege==5) selected @endif  value="5">Superadmin</option>
+                    @endif
                 </select>
             </div>
             @if(Auth::user()->privilege>=4)

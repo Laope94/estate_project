@@ -12,7 +12,7 @@
 @endif
 @section('content')
     @parent
-    <form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data">
+    <form action="{{URL::to('/admin-tools/addUser')}}" method="post" enctype="multipart/form-data" id="edit-form">
         <div class="dash-flex">
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -57,7 +57,7 @@
                     </select>
                 </div>
                 @else
-                <input type="hidden" id="agency" value="{{$user->agency_id}}">
+                <input type="hidden" id="agency" name="agency" value="{{$user->agency_id}}">
             @endif
 
             @if($user->privilege>=4)
@@ -149,8 +149,9 @@
         </div>
     </form>
     <script src="{{ asset('js/load-locations.js') }}"></script>
+    <script src="{{ asset('js/agency-lock.js') }}"></script>
     <script>$(document).ready(function () {
             loadLocation();
         })</script>
-    <script src="{{ asset('js/agency-lock.js') }}"></script>
+
 @endsection
