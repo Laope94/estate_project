@@ -42,7 +42,14 @@ Route::get('updateEstt/{UUID}', 'AdminController@showEstate');
 Route::get('updateEstate/{UUID}', "AdminController@updateEstate");
 Route::get('deleteEstate{UUID}', "AdminController@deleteEstate");
 
-//agencies
+//admins
+Route::get('/admin-tools', function (){
+    if (\Illuminate\Support\Facades\Auth::user() == null) {
+        return redirect('/');
+    } else {
+        return redirect()->action('AdminController@showAgencies');
+    }
+});
 Route::get('/admin-tools/kancelarie', 'AdminController@showAgencies');
 Route::view('/admin-tools/pridat-kancelariu', 'dashboard/dash_add_kancelaria');
 Route::get('updateAgnc/{UUID}', 'AdminController@showAgency');
@@ -51,7 +58,13 @@ Route::get('deleteAgency/{UUID}', "AdminController@deleteAgency");
 
 
 // ---------------------------------------KANCELARIA-----------------------------------------------------
-Route::get('/estate-cms/', 'AdminController@getCurrentAgencyEstates');
+Route::get('/estate-cms', function (){
+     if (\Illuminate\Support\Facades\Auth::user() == null) {
+         return redirect('/');
+    } else {
+         return redirect()->action('AdminController@getCurrentAgencyEstates');
+    }
+});
 Route::view('/estate-cms/pridat-inzerat', 'dashboard/dash_add_inzerat');
 Route::get('/estate-cms/inzeraty/', 'AdminController@getCurrentAgencyEstates');
 Route::get('/estate-cms/zamestnanci', 'AdminController@getCurrentAgencyUsers');
@@ -67,7 +80,6 @@ Route::post('/registraciaKancelarie', 'UserController@registraciaKancelarie');
 
 //pouzivatelia vypis
 Route::get('/pouzivatelia', "UserController@showAllAction");
-
 
 //editovanie pozuivatela
 Route::get('updateUserP', "UserController@updateUserProfile");
